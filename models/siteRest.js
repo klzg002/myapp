@@ -215,8 +215,9 @@ var siteRest = {
         var params = url.parse(req.url,true).query;
         lib_com.writeObj(params);
         var account = params.account;
-        var query=UserBill.findone({'account' : account});
+        var query = UserBill.findOne({'account' : account});
         query.exec(function(err,userbill){
+            console.log(err);
             if(userbill && userbill._id){
                 var queryfee=UserFee.findone({'account' : account});
                 queryfee.exec(function(err,userfee){
@@ -226,7 +227,7 @@ var siteRest = {
                             result -= e.feenum;
                         });
                     }
-                    res.send({"data":0});
+                    res.send({"data":result});
                     res.end();
                 });
             }else{

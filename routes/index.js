@@ -8,49 +8,6 @@ exports.setRequestUrl=function(app){
   //    ,fileObj = require('./controllers/fileSystem')
   //    ,mongoObj = require('./controllers/mongoManagement')
   //    ,articleObj = require('./controllers/article');
-  app.get('/api?*',function(req, res) {
-    var params = url.parse(req.url,true);
-    switch(params.query.command){
-      case "getaccountbalance":
-        siteRest.getbalance(req,res);
-        return;
-      case "getfeebalance":
-        siteRest.getfeebalance(req,res);
-        return;
-      case "getSSOpara":
-        siteFunc.getSSOpara(res);
-        return;
-      case "login":
-        siteRest.login(req,res);
-        return;
-      case "keepalive":
-        siteRest.keepalive(req,res);
-        return;
-      case "loginout":
-        siteRest.loginout(req,res);
-        return;
-      case "listEvents":
-        siteRest.listEvents(req,res);
-        return;
-      default :
-        console.log("error command");
-        return;
-    }
-  });
-  app.post('/api?*',function(req, res) {
-    var params = url.parse(req.url,true);
-    switch(params.query.command){
-      case "postinfo":
-        siteRest.postuserinfo(req,res);
-        return;
-      case "postfeeinfo":
-        siteRest.postfeeinfo(req,res);
-        return;
-      default :
-        console.log("error command");
-        return;
-    }
-  });
   app.get('/admin',admin.index);
 
   //app.get('/', user.login);
