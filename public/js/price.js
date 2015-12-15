@@ -635,6 +635,15 @@ $(document).ready(function () {
         oTR.text = text.replace(/[^0-9]/g, "")
     }
 
+    function isMobil(s)
+    {
+        var patrn = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
+        if (!patrn.exec(s)){
+            return false;
+        }
+        return true;
+    }
+
     $('#menu1').bind('click', function () {
         setTab('menu', 1, 2);
         inits1Price();
@@ -704,6 +713,7 @@ $(document).ready(function () {
     }
     var userdata = {
         username : window.localStorage.username,
+        account: window.localStorage.account,
         clientid :  window.localStorage.clientid,
         userid  : window.localStorage.userid,
         sessionkey  :   window.localStorage.sessionkey,
@@ -796,6 +806,7 @@ $(document).ready(function () {
     });
     $('#pay_btn').on('click', function () {
         if ($('#logoutTag')[0].style.display === "none") {
+
             $("body").append("<div id='mask'></div>");
             $("#mask").addClass("mask").fadeIn("slow");
             $("#rechargeBox").fadeIn("slow");
@@ -817,6 +828,30 @@ $(document).ready(function () {
                     console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
                 }
             });
+            $.ajax({
+                type: "GET",
+                url: "api?command=getfeebalance&response=json&account="+userdata.account,
+                async: true,
+                dataType: "json",
+                success: function (ret, textStatus) {
+                    if(ret) {
+                        $('.cur-fee')[0].innerHTML = ret.data;
+                        if(ret.data < 1000){
+                            $("input[name$='invoice_fee']").attr("disabled",true);
+                            $("input[name$='invoice_fee']").attr('placeholder',"可开发票金额小于1000")
+                        }
+                    }else{
+                        console.log("fee select error");
+                        $('.cur-fee')[0].innerHTML  = 0;
+                        $("input[name$='invoice_fee']").attr("disabled",true);
+                        $("input[name$='invoice_fee']").attr('placeholder',"获取可开发票信息错误")
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
+                }
+            });
+
             //$('.price-cnt .input').bind('keypress', function () {
             //    number(true);
             //}).bind('keyup ', function () {
@@ -873,6 +908,7 @@ $(document).ready(function () {
         }
 
     });
+
     var c = getQueryString("command");
     if(c === "rechargetoaccount"){
         $('#Menu2').trigger('click');
@@ -925,4 +961,75 @@ $(document).ready(function () {
         if (r != null) return unescape(r[2]);
         return null;
     }
+    $("input[name$='invoice_fee']").bind('keypress', function () {
+        number();
+    }).bind('keyup', function () {
+        filterInput();
+    }).bind('change', function () {
+        var feenum = this.value;
+        var curfee = parseInt($('.cur-fee')[0].innerHTML.match(/\d+/)[0]);
+        if(feenum <= 1000){
+            $(this).val(1000);
+        }else if (feenum > curfee ){
+            $(this).val(curfee);
+        }
+    });
+    $("input[name$='phone']").bind('keypress', function () {
+        number();
+    }).bind('keyup', function () {
+        filterInput();
+    }).bind('change', function () {
+        var Mobile= this.value;
+        if (!isMobil(Mobile)) {
+            $(this).val("");
+            $(this).attr('placeholder',"请输入合法的手机号码")
+        }
+    });
+
+    $('#fee_btn').bind('click',function(){
+        var inputs_para = ["invoice_fee","title","address","addressee","phone"];
+        var flag = 0 ;
+        inputs_para.forEach(function(para){
+            if(!$("input[name$="+para+"]")[0].value || $("input[name$="+para+"]")[0].value == ""){
+                flag = 1;
+                if(para != "title")
+                    $("input[name$="+para+"]").attr('placeholder',"请输入相关内容")
+            }
+        })
+        if(flag){
+            return false;
+        }else{
+            var postdata = {
+                account :userdata.account,
+                feenum : $("input[name$='invoice_fee']")[0].value,
+                feetype : $("input[name='invoice_type']:checked").val(),
+                feehead : $("input[name$='title']")[0].value,
+                feeaddress :$("input[name$='address']")[0].value,
+                feeuser :$("input[name$='addressee']")[0].value,
+                feephone:$("input[name$='phone']")[0].value,
+            }
+            writeObj(postdata);
+            $.ajax({
+                type: "POST",
+                url: "api?command=postfeeinfo&account="+postdata.account+"&feenum="+postdata.feenum+"&feestatus=N&feetype="+postdata.feetype+"&feehead="+postdata.feehead+"&feeaddress="+postdata.feeaddress+"&feeuser="+postdata.feeuser+"&feephone="+postdata.feephone,
+                async: true,
+                dataType: "json",
+                dataType:"text",
+                success:function(data){
+                    console.log(data);
+                    if(data == "success"){
+                        window.location.href = "price.html";
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
+                    window.location.href = "errpr50x.html"
+                }
+            });
+        }
+
+    });
+
+
 });

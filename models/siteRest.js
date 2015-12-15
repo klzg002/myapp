@@ -13,6 +13,8 @@ var User = require("../models/db/User");
 var UserDetail = require("../models/db/UserDetail");
 //用户账单实体类
 var UserBill = require("../models/db/UserBill");
+//用户发票实体类
+var UserFee = require("../models/db/UserFee");
 //数据库操作对象
 var DbOpt = require("../models/db/Dbopt");
 //时间格式化
@@ -209,6 +211,30 @@ var siteRest = {
         });
         httpreq.end();
     },
+    getfeebalance:function(req,res){
+        var params = url.parse(req.url,true).query;
+        lib_com.writeObj(params);
+        var account = params.account;
+        var query=UserBill.findone({'account' : account});
+        query.exec(function(err,userbill){
+            if(userbill && userbill._id){
+                var queryfee=UserFee.findone({'account' : account});
+                queryfee.exec(function(err,userfee){
+                    var result = userbill.billnum;
+                    if(userfee.length > 0){
+                        userfee.forEach(function(e){
+                            result -= e.feenum;
+                        });
+                    }
+                    res.send({"data":0});
+                    res.end();
+                });
+            }else{
+                res.send({"data":0});
+                res.end();
+            }
+        });
+    },
     loginout:function(req,res){
         settings.mgt_session = "";
         res.send({"ret":"ok"});
@@ -217,9 +243,9 @@ var siteRest = {
     postuserinfo:function(req,res){
         var params = url.parse(req.url,true).query;
         lib_com.writeObj(params);
-        var userid = params.userid;
+        var account = params.account;
         //用户ID必须唯一
-        var query=UserDetail.find({'userid' : userid});
+        var query=UserDetail.find({'account' : account});
         query.exec(function(err,user){
             if(user.length > 0){
                 errors = "用户信息已存在";
@@ -228,6 +254,9 @@ var siteRest = {
                 DbOpt.addOne(UserDetail,req, res)
             }
         });
+    },
+    postfeeinfo:function(req,res){
+        DbOpt.addOne(UserFee,req, res)
     }
 
 };

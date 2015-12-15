@@ -14,6 +14,9 @@ exports.setRequestUrl=function(app){
       case "getaccountbalance":
         siteRest.getbalance(req,res);
         return;
+      case "getfeebalance":
+        siteRest.getfeebalance(req,res);
+        return;
       case "getSSOpara":
         siteFunc.getSSOpara(res);
         return;
@@ -39,6 +42,9 @@ exports.setRequestUrl=function(app){
     switch(params.query.command){
       case "postinfo":
         siteRest.postuserinfo(req,res);
+        return;
+      case "postfeeinfo":
+        siteRest.postfeeinfo(req,res);
         return;
       default :
         console.log("error command");
