@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>用友云</title>
+    <meta charset="utf-8">
+    <meta name = "format-detection" content = "telephone=no" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src='js/camera.js'></script>
+    <script src="js/jquery.stellar.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/index.js"></script>
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="js/jquery.mobile.customized.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <!--<![endif]-->
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="img/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+    <![endif]-->
+</head>
+<body class="index-1">
+<!--==============================header=================================-->
+<header id="header">
+    <div id="stuck_container">
+        <div class="toptb">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_12 ">
+                        <ul class="fr right-nav">
+                            <li class="vert-mid">
+                                <!--<img class="icon-iuap" src="img/icon-iuap.png">-->
+                                <a class="fontinfo" href="http://www.yyuap.com" target=_blank>IUAP平台</a>
+                            </li>
+                            <li class="vert-mid">
+                                <div id="loginTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <a class = "account_info fontinfo" href="#"><span id="nameSpan" ></span><span>&nbsp;已登录</span></a>
+                                    <div class="dropdown-menu dropdown-menu-show" >
+                                        <div class="dropdown-menu-inner">
+                                            <div class="balance-num ">
+                                                <span class="left txt1">账户余额 <strong class = "balance_able balance" data-field="balance_num"></strong> 元</span>
+                                            </div>
+                                            <div class="balance-num ">
+                                                <a class = "user_detail" href = "http://cloudmgt.yyuap.com:8080/index.html?code=udn">
+                                                    <span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>
+                                                </a>
+                                            </div>
+                                            <div class="balance-detail">
+                                                <a class="btn_b" href="price.html?command=rechargetoaccount" >立即充值</a>
+                                                <!--<em class="txt">套餐余量</em>-->
+                                                <!--<span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>-->
+                                            </div>
+                                            <!--<div class="balance-detail">-->
+                                            <!--<em class="txt">可用时长</em>-->
+                                            <!--<span class = "txt2">剩余 <b class = "balance_pday balance" data-field="balance_pday">0</b> <span >天</span></span>-->
+                                            <!--<span class="right txt2">预计 <b class = "balance_uday balance" data-field="balance_uday">0</b> <span >天</span></span>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                    <span>&nbsp;|</span>
+                                    <span><a id="logout_btn" class ="fontinfo">退出</a></span>
+                                </div>
+                                <div id="logoutTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <span><a id="login_btn" class ="fontinfo">登录</a></span>
+                                    <span >&nbsp;|</span>
+                                    <span><a id="reg_btn" class ="fontinfo" target="_blank">注册</a></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="grid_4">
+                    <a class ="logo" href="index.html">
+                        <img src="img/logo2.png" >
+                    </a>
+                </div>
+                <nav class="grid_8">
+                    <ul class="sf-menu">
+                        <li >
+                            <a href="index.html">首页</a>
+                        </li>
+                        <li ><a href="ECS.html">产品与服务</a>
+                            <ul >
+                                <li><a href="ECS.html" title="云主机">云服务器</a></li>
+                                <li><a href="OSS.html" title="云存储">云存储</a></li>
+                                <li><a href="SLB.html" title="负载均衡">负载均衡</a></li>
+                                <li><a href="RDS.html" title="云数据库">云数据库</a></li>
+                                <li><a href="CMS.html" title="云监控">云监控</a></li>
+                                <li><a href="SEC.html" title="云安全">云安全</a></li>
+                            </ul>
+                        </li>
+                        <li class="current-selected"><a href="EPC.html">解决方案</a>
+                            <ul >
+                                <li><a href="EPC.html" title="企业私有云">企业私有云</a></li>
+                                <li><a href="MOD.html" title="移动开发">移动开发</a></li>
+                                <li><a href="POP.html" title="压力测试">压力测试</a></li>
+                                <li><a href="FPC.html" title="财务公有云">财务公有云</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="price.html" title="价格">价格</a>
+                        </li>
+                        <li><a class="console" title="控制台">控制台</a>
+                        </li>
+                        <li><a href="contact.html" title="关于我们">关于我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--=======content================================-->
+
+<section id="content">
+    <div class="full-width-container block-1">
+        <div  class="banner POP">
+            <img src="img/t5.jpg">
+        </div>
+    </div>
+    <div class="full-width-container block-2 " id="mod_nav">
+        <div class="container">
+            <div class="row">
+                <div class="grid_3 sidebar slide-sol ">
+                    <dl class="nav-list">
+                        <dt><span class="title"><i class="ico ico-1"></i>企业解决方案</span></dt>
+                        <dd item="EPC">
+                            <a href="./EPC.html" class="" hotrep="solution.header.EPC">企业私有云</a>
+                        </dd>
+                        <dd item="MOD">
+                            <a href="./MOD.html" class="" hotrep="solution.header.MOD">移动开发</a>
+                        </dd>
+                        <dd item="POP">
+                            <a href="./POP.html" class="" hotrep="product.header.POP">压力测试</a>
+                        </dd>
+                        <dd item="FPC">
+                            <a href="./FPC.html" hotrep="product.header.FPC">财务公有云</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="grid_9 slide-epc">
+                    <div class="tab-title ">
+                        <ul>
+                            <li mod="advantage" hotrep="product.cvm.tab.advantage"><a href="#advantage">概述</a></li>
+                            <li mod="price" hotrep="product.cvm.tab.price"><a href="#price">方案介绍</a></li>
+                            <li mod="wiki" hotrep="product.cvm.tab.data"><a href="#wiki">客户收益</a></li>
+                        </ul>
+                        <a href="price.html" target="_blank" class="tc-btn tc-btn-1" hotrep="product.cvm.tab.buy">立即选购</a>
+                    </div>
+                    <div class="tab-content mod-advantage" mod="advantage">
+                        <a class="anchor" id="advantage">&nbsp;</a>
+                        <h3 class="tab-content-title">
+                            概述
+                        </h3>
+                        <div class="tab-content-detail column">
+                            <p class="text">压力测试服务是集测试机管理、测试脚本管理、测试场景管理、测试任务管理、测试结果管理为一体的性能云测试平台，针对用户复杂的分布式应用，PTS可以快速扩容，动态配置域名，满足不断增长的集群压测需求。简而言之，用户可以使用性能测试服务对自身系统性能在阿里云计算环境里的状况进行整体评估，并获得精准分析日志。</p>
+                        </div>
+                    </div>
+                    <div class="tab-content mod-price" mod="price">
+                        <a class="anchor" id="price">&nbsp;</a>
+                        <h3 class="tab-content-title">
+                            方案介绍
+                        </h3>
+                        <div class="tab-content-detail column">
+                            <p class="text">提供系统全面评估及改进方案，并根据客户需要进行测试及实施，提升系统的应用效率；针对客户软硬件环境模拟优化前后的场景进行测试，得出软硬件环境是否满足优化指标要求。</p>
+                            <img src="img/pop-1.png">
+                        </div>
+                    </div>
+                    <div class="tab-content mod-wiki" mod="wiki">
+                        <a class="anchor" id="wiki">&nbsp;</a>
+                        <h3 class="tab-content-title">
+                            客户收益
+                        </h3>
+                        <div class="tab-content-detail column">
+                            <div class="menu-list">
+                                <h6>提高用户体验</h6>
+                                <p class="text">找出性能瓶颈，进行合理优化，不断提升用户访问体验</p>
+                                <h6>及时反馈</h6>
+                                <p class="text">以最终用户视角进行监测，评估网站整体访问性能。出现故障第一时间收到通知，在用户投诉前解决完毕</p>
+                                <h6>场景模拟</h6>
+                                <p class="text">压力测试服务在工作时会通过施压机产生压测流量，用户如果对施压的流量、地域等有更多要求，施压机可动态扩展在全球任何范围内进行部署，模拟成千上万来自不同地区用户的访问场景。</p>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--=======footer=================================-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="grid_12 copyright">
+                <h5><span>联系我们</span></h5>
+                <pre>© <span id="copyright-year"></span> |  全国咨询热线</pre>
+                        <p>电话：010-62435239 010-62432253   <a href="mailto:lab@yonyou.com">&nbsp; &nbsp; 邮箱：lab@yonyou.com</a></p>
+            </div>
+        </div>
+    </div>
+  <div class="footer_bottom"><p>版权所有：用友软件股份有限公司　京备05007539号-11　京ICP证100714号　京公网网安备1101080209224</p></div>
+</footer>
+<script>
+  jQuery(function(){
+    jQuery('#camera_wrap').camera({
+      height: '34.58333333333333%',
+      // height: '380px',
+      width:'100%',
+      thumbnails: false,
+      pagination: false,
+      fx: 'simpleFade',
+      loader: 'none',
+      hover: false,
+      navigation: false,
+      playPause: false,
+      minHeight: "139px",
+    });
+    jQuery('#camera_wrap').cameraStop();
+  });
+</script>
+<script>
+  $(document).ready(function() { 
+      if ($('html').hasClass('desktop')) {
+        $.stellar({
+          horizontalScrolling: false,
+          verticalOffset: 20,
+          resposive: true,
+          hideDistantElements: true,
+        });
+      }
+    });
+</script>
+<script src=" js/product.js"></script>
+</body>
+</html>

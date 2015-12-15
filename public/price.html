@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>用友云</title>
+	<meta charset="utf-8">
+	<meta name = "format-detection" content = "telephone=no" />
+	<link rel="icon" href="img/favicon.png" type="img/x-icon">
+	<link rel="apple-touch-icon" href="img/apple-touch-icon.svg" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.svg" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.svg" />
+	<link rel="stylesheet" href="css/grid.css">
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="css/paypage.css" />
+
+    <script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery-migrate-1.2.1.js"></script>
+	<script src="js/jquery.stellar.js"></script>
+	<script src="js/script.js"></script>
+	<!--[if (gt IE 9)|!(IE)]><!-->
+	<script src="js/jquery.mobile.customized.min.js"></script>
+    <script src="js/wow.js"></script>
+	<script>
+		$(document).ready(function () {
+			if ($('html').hasClass('desktop')) {
+				new WOW().init();
+			}
+		});
+	</script>
+	<!--<![endif]-->
+	<!--[if lt IE 8]>
+	<div style=' clear: both; text-align:center; position: relative;'>
+	 <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+		 <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+	 </a>
+	</div>
+	<![endif]-->
+	<!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+        <![endif]-->
+    
+	</head>
+<body class="index-4">
+<!--==============================header=================================-->
+<header id="header">
+    <div id="stuck_container">
+        <div class="toptb">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_12 ">
+                        <ul class="fr right-nav">
+                            <li class="vert-mid">
+                                <!--<img class="icon-iuap" src="img/icon-iuap.png">-->
+                                <a class="fontinfo" href="http://www.yyuap.com" target=_blank>IUAP平台</a>
+                            </li>
+                            <li class="vert-mid">
+                                <div id="loginTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <a class = "account_info fontinfo" href="#"><span id="nameSpan" ></span><span>&nbsp;已登录</span></a>
+                                    <div class="dropdown-menu dropdown-menu-show" >
+                                        <div class="dropdown-menu-inner">
+                                            <div class="balance-num ">
+                                                <span class="left txt1">账户余额 <strong class = "balance_able balance" data-field="balance_num"></strong> 元</span>
+                                            </div>
+                                            <div class="balance-num ">
+                                                <a class = "user_detail" href = "http://cloudmgt.yyuap.com:8080/index.html?code=udn">
+                                                    <span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>
+                                                </a>
+                                            </div>
+                                            <div class="balance-detail">
+                                                <a class="btn_b" href="price.html?command=rechargetoaccount" >立即充值</a>
+                                                <!--<em class="txt">套餐余量</em>-->
+                                                <!--<span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>-->
+                                            </div>
+                                            <!--<div class="balance-detail">-->
+                                            <!--<em class="txt">可用时长</em>-->
+                                            <!--<span class = "txt2">剩余 <b class = "balance_pday balance" data-field="balance_pday">0</b> <span >天</span></span>-->
+                                            <!--<span class="right txt2">预计 <b class = "balance_uday balance" data-field="balance_uday">0</b> <span >天</span></span>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                    <span>&nbsp;|</span>
+                                    <span><a id="logout_btn" class ="fontinfo">退出</a></span>
+                                </div>
+                                <div id="logoutTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <span><a id="login_btn" class ="fontinfo">登录</a></span>
+                                    <span >&nbsp;|</span>
+                                    <span><a id="reg_btn" class ="fontinfo" target="_blank">注册</a></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="grid_4">
+                    <a class ="logo" href="index.html">
+                        <img src="img/logo2.png" >
+                    </a>
+                </div>
+                <nav class="grid_8">
+                    <ul class="sf-menu">
+                        <li >
+                            <a href="index.html">首页</a>
+                        </li>
+                        <li ><a href="ECS.html">产品与服务</a>
+                            <ul >
+                                <li><a href="ECS.html" title="云主机">云服务器</a></li>
+                                <li><a href="OSS.html" title="云存储">云存储</a></li>
+                                <li><a href="SLB.html" title="负载均衡">负载均衡</a></li>
+                                <li><a href="RDS.html" title="云数据库">云数据库</a></li>
+                                <li><a href="CMS.html" title="云监控">云监控</a></li>
+                                <li><a href="SEC.html" title="云安全">云安全</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="EPC.html">解决方案</a>
+                            <ul >
+                                <li><a href="EPC.html" title="企业私有云">企业私有云</a></li>
+                                <li><a href="MOD.html" title="移动开发">移动开发</a></li>
+                                <li><a href="POP.html" title="压力测试">压力测试</a></li>
+                                <li><a href="FPC.html" title="财务公有云">财务公有云</a></li>
+                            </ul>
+                        </li>
+                        <li class="current-selected"><a href="price.html" title="价格">价格</a>
+                        </li>
+                        <li><a class="console" title="控制台">控制台</a>
+                        </li>
+                        <li><a href="contact.html" title="关于我们">关于我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--=======content================================-->
+
+<section id="content">
+    <div class="full-width-container block-1">
+        <div  class="banner">
+            <img src="img/price.jpg">
+        </div>
+    </div>
+    <div class="full-width-container block-2">
+        <div class="container">
+            <div id="Tab1">
+                <div class="Menubox1">  
+                    <ul>
+                        <li id="Menu2" class="hover">按量付费</li>
+                        <li id="Menu1" class="disabled" >包年包月</li>
+                        <div class="price-tip" >
+                            <div class="content">暂时只支持按量付费</div>
+                            <div class="arrow"></div>
+                        </div>
+                    </ul>
+                </div>
+                <section id="con_Menu_2" class="content-wrap container" >
+                    <div class="row">
+                        <div class="grid_8">
+                            <div class="pricing-item pricing-instance">
+                                <div class="desc">
+                                    <h2 id="instance">主机 Instance</h2>
+                                    <div class="price host">
+                                        <span>¥</span>
+                                        <span class="price-number"></span>
+                                        / 小时
+                                        <span class="none"></span>
+                                    </div>
+                                    <p>
+                                        主机的价格由 CPU、内存的数量来决定。如果您使用的操作系统还有额外的授权费用，比如 Windows或商业 Linux 分发版，还需要附加额外的厂商授权费用。
+                                    </p>
+                                    <div class="alert alert-info">* 当主机关机时，只收取系统盘的费用(按照系统盘的占用空间收费，收费标准同性能型硬盘)，CPU/内存不再收费。</div>
+                                </div>
+                                <div class="panel">
+                                    <div class="images">
+                                        <ul>
+                                            <li class="image-item selected">
+                                                <a href="####" data-image-id="bio8x64">Linux</a>
+                                            </li>
+                                            <li class="image-item">
+                                                <a href="####" data-image-id="win2k3r2eechs">Windows</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="cpu-memory">
+                                        <ul class="cpu">
+                                            <li class="cpu-item selected" data-type="cpu" data-value="1">
+                                                <a href="####">1 核</a>
+                                            </li>
+                                            <li class="cpu-item " data-type="cpu" data-value="2">
+                                                <a href="####">2 核</a>
+                                            </li>
+                                            <li class="cpu-item " data-type="cpu" data-value="4">
+                                                <a href="####">4 核</a>
+                                            </li>
+                                            <li class="cpu-item " data-type="cpu" data-value="8">
+                                                <a href="####">8 核</a>
+                                            </li>
+                                            <li class="cpu-item " data-type="cpu" data-value="12">
+                                                <a href="####">16 核</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="memory">
+                                            <li class="memory-item  selected" data-type="memory" data-value="1024">
+                                                <a href="####">1 G</a>
+                                            </li>
+                                            <li class="memory-item  " data-type="memory" data-value="2048">
+                                                <a href="####">2 G</a>
+                                            </li>
+                                            <li class="memory-item  " data-type="memory" data-value="4096">
+                                                <a href="####">4 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="6144">
+                                                <a href="####">6 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="8192">
+                                                <a href="####">8 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="12288">
+                                                <a href="####">12 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="16384">
+                                                <a href="####">16 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="24576">
+                                                <a href="####">24 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="32768">
+                                                <a href="####">32 G</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricing-item pricing-volume">
+                                <div class="viewport-inner">
+                                    <div class="desc">
+                                        <h2 id="volume">硬盘 Volume</h2>
+                                        <div class="price vol">
+                                            <span>¥</span>
+                                            <span class="price-number">0.00</span>
+                                            / 小时
+                                            <span class="none">（≈ ¥ 0.00 / 月）</span>
+                                        </div>
+                                        <p>
+                                            每个主机都带有系统盘，Linux 为 20G、Windows 为 50G。如果您觉得不够用，可以购买额外的硬盘接驳到主机上，以增大主机的硬盘空间。
+                                        </p>
+                                        <div class="alert alert-info">* 容量型硬盘以100GB为申请步长，性能型硬盘以10GB为步长。</div>
+                                        <ul class="volumes">
+                                            <li class="volume-item selected" data-volume-type="0">
+                                                <a href="####">
+                                                    <span class="type">性能型</span>
+                                                    <small>IO: 128 MB/s</small>
+                                                </a>
+                                            </li>
+                                            <li class="volume-item disable" data-volume-type="0">
+                                                <a href="####">
+                                                    <span class="type">容量型</span>
+                                                    <small>最大容量5TB</small>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="panel User_ratings User_grade">
+                                        <div class="panel-inner ratings_bars">
+                                            <span class="bars_10">0</span>
+                                            <div class="scale" id="bar">
+                                                <div></div>
+                                                <span id="btn"></span>
+                                            </div>
+                                            <span id="prop" class="bars_10">&nbsp;5000&nbsp;</span>
+                                            <!-- <input id="title">0</input> -->
+                                            <input id="title" type="text" value="0" size="2" data-type="instance">
+                                            <span >&nbsp;GB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid_4">
+                            <div class="pricing-summary">
+                                <div class="locales-wrapper">
+                                    <div class="locale-switcher zone-switcher">
+                                        <a class="current-zone pek2">
+                                            <span class="icon icon-zone"></span>
+                                            <i id="selected_area">北京区</i>
+                                        </a>
+                                        <ul class="zone-switcher-select">
+                                            <li>
+                                                <a data-value="pek2">
+                                                    <span class="label-current"></span>
+                                                    <i class="area bj">北京区</i>
+                                                    <span class="en">(PEK2)</span>
+                                                    <span class="zone-label pek2"></span>
+                                                </a>
+                                            </li>
+                                            <!--<li>-->
+                                                <!--<a data-value="gd1">-->
+                                                    <!--<span class="label-unchecked"></span>-->
+                                                    <!--<i class="area bjlt">北京联通</i>-->
+                                                    <!--<span class="en">(GD1)</span>-->
+                                                    <!--<span class="zone-label gd1"></span>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
+                                            <!--<li>-->
+                                                <!--<a data-value="ap1">-->
+                                                    <!--<span class="label-unchecked"></span>-->
+                                                    <!--<i class="area bjlt1">北京联通</i>-->
+                                                    <!--<span class="en">(AP1)</span>-->
+                                                    <!--<span class="zone-label ap1"></span>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="summary-wrapper">
+                                    <h2>费用概览</h2>
+                                    <div class="resources">
+                                        <div class="table-wrapper" style="max-height: 993px;">
+                                            <table class="table">
+                                                <tbody>
+                                                <tr class="sum_instance">
+                                                    <td class="res_type">
+                                                        <a href="#instance">主机 Instance</a>
+                                                        <!--<p class="detail">Linux 1 核 1 G</p>-->
+                                                    </td>
+                                                    <td class="res_count">
+                                                        <button class="minus" href="javascript:void(0)">-<i class="icon-minus"></i>
+                                                        </button>
+                                                        <input class="res_count res_num" type="text" value="1" size="2" data-type="instance">
+                                                        <button class="plus" href="javascript:void(0)">+<i class="icon-plus"></i>
+                                                        </button>
+                                                    </td>
+                                                    <td class="res_price">
+                                                        <span class="number" unit-price="0.1"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="sum_volume">
+                                                    <td class="res_type">
+                                                        <a href="#volume">硬盘 Volume</a>
+                                                        <!--<p class="detail">容量型 0 GB</p>-->
+                                                    </td>
+                                                    <td class="res_count">
+                                                        <button class="minus" href="javascript:void(0)">-<i class="icon-minus"></i>
+                                                        </button>
+                                                        <input class="res_count res_num" type="text" value="0" size="2" data-type="volume">
+                                                        <button class="plus" href="javascript:void(0)">+<i class="icon-plus"></i>
+                                                        </button>
+                                                    </td>
+                                                    <td class="res_price">
+                                                        <span class="number" unit-price="0">0.00</span>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="total">
+                                            合计: &nbsp;¥
+                                            <span class="number">72.00</span>
+                                            / 月
+                                            <div class="notice">注：实际消费可能会比计算出的价格低，因为实际消费与资源的使用情况相关。如果某些资源被暂时释放，那么将不会计入实际消费。</div>
+                                        </div>
+                                    </div>
+                                    <div class="btns">
+                                        <span id = "pay_btn" class = "btn_b btn_b1" >充值方式</span>
+                                        <!--<span id = "use_btn" class = "btn_b btn_b2" >用量查看</span>-->
+                                    </div>
+                                    <div>
+                                        </br>
+                                        <h2>按时计费</h2>
+                                        <div class="content">
+                                            <div class="c-cp">
+                                                <div class="c-cp-content">
+                                                    <div id="c_396">
+                                                        <p><span class="c-title" >什么是按“时”计费？</span></p>
+                                                        <p><span class="c-content">用友云中所有资源的计费都不是常见的包年/包月这而是按时计费。用户的实际消费是从资源创建的时间点开始产生，且止于资源销毁的时间点，所有支出精确到时。用户不会因购买资源时的时间周期而支出不必要的开销。</span></p>
+                                                        <p><span class="c-title">为什么要按“时”计费？</span></p>
+                                                        <p><span class="c-content">为了最大限度的满足用户在云中的弹性需求，让用户的成本最大限度的贴合实际的资源使用情况。同时达到更合理使用资源的目标。</span></p>
+                                                        <p><span class="c-title" >按“时”计费的前提是什么？</span></p>
+                                                        <p><span class="c-content">最重要的前提就是所有资源的获取都可在秒级内得到响应。如果资源获取时间长，那么很短的计费周期也是无意义的。</span></p>
+                                                        <p><span class="c-title" >如何实现按“时”计费？</span></p>
+                                                        <p><span class="c-content">当资源创建后，计费系统会先扣去1小时的费用，若不到1小时用户就销毁了资源，则会退回剩余时间扣去的费用。用友云云提供了必要的工具让您可以随时更改云资源的配置，比如增加或减少主机 CPU 或内存、调整硬盘尺寸、扩大或降低外网（Internet）带宽等。</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="con_Menu_1" class='hover content-wrap container ' >
+                    <div class="row">
+                        <div class="grid_8">
+                            <div class="s1-pricing-item s1-pricing-instance">
+                                <div class="desc">
+                                    <h2 id="instance">主机配置</h2>
+                                    <p>
+                                        主机的价格由 CPU、内存的数量来决定。如果您使用的操作系统还有额外的授权费用，比如 Windows或商业 Linux 分发版，还需要附加额外的厂商授权费用。
+                                    </p>
+                                    </br>
+                                </div>
+                                <div class="panel">
+                                    <div class="s1-images">
+                                        <ul>
+                                            <li class="image-item selected">
+                                                <a href="####" data-image-id="bio8x64">Linux</a>
+                                            </li>
+                                            <li class="image-item">
+                                                <a href="####" data-image-id="win2k3r2eechs">Windows</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="s1-cpu-memory">
+                                        <ul class="cpu">
+                                            <li class="cpu-item selected" data-type="cpu" data-value="1">
+                                                <a href="####">1 核</a>
+                                            </li>
+                                            <li class="cpu-item " data-type="cpu" data-value="2">
+                                                <a href="####">2 核</a>
+                                            </li>
+                                            <li class="cpu-item " data-type="cpu" data-value="4">
+                                                <a href="####">4 核</a>
+                                            </li>
+                                            <li class="cpu-item " data-type="cpu" data-value="8">
+                                                <a href="####">8 核</a>
+                                            </li>
+                                            <li class="cpu-item " data-type="cpu" data-value="12">
+                                                <a href="####">16 核</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="s1-memory">
+                                            <li class="memory-item  selected" data-type="memory" data-value="1024">
+                                                <a href="####">1 G</a>
+                                            </li>
+                                            <li class="memory-item  " data-type="memory" data-value="2048">
+                                                <a href="####">2 G</a>
+                                            </li>
+                                            <li class="memory-item  " data-type="memory" data-value="4096">
+                                                <a href="####">4 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="6144">
+                                                <a href="####">6 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="8192">
+                                                <a href="####">8 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="12288">
+                                                <a href="####">12 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="16384">
+                                                <a href="####">16 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="24576">
+                                                <a href="####">24 G</a>
+                                            </li>
+                                            <li class="memory-item disable " data-type="memory" data-value="32768">
+                                                <a href="####">32 G</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="s1-pricing-item s1-pricing-volume">
+                                <div class="viewport-inner">
+                                    <div class="desc">
+                                        <h2 id="volume">硬盘大小</h2>
+                                        <p>
+                                            每个主机都带有系统盘，Linux 为 20G、Windows 为 50G。如果您觉得不够用，可以购买额外的硬盘接驳到主机上，以增大主机的硬盘空间。
+                                        </p>
+                                        </br>
+                                        <ul class="volumes">
+                                            <li class="volume-item selected" data-volume-type="0">
+                                                <a href="####">
+                                                    <span class="type">性能型</span>
+                                                    <small>IO: 128 MB/s</small>
+                                                </a>
+                                            </li>
+                                            <li class="volume-item disable" data-volume-type="0">
+                                                <a href="####">
+                                                    <span class="type">容量型</span>
+                                                    <small>最大容量5TB</small>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="panel User_ratings User_grade">
+                                        <div class="s1-panel-inner ratings_bars">
+                                            <span class="s1-bars_10">0</span>
+                                            <div class="scale" id="s1-bar">
+                                                <div></div>
+                                                <span id="s1-btn"></span>
+                                            </div>
+                                            <span id="s1-prop" class="bars_10">&nbsp;5000&nbsp;</span>
+                                            <!-- <span id="s1-title">0</span> -->
+                                            <input id="s1-title" type="text" value="0" size="2" data-type="instance">     
+                                            <span >&nbsp;GB</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid_4">
+                            <div class="s1-pricing-summary">
+                                <div class="s1-locales-wrapper">
+                                    <div class="s1-locale-switcher zone-switcher">
+                                        <a class="current-zone pek2">
+                                            <span class="icon icon-zone"></span>
+                                            <i id="s1-selected_area">北京区</i>
+                                        </a>
+                                        <ul class="s1-zone-switcher-select">
+                                            <li>
+                                                <a data-value="pek2">
+                                                    <span class="label-current"></span>
+                                                    <i class="area bj">北京区</i>
+                                                    <span class="en">(PEK2)</span>
+                                                    <span class="zone-label pek2"></span>
+                                                </a>
+                                            </li>
+                                            <!--<li>-->
+                                                <!--<a data-value="gd1">-->
+                                                    <!--<span class="label-unchecked"></span>-->
+                                                    <!--<i class="area bjlt">北京联通</i>-->
+                                                    <!--<span class="en">(GD1)</span>-->
+                                                    <!--<span class="zone-label gd1"></span>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
+                                            <!--<li>-->
+                                                <!--<a data-value="ap1">-->
+                                                    <!--<span class="label-unchecked"></span>-->
+                                                    <!--<i class="area bjlt1">北京联通</i>-->
+                                                    <!--<span class="en">(AP1)</span>-->
+                                                    <!--<span class="zone-label ap1"></span>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="s1-summary-wrapper">
+                                    <h2>费用概览</h2>
+                                    <div class="s1-resources">
+                                        <div id="Tab">
+                                            <div class="Menubox">  
+                                                <ul>  
+                                                  <li id="menu1"  class="hover">按月付费</li>  
+                                                  <li id="menu2" >按年付费</li>  
+                                                </ul>  
+                                            </div>  
+                                            <div class="Contentbox">   
+                                                <div class="input-box" id="con_menu_1" class="hover"> 
+                                                    <i>开通时长:</i><input class="input input_s" type="text" name="cu" autocomplete="off" value="1" ><span>月</span>                            
+                                                </div>      
+                                                <div class="input-box" id="con_menu_2" style="display:none"> 
+                                                    <i>开通时长:</i><input class="input input_s" type="text" name="cu" autocomplete="off" value="1" ><span>年</span> 
+                                                </div>      
+                                            </div>
+                                        </div>
+                                        <div class="table-wrapper" >
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr class="s1-sum_instance">
+                                                        <td class="res_type">
+                                                            <a href="####instance">服务器数量</a>
+                                                        </td>
+                                                        <td class="res_count">
+                                                            <button class="minus" href="javascript:void(0)">-<i class="icon-minus"></i>
+                                                            </button>
+                                                            <input class="res_count res_num" type="text" value="1" size="2" data-type="instance">                            
+                                                            <button class="plus" href="javascript:void(0)">+<i class="icon-plus"></i>
+                                                            </button>
+                                                        </td>
+                                                        <td class="res_price">
+                                                            <span class="number" unit-price="0.1">1.00</span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                                    
+                                        <div class="s1-total">
+                                            合计: &nbsp;¥
+                                            <span class="number">34</span>
+                                            / 月
+                                            <div class="notice">注：实际消费可能会比计算出的价格低，因为实际消费与资源的使用情况相关。如果某些资源被暂时释放，那么将不会计入实际消费。</div>
+                                        </div>
+                                    </div>
+                                    <div class="btns">
+                                        <span id = "buy_btn" class = "btn_b s1-btn_b1" >立即购买</span>
+                                        <!--<span id = "view_btn" class = "btn_b s1-btn_b2" >套餐查看</span>-->
+                                    </div> 
+                                    <div>
+                                        <br>
+                                        <h2>包年包月计费</h2>
+                                        <div class="content">
+                                            <div class="c-cp">
+                                                <div class="c-cp-content">
+                                                    <div id="c_396">
+                                                        <p><span class="c-title" >什么是包年包月计费？</span></p>
+                                                        <p><span class="c-content">购买相关配置以后，可以在一定时间内不限时使用云服务器</span></p>
+                                                        <p><span class="c-title">为什么要包年包月计费？</span></p>
+                                                        <p><span class="c-content">用户根据所需实例的使用时长按年或者月进行购买。</span></p>
+                                                        <p><span class="c-title" >包年包月计费的前提是什么？</span></p>
+                                                        <p><span class="c-content">用户根据所需实例的使用时长按年或者月进行购买。</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="rechargeBox">
+    <div id="re-cashier-header" class="re-cashier-header">
+        <div class="re-fl re-title-wrap">
+            <span class="re-split re-mr10"></span>
+            <span class="re-text">充值方式</span>
+        </div>
+        <div class="re-fr re-fr-wrap">
+            <div class="re-user-name">
+                <span class="re-prefix">帐号：</span>
+                <span class="re-text"></span>
+            </div>
+            <a href="###" class="re-ic re-close re-dialog-close"></a>
+        </div>
+    </div>
+    <div class="re-content-scroll">
+        <div class="re-content-wrap-pay">
+            <div class="re-box price-wrap">
+                <div class="re-media">账户余额：</div>
+                <div class="content price-cnt">
+                    <span class="price-num-bla price-bla"></span>
+                    <span class="price-suffix">元</span>
+                </div>
+            </div>
+            <div id="Tab2">
+                <div class="Menubox2">
+                    <ul>
+                        <li id="menu_show1"  class="hover">充值方式</li>
+                        <li id="menu_show2" >发票管理</li>
+                    </ul>
+                </div>
+                <div class="Contentbox">
+                    <div class="input-box" id="con_menu_show_1" class="hover">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                            <tr>
+                                <th>开户银行</th>
+                                <th>账户名称</th>
+                                <th>账户充值</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr></tr>
+                            <tr>
+                                <td>华夏银行北京西直门支行</td>
+                                <td>用友网络科技股份有限公司</td>
+                                <td><span class="card-number">4063200001801900005338</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="alert alert-warning">
+                            <p>请在转帐或汇款时在留言栏或备注栏注明您单位名称或姓名、以及您在用友云的登录邮箱，以便于我们区分汇款来源、并及时登记到您名下。</p>
+                            <p>建议您在完成汇款后把银行回单发送给<a href="mailto:lab@yonyou.com">&nbsp;邮箱：lab@yonyou.com</a></p>
+                            <p>如果您需要开具发票，请前往发票管理标签面。</p>
+                        </div>
+                    </div>
+
+                    <div class="input-box" id="con_menu_show_2" >
+                        <div>
+                            <p class="alert_bill alert-warning">
+                            提示：以下所有内容均为必填项，请仔细填写。若因填写错误导致开出的发票无效，则不可申请重开。
+                            </p>
+                            <div class="item">
+                                <div class="control-label">发票类型</div>
+                                <div class="controls">
+                                    <label class="inline">
+                                        <input type="radio" name="invoice_type"value="business" checked="">&nbsp;企业普通发票
+                                    </label>
+                                    <label class="inline">
+                                        <input type="radio" name="invoice_type" value="business-vat">&nbsp;企业增值税发票
+                                    </label>
+                                    <label class="inline">
+                                        <input type="radio" name="invoice_type" value="individual">&nbsp;个人
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="control-label">金额</div>
+                                <div class="controls">
+                                    <input class="small"type="text" name="invoice_fee" value="">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="control-label"></div>
+                                <div class="controls"><span class="help">最少金额&nbsp;¥<span class="min-fee">1000</span>，此单可开发票金额为&nbsp;¥</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="control-label">抬头</div>
+                                <div class="controls">
+                                    <input class="large" type="text" name="title" value=""placeholder="您公司营业执照上的全称">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="control-label">地址</div>
+                                <div class="controls"><input class="large" type="text" name="address" value=""></div>
+                            </div>
+                            <div class="item">
+                                <div class="control-label">收件人</div>
+                                <div class="controls"><input class="medium" type="text" name="addressee" value=""></div>
+                            </div>
+                            <div class="item">
+                                <div class="control-label">收件人电话</div>
+                                <div class="controls"><input class="medium" type="text" name="phone" value=""></div>
+                            </div>
+                            <div class="controls">
+                                <div class="btn-submit">提交</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--<div id="payBox">-->
+    <!--<div id="cashier-header" class="cashier-header">-->
+        <!--<div class="fl title-wrap">-->
+            <!--<span class="split mr10"></span>-->
+            <!--<span class="text">购买设备</span>-->
+        <!--</div>-->
+        <!--<div class="fr fr-wrap">-->
+            <!--<div class="user-name">-->
+                <!--<span class="prefix">帐号：</span>-->
+                <!--<span class="text"></span>-->
+            <!--</div>-->
+            <!--<a href="###" class="ic close dialog-close"></a>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="content-scroll">-->
+        <!--<div class="content-wrap-pay">-->
+            <!--<div class="box book-wrap">-->
+                <!--<div class="media">参数选定：</div>-->
+                <!--<div class="content box book-name-cnt">-->
+                    <!--<div class="content cover-cnt">-->
+                        <!--<div class="book-names-wrap">-->
+                            <!--<p></p>-->
+                            <!--<p>-->
+                                <!--<span class="prefix">操作系统：</span>-->
+                                <!--<span class="text system"></span>-->
+                                <!--<span class="prefix">cpu：</span>-->
+                                <!--<span class="text system-cpu"></span>-->
+                                <!--<span class="prefix">内存：</span>-->
+                                <!--<span class="text system-mem"></span>-->
+                                <!--<span class="prefix">硬盘：</span>-->
+                                <!--<span class="text  volume"></span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--<span class="prefix">服务器数量：</span>-->
+                                <!--<span class="text  system-num"></span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--<span class="prefix">购买时长：</span>-->
+                                <!--<span class="text pay-time"></span>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="box price-wrap">-->
+                <!--<div class="media">设备总额：</div>-->
+                <!--<div class="content price-cnt">-->
+                    <!--<span class="price-num"></span>-->
+                    <!--<span class="price-suffix">元</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<iframe id="cashier-iframe" name="cashier-iframe" frameborder="0"  width="100%" scrolling="auto" >-->
+
+            <!--</iframe>-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--</div>-->
+<!--<div id="rechargeBox">-->
+    <!--<div id="re-cashier-header" class="re-cashier-header">-->
+        <!--<div class="re-fl re-title-wrap">-->
+            <!--<span class="re-split re-mr10"></span>-->
+            <!--<span class="re-text">余额充值</span>-->
+        <!--</div>-->
+        <!--<div class="re-fr re-fr-wrap">-->
+            <!--<div class="re-user-name">-->
+                <!--<span class="re-prefix">帐号：</span>-->
+                <!--<span class="re-text"></span>-->
+            <!--</div>-->
+            <!--<a href="###" class="re-ic re-close re-dialog-close"></a>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="re-content-scroll">-->
+        <!--<div class="re-content-wrap-pay">-->
+            <!--<div class="re-box price-wrap">-->
+                <!--<div class="re-media">账户余额：</div>-->
+                <!--<div class="content price-cnt">-->
+                    <!--<span class="price-num-bla price-bla"></span>-->
+                    <!--<span class="price-suffix">元</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="re-box price-wrap">-->
+                <!--<div class="re-media">充值金额：</div>-->
+                <!--<div class="content price-cnt">-->
+                    <!--<input class="input input_s" type="text" name="cu" autocomplete="off" value="0">-->
+                    <!--<span class="price-suffix">元</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<iframe id="re-cashier-iframe" name="re-cashier-iframe" frameborder="0"  width="100%" scrolling="auto" >-->
+
+            <!--</iframe>-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--</div>-->
+<!--=======footer=================================-->
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="grid_12 copyright">
+				<h5><span>联系我们</span></h5>
+				<pre>© <span id="copyright-year"></span> |  全国咨询热线</pre>
+                <p>电话：010-62435239 010-62432253   <a href="mailto:lab@yonyou.com">&nbsp; &nbsp; 邮箱：lab@yonyou.com</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="footer_bottom"><p>版权所有：用友软件股份有限公司　京备05007539号-11　京ICP证100714号　京公网网安备1101080209224</p></div>
+</footer>
+<script src="js/price.js"></script>
+<script>
+	$(document).ready(function() {
+		if ($('html').hasClass('desktop')) {
+			$.stellar({
+				horizontalScrolling: false,
+				verticalOffset: 20,
+				resposive: true,
+				hideDistantElements: true,
+			});
+		}
+	});
+</script>
+
+</body>
+</html>

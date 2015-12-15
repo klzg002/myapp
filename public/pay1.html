@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>支付收银台</title>
+    <link rel="stylesheet" type="text/css" href="css/iframe.css">
+    <link rel="stylesheet" type="text/css" href="css/bank-icon.css">
+</head>
+<body style="height: 382px;">
+<div id="lbscashier-iframe" class="">
+    <div class="channel-pay" data-payamount="299"
+         data-order="customerId=27&amp;service=cashier&amp;orderId=2015102900075275079&amp;orderCreateTime=1446080713&amp;orderExpireTime=1446081613&amp;deviceType=3&amp;payAmount=299&amp;originalAmount=299&amp;returnUrl=http%3A%2F%2Fyuedu.baidu.com%2Fcoupon%2Fapi%2Fqianbaoretradesuc&amp;notifyUrl=http%3A%2F%2Fyuedu.baidu.com%2Fcoupon%2Fapi%2Fqianbaotradesuc&amp;passuid=e540a7c607d2cac5649efb730&amp;title=React%2B%25E4%25B8%25AD%25E6%2596%2587%25E7%2589%2588&amp;mobile=&amp;itemInfo=%5B%7B%22id%22%3A2563536643%2C%22name%22%3A%22React+%5Cu4e2d%5Cu6587%5Cu7248%22%2C%22number%22%3A1%2C%22price%22%3A299%7D%5D&amp;tpl=10&amp;signType=1&amp;sign=20e288d761a3c1e15680e577eeb466d2"
+         data-customerid="27">
+        <ul class="ca-tabs">
+            <li data-target="bfb" data-code="BAIDU-PLATFORM-BAIFUBAO" class="current">
+                <span class="ca-tabs-name">百度钱包</span>
+                <img src="https://zhifu.baidu.com/static/images/discount_icons/tuijian_17.png" class="ca-activity-icon">
+            </li>
+            <li data-target="bank" data-code="" class="">
+                <span class="ca-tabs-name">网上银行</span>
+            </li>
+            <li data-target="alipay" data-code="" class="">
+                <span class="ca-tabs-name">支付宝</span>
+            </li>
+
+        </ul>
+        <div class="channel-wrapper">
+            <div class="ca-tabs-panel hidden" id="wechat-panel" style="display: none;">
+                <div class="ca-form-group clearfix">
+                    <label class="ca-label icon-label">支付方式：</label>
+
+                </div>
+                <div class="ca-form-group clearfix">
+                    <label class="ca-label">应付金额：</label>
+                    <span class="ca-form-option">
+                        <span class="ca-spec-num ca-pay-amount"></span>
+                        <span class="ca-unit">元</span>
+                    </span>
+                </div>
+            </div>
+            <div class="ca-tabs-panel hidden" id="bfb-panel" style="display: block;">
+                <div class="ca-form-group clearfix">
+                    <label class="ca-label icon-label">支付方式：</label>
+
+                    <div class="bank-tab" id="easypay-first">
+                        <ul class="bank-tab-nav clearfix">
+                            <li data-target="xinyongka" class="selected">
+                                <a href="###"><span class="radio"></span>信用卡</a>
+                            </li>
+                            <li data-target="chuxuka">
+                                <a href="###"><span class="radio"></span>储蓄卡</a>
+                            </li>
+                        </ul>
+                        <div class="bank-tab-content">
+                            <div id="xinyongka-panel" class="bank-tab-panel clearfix">
+                                <ul class="channel-list choose-list-bank">
+                                    <li data-code="BAIDU-EPC-ICBC" class="selected"><label class="bank-icon BAIDU-EPC-ICBC"></label></li>
+                                    <li data-code="BAIDU-EPC-CCB"><label class="bank-icon BAIDU-EPC-CCB"></label></li>
+                                    <li data-code="BAIDU-EPC-ABC"><label class="bank-icon BAIDU-EPC-ABC"></label></li>
+                                    <li data-code="BAIDU-EPC-PSBC"><label class="bank-icon BAIDU-EPC-PSBC"></label></li>
+                                    <li data-code="BAIDU-EPC-BOCM"><label class="bank-icon BAIDU-EPC-BOCM"></label></li>
+                                    <li data-code="BAIDU-EPC-CMB"><label class="bank-icon BAIDU-EPC-CMB"></label></li>
+                                    <li data-code="BAIDU-EPC-BOC"><label class="bank-icon BAIDU-EPC-BOC"></label></li>
+                                    <li data-code="BAIDU-EPC-CEB"><label class="bank-icon BAIDU-EPC-CEB"></label></li>
+                                    <li data-code="BAIDU-EPC-ECITIC"><label class="bank-icon BAIDU-EPC-ECITIC"></label>
+                                    </li>
+                                    <li data-code="BAIDU-EPC-SPDB"><label class="bank-icon BAIDU-EPC-SPDB"></label></li>
+                                    <li data-code="BAIDU-EPC-CMBC"><label class="bank-icon BAIDU-EPC-CMBC"></label></li>
+                                    <li data-code="BAIDU-EPC-CIB"><label class="bank-icon BAIDU-EPC-CIB"></label></li>
+                                    <li data-code="BAIDU-EPC-PAB"><label class="bank-icon BAIDU-EPC-PAB"></label></li>
+                                    <li data-code="BAIDU-EPC-GDB"><label class="bank-icon BAIDU-EPC-GDB"></label></li>
+                                    <li data-code="BAIDU-EPC-HXB"><label class="bank-icon BAIDU-EPC-HXB"></label></li>
+                                    <li data-code="BAIDU-EPC-BCCB"><label class="bank-icon BAIDU-EPC-BCCB"></label></li>
+                                </ul>
+                            </div>
+                            <div id="chuxuka-panel" class="bank-tab-panel clearfix" style="display: none;">
+                                <ul class="channel-list choose-list-bank">
+                                    <li data-code="BAIDU-EPD-ICBC" class="selected"><label class="bank-icon BAIDU-EPD-ICBC"></label></li>
+                                    <li data-code="BAIDU-EPD-CCB"><label class="bank-icon BAIDU-EPD-CCB"></label></li>
+                                    <li data-code="BAIDU-EPD-ABC"><label class="bank-icon BAIDU-EPD-ABC"></label></li>
+                                    <li data-code="BAIDU-EPD-CMB"><label class="bank-icon BAIDU-EPD-CMB"></label></li>
+                                    <li data-code="BAIDU-EPD-BOC"><label class="bank-icon BAIDU-EPD-BOC"></label></li>
+                                    <li data-code="BAIDU-EPD-CEB"><label class="bank-icon BAIDU-EPD-CEB"></label></li>
+                                    <li data-code="BAIDU-EPD-CMBC"><label class="bank-icon BAIDU-EPD-CMBC"></label></li>
+                                    <li data-code="BAIDU-EPD-CIB"><label class="bank-icon BAIDU-EPD-CIB"></label></li>
+                                    <li data-code="BAIDU-EPD-GDB"><label class="bank-icon BAIDU-EPD-GDB"></label></li>
+                                    <li data-code="BAIDU-EPD-BCCB"><label class="bank-icon BAIDU-EPD-BCCB"></label></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ca-form-group clearfix">
+                    <label class="ca-label">应付金额：</label>
+                    <span class="ca-form-option">
+                        <span class="ca-spec-num ca-pay-amount">2.99</span>
+                        <span class="ca-unit">元</span>
+                    </span>
+                </div>
+                <div class="ca-group ca-group-submit"><a href="#" target="_blank" class="fn-submit-btn btn-primary ">立即支付</a><span
+                        class="ca-btn-loading"></span></div>
+            </div>
+            <div class="ca-tabs-panel hidden" id="bank-panel" style="display: none;">
+                <div class="ca-form-group fn-normal-banks clearfix">
+                    <label class="ca-label icon-label">支付方式：</label>
+                    <ul class="ca-form-option choose-list-bank channel-list" id="bankPay">
+                        <li data-code="BAIDU-ICBC" class="selected">
+                            <label class="bank-icon BAIDU-ICBC"></label>
+                        </li>
+                        <li data-code="BAIDU-CCB">
+                            <label class="bank-icon BAIDU-CCB"></label>
+                        </li>
+                        <li data-code="BAIDU-ABC">
+                            <label class="bank-icon BAIDU-ABC"></label>
+                        </li>
+                        <li data-code="BAIDU-PSBC">
+                            <label class="bank-icon BAIDU-PSBC"></label>
+                        </li>
+                        <li data-code="BAIDU-BOCM">
+                            <label class="bank-icon BAIDU-BOCM"></label>
+                        </li>
+                        <li data-code="BAIDU-CMB">
+                            <label class="bank-icon BAIDU-CMB"></label>
+                        </li>
+                        <li data-code="BAIDU-BOC">
+                            <label class="bank-icon BAIDU-BOC"></label>
+                        </li>
+                        <li data-code="BAIDU-CEB">
+                            <label class="bank-icon BAIDU-CEB"></label>
+                        </li>
+                        <li data-code="BAIDU-ECITIC">
+                            <label class="bank-icon BAIDU-ECITIC"></label>
+                        </li>
+                        <li data-code="BAIDU-SPDB" class="hidden bank-more">
+                            <label class="bank-icon BAIDU-SPDB"></label>
+                        </li>
+                        <li data-code="BAIDU-CMBC" class="hidden bank-more">
+                            <label class="bank-icon BAIDU-CMBC"></label>
+                        </li>
+                        <li data-code="BAIDU-CIB" class="hidden bank-more">
+                            <label class="bank-icon BAIDU-CIB"></label>
+                        </li>
+                        <li data-code="BAIDU-PAB" class="hidden bank-more">
+                            <label class="bank-icon BAIDU-PAB"></label>
+                        </li>
+                        <li data-code="BAIDU-GDB" class="hidden bank-more">
+                            <label class="bank-icon BAIDU-GDB"></label>
+                        </li>
+                        <li data-code="BAIDU-HXB" class="hidden bank-more">
+                            <label class="bank-icon BAIDU-HXB"></label>
+                        </li>
+                        <li data-code="BAIDU-BCCB" class="hidden bank-more">
+                            <label class="bank-icon BAIDU-BCCB"></label>
+                        </li>
+                        <li class="choose-other-bank"><a> + 更多银行</a></li>
+                    </ul>
+
+                </div>
+                <div class="ca-form-group clearfix">
+                    <label class="ca-label">应付金额：</label>
+                    <span class="ca-form-option">
+                    <span class="ca-spec-num ca-pay-amount">2.99</span>
+                    <span class="ca-unit">元</span>
+                    </span>
+                </div>
+                <div class="ca-group ca-group-submit"><a href="#" target="_blank" class="fn-submit-btn btn-primary ">立即支付</a><span
+                        class="ca-btn-loading"></span></div>
+            </div>
+            <div class="ca-tabs-panel hidden" id="alipay-panel" style="display: none;">
+                <div class="ca-form-group clearfix">
+                    <label class="ca-label icon-label">支付方式：</label>
+
+                    <div class="ca-form-group clearfix">
+                        <ul class="ca-form-option choose-list-icon channel-list">
+                            <li class="selected" data-activity="" data-code="BAIDU-PLATFORM-ALIPAY">
+                                <label class="option-icon BAIDU-PLATFORM-ALIPAY"></label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="qrcode-wrapper">
+                        <iframe id="aliQRIframe" class="js-lbscashierIframe" frameborder="0" scrolling="no"
+                                src="about:blank"></iframe>
+                        <div class="qrcode-err hidden">
+                            <span class="qrcode-err-desc"></span>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="ca-form-group clearfix">
+                    <label class="ca-label">应付金额：</label>
+                    <span class="ca-form-option">
+                        <span class="ca-spec-num ca-pay-amount">2.99</span>
+                        <span class="ca-unit">元</span>
+                    </span>
+                </div>
+                <div class="ca-group ca-group-submit"><a href="#" target="_blank" class="fn-submit-btn btn-primary ">立即支付</a><span
+                        class="ca-btn-loading"></span></div>
+            </div>
+        </div>
+    </div>
+    <div class="ca-channeltips" style="display: none;">
+        <h4>温馨提示</h4>
+        <ul class="fn-general-tip">
+            <li class="gametip" style="display: none;">您可以通过点卡官网、报刊亭、网吧、拉卡拉或电话订购等方式购买游戏点卡进行充值</li>
+            <li class="gametip" style="display: none;">请选择与您使用的点卡相同的面额支付</li>
+            <li class="gametip" style="display: none;">不能使用指定游戏专属充值卡支付</li>
+            <li class="mobiletip-dx" style="display: none;">支持全国通用的电信卡（卡号19位，密码18位，卡号第四位为1）</li>
+            <li class="mobiletip-lt" style="display: none;">
+                支持全国通用的联通卡（卡号15位，密码19位）。面额： 20,30,50,100 元
+            </li>
+            <li class="mobiletip" style="display: none;">
+                您可以通过营业厅、报刊亭、超市、便利店等方式购买手机充值卡进行充值
+            </li>
+            <li class="mobiletip" style="display: none;">请选择与您使用的手机卡相同的面额支付</li>
+            <li class="gameyeepaytip" style="display: none;">您可以通过点卡官网、报刊亭、网吧、拉卡拉或电话订购等方式购买游戏点卡进行充值</li>
+            <li class="gameyeepaytip" style="display: none;">请选择与您使用的点卡相同的面额支付</li>
+            <li class="gameyeepaytip" style="display: none;">不能使用指定游戏专属充值卡支付</li>
+            <li class="mobileyeepaytip-dx" style="display: none;">支持全国通用的电信卡（卡号19位，密码18位，卡号第四位为1）</li>
+            <li class="mobileyeepaytip-lt" style="display: none;">
+                支持全国通用的联通卡（卡号15位，密码19位）。面额： 20,30,50,100 元
+            </li>
+            <li class="mobileyeepaytip" style="display: none;">
+                您可以通过营业厅、报刊亭、超市、便利店等方式购买手机充值卡进行充值
+            </li>
+            <li class="mobileyeepaytip" style="display: none;">请选择与您使用的手机卡相同的面额支付</li>
+            <li class="smstip" style="display: none;">如充值过程中出现异常，请先查询是否扣款成功。</li>
+            <li class="smstip" style="display: none;">
+                暂不支持虚拟运营商话费支付。
+            </li>
+            <li class="smspaytip" style="display: none;">
+                营商收取其中50%手续费，如：商品1元需支付话费 2元，短信费用0.1元/条，由运营商收取
+            </li>
+            <li class="smspaytip" style="display: none;">
+                目前仅支持移动、联通号码短信支付
+            </li>
+        </ul>
+    </div>
+    <form action="/proxy/req/pay" method="post" target="_blank" id="lbscashierPayForm">
+    </form>
+</div>
+<script type="text/javascript">
+
+    var CashierOption = {
+        payField: {
+            pageUrl: '', //页面回调地址
+            returnUrl: '', //后台回调地址
+            amount: 0,  //实际支付金额（单位为分），非银通道该值可能不等于payAmount, 百付宝、支付宝、网银、微信渠道该值等于payAmount
+            payAmount: 0,  //实际支付金额(单位为分)
+            originalAmount: 0, //订单应支付金额（单位为分）
+            orderTitle: '', //订单名称
+            orderId: ''
+        },
+        recommendChannel: 'bfb',
+        lastChannel: 'platform',
+        tabNum: 4,
+        disabledChannel: [],
+        asycSubmit: 0,
+        samePage: 0,
+        // 短信支付所需的参数
+        sms: {},
+        // 短信支付支持的金额列表
+        smspay: []
+    };
+
+    var channelMap = {
+        'ep_debit': 'bfb',
+        'bank_pay': 'bank',
+        'platform': 'alipay',
+        'ep_credit': 'bfb',
+        'virtual': ''
+    };
+
+</script>
+
+<script type="text/javascript" src="js/cashier-iframe.min.js"></script>
+
+
+<!--03135894730963533834102909-->
+<script> var _trace_page_logid = 0313589473; </script>
+</body>
+</html>

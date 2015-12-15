@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>用友云</title>
+	<meta charset="utf-8">
+	<meta name = "format-detection" content = "telephone=no" />
+	<link rel="icon" href="img/favicon.png" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/apple-touch-icon.svg" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.svg" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.svg" />
+	<link rel="stylesheet" href="css/grid.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery-migrate-1.2.1.js"></script>
+	<script src='js/camera.js'></script>
+	<script src="js/jquery.stellar.js"></script>
+	<script src="js/script.js"></script>
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="js/jquery.mobile.customized.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <!--<![endif]-->
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+         <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+     </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+    <![endif]-->
+</head>
+<body class="index">
+<!--==============================header=================================-->
+<header id="header">
+	<div id="stuck_container">
+		<div class="row ">
+			<div class="grid_12 toptb">
+				<ul class="fr right-nav">
+					<li class="vert-mid">
+                        <img class="icon-iuap" src="img/icon-iuap.png">
+                        <a href="http://www.yyuap.com" target=_blank>iuap平台</a>
+                    </li>
+					<li class="vert-mid">
+					    <div id="loginTag">
+					    	<img class="icon-login" src="img/user_icon.png">
+					    	<a class = "account_info" href="#"><span id="nameSpan" ></span><span>&nbsp;已登录</span></a>
+							<div class="dropdown-menu dropdown-menu-show" >
+								<div class="dropdown-menu-inner">
+									<div class="balance-num ">
+										<em class="txt">账户余额</em>
+										<span class="num">
+											<b class = "balance_able balance" data-field="balance_num">0</b> <span>元</span>
+										</span>
+										<a href="price.html?command=rechargetoaccount" class="btn_b" >立即充值</a>
+									</div>
+									<div class="balance-use">
+										<em class="txt">套餐类型</em>
+										<span class = "txt2">包年包月</span>
+										<span class="right">按量付费</span>
+									</div>
+									<div class="balance-detail">
+										<em class="txt">可用时长</em>
+										<span class = "txt2">剩余 <b class = "balance_pday balance" data-field="balance_pday">0</b> <span >天</span></span>
+										<span class="right txt2">预计 <b class = "balance_uday balance" data-field="balance_uday">0</b> <span >天</span></span>
+									</div>
+								</div>
+							</div>
+					    	<span style= "height:12px">&nbsp;|</span>
+        					<span><a id="logout_btn">退出</a></span>
+        				</div>	
+        				<div id="logoutTag">
+        					<img class="icon-login" src="img/user_icon.png">
+            				<span><a id="login_btn" >登录</a></span>
+            				<span >&nbsp;|</span>
+                    		<span><a id="reg_btn" target="_blank">注册</a></span>
+                    	</div>	
+                    </li>	
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="grid_4">
+					<a class ="logo" href="index.html">
+						<img src="img/logo2.png" >
+					</a>
+				</div>
+				<nav class="grid_8">
+					<ul class="sf-menu">
+						<li class="current-selected">
+							<a href="index.html">首页</a>
+						</li>
+						<li ><a href="ECS.html">产品与服务</a>
+							<ul >
+								<li><a href="ECS.html" title="云主机">云服务器</a></li>
+								<li><a href="OSS.html" title="云存储">云存储</a></li>
+								<li><a href="SLB.html" title="负载均衡">负载均衡</a></li>
+								<li><a href="RDS.html" title="云数据库">云数据库</a></li>
+								<li><a href="CMS.html" title="云监控">云监控</a></li>
+								<li><a href="SEC.html" title="云安全">云安全</a></li>
+							</ul>
+						</li>
+						<li><a href="EPC.html">解决方案</a>
+							<ul >
+								<li><a href="EPC.html" title="企业私有云">企业私有云</a></li>
+								<li><a href="MOD.html" title="移动开发">移动开发</a></li>
+								<li><a href="POP.html" title="压力测试">压力测试</a></li>
+								<li><a href="FPC.html" title="财务公有云">财务公有云</a></li>
+							</ul>
+						</li>
+						<li><a href="price.html" title="价格">价格</a>
+						</li>
+						<li><a class="console" title="控制台">控制台</a>
+						</li>
+						<li><a href="contact.html" title="关于我们">关于我们</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!--=======content================================-->
+
+<section id="content">
+	<div class="full-width-container block-1">
+		<div class="container">
+			<div  class="item">
+				<img style="width:100%" src="img/background3.jpg">
+			</div>
+		</div>
+	</div>
+	<div class="full-width-container block-2">
+		<div class="container">
+			<div class="row">
+				<div class="grid_12">
+					<header>
+						<h2><span>云产品</span></h2>
+					</header>
+					<ul id="da-thumbs" class="da-thumbs">
+                    <li>
+                        <a href="price.html" target="_blank">
+                            <img src="img/s1.png" style="height:200px">
+                            <div class="hot_info">
+                            	<em></em>
+                            	<em></em>
+                                <h5 class="title" >活动价</h5>
+                                <h5><span >28.8</span>元/月起</h5>
+                                <p >最划算、最稳定、最安全</p>
+                                <em></em>
+                                <p class="current" >立即购买</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="price.html" target="_blank">
+                            <img src="img/s2.png" style="height:200px">
+                            <div class="hot_info">
+                                <em></em>
+                                <em></em>
+                                <h5 class="title">活动价</h5>
+                                <h5><span>0.72</span>GB/月起</h5>
+                                <p >无限制、多备份、低成本</p>
+                                <em></em>
+                                <p class="current" >立即购买</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="price.html" target="_blank">
+                            <img src="img/s3.png" style="height:200px">
+                            <div class="hot_info">
+                                <em></em>
+                                <em></em>
+                                <h5 class="title">活动价</h5>
+                                <h5><span>10</span>元/月起</h5>
+                                <p >按需计费，内网免费</p>
+                                <em></em>
+                                <p class="current" >立即购买</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="price.html" target="_blank">
+                            <img src="img/s4.png" style="height:200px">
+                            <div class="hot_info">
+                                <em></em>
+                                <em></em>
+                                <h5 class="title">活动价</h5>
+                                <h5 ><span>0</span>元/月起</h5>
+                                <p >全面掌握系统运行状况</p>
+                                <em></em>
+                                <p class="current" >立即购买</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="price.html" target="_blank">
+                            <img src="img/s5.png" style="height:200px">
+                            <div class="hot_info">
+                                <em></em>
+                                <em></em>
+                                <h5 class="title">活动价</h5>
+                                <h5><span>0.02</span>元/小时</h5>
+                                <p class="text">基于分布式存储</p>
+                                <em></em>
+                                <p class="current" >立即购买</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="price.html" target="_blank">
+                            <img src="img/s6.png" style="height:200px">
+                            <div class="hot_info">
+                                <em></em>
+                                <em></em>
+                                <h5 class="title">活动价</h5>
+                                <h5 ><span>0</span>元/月起</h5>
+                                <p>保障云服务安全可靠</p>
+                                <em></em>
+                                <p class="current" >立即购买</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  -->
+	<div class="full-width-container block-3 parallax-block" >
+		<div class="container">
+			<div class="row">
+				<div class="grid_12">
+					<header>
+						<h2><span>解决方案</span></h2>
+					</header>
+				</div>
+			</div>	
+			<div class="row">
+				<div id="owl-carousel" class="owl-carousel">
+					<div class="grid_4">
+						<div class="">
+							<div class="img_container photo"><a  href="MOD.html"><img class="faceimg1" src="img/computer.png" alt="img"></a></div>
+							<!-- <div class="img_container photo"><img src="img/c4.png" alt="img"></div> -->
+							<div class="owl-text">
+								<h5>移动开发</h5>
+								<p>为移动开发者提供灵活多变的云服务</p>
+								<em></em>
+								<p>按需部署 快速部署 稳定可靠</p>
+								<a href="MOD.html"><p>	<span class="current">了解详情</span></p></a>
+							</div>
+						</div>
+					</div>
+					<div class="grid_4">
+						<div class="">
+							<div class="img_container photo"><a href="EPC.html"><img class="faceimg2" src="img/cloud.png" alt="img"></a></div>
+							<!-- <div class="img_container photo"><img src="img/c2.png" alt="img"></div> -->
+							<div class="owl-text">
+								<h5>企业私有云</h5>
+								<p>以客户需求为向导</p>
+								<em></em>
+								<p>为企业提供量身定制的解 决方案</p>
+								<a href="EPC.html"><p>	<span class="current">了解详情</span></p></a>
+							</div>
+						</div>
+					</div>
+					<div class="grid_4">
+						<div class="">
+							<div class="img_container photo"><a href="POP.html"><img class="faceimg3" src="img/pressuretest.png" alt="img"></a></div>
+							<!-- <div class="img_container photo"><img src="img/c6.png" alt="img"></div> -->
+							<div class="owl-text">
+								<h5>压力测试</h5>
+								<p>为用户打造一站式性能优化解决方案</p>
+								<em></em>
+								<p>高性能 高可靠 跨平台</p>
+								<a href="POP.html"><p>	<span class="current">了解详情</span></p></a>
+							</div>
+						</div>
+					</div>
+	            </div>    
+            </div>    
+		</div>
+	</div>
+	<div class="full-width-container block-5">
+		<div class="container">
+			<div class="row">
+				<div class="grid_12 ">
+					<header>
+						<h2><span>控制台管理</span></h2>
+					</header>
+				</div>
+				<div class="grid_4  wow bounceInRight"   data-wow-delay="0.5s">
+					<article class="introduct">
+						<h5>通过简单清晰的操作,实现创建资源，配置网络，远程访问，系统监控等功能。</h5>
+						</br>
+						<p>● 资源可视化展示及操作</p>
+                        <p>● 历史及实时监控图表</p>
+                        <p>● 记录所有重要操作行为</p>
+                        <p>● 工单系统，第一时间解决资源相关问题</p>
+						<!-- <a href="#" class="btn">More</a> -->
+					</article>
+				</div>
+				<div class="grid_8 wow bounceInLeft" data-wow-delay="0.5s">
+                    <article>
+                        <img src="img/MacBook_005.png" width="100%;">
+                    </article>
+                </div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--=======footer=================================-->
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="grid_12 copyright">
+				<h5><span>联系我们</span></h5>
+				<pre>© <span id="copyright-year"></span> |  全国咨询热线</pre>
+                <p>电话：010-62435239 010-62432253   <a href="mailto:lab@yonyou.com">&nbsp; &nbsp; 邮箱：lab@yonyou.com</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="footer_bottom"><p>版权所有：用友软件股份有限公司　京备05007539号-11　京ICP证100714号　京公网网安备1101080209224</p></div>
+</footer>
+<script>
+	jQuery(function(){
+		jQuery('#camera_wrap').camera({
+			height: '34.58333333333333%',
+			// height: '380px',
+			width:'100%',
+			thumbnails: false,
+			pagination: false,
+			fx: 'simpleFade',
+			loader: 'none',
+			hover: false,
+			navigation: false,
+			playPause: false,
+			minHeight: "139px",
+		});
+		jQuery('#camera_wrap').cameraStop();
+	});
+</script>
+<script>
+	$(document).ready(function() { 
+			if ($('html').hasClass('desktop')) {
+				$.stellar({
+					horizontalScrolling: false,
+					verticalOffset: 20,
+					resposive: true,
+					hideDistantElements: true,
+				});
+			}
+		});
+</script>
+</body>
+</html>

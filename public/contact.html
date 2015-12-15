@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>用友云</title>
+    <meta charset="utf-8">
+    <meta name = "format-detection" content = "telephone=no" />
+    <link rel="icon" href=" img/favicon.png" type="img/x-icon">
+    <link rel="apple-touch-icon" href=" img/apple-touch-icon.svg" />
+    <link rel="apple-touch-icon" sizes="72x72" href=" img/apple-touch-icon-72x72.svg" />
+    <link rel="apple-touch-icon" sizes="114x114" href=" img/apple-touch-icon-114x114.svg" />
+    <link rel="stylesheet" href=" css/grid.css">
+    <link rel="stylesheet" href=" css/style.css">
+    <link rel="stylesheet" href=" css/camera.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/contact.css">
+
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src=" js/jquery-migrate-1.2.1.js"></script>
+    <script src=' js/camera.js'></script>
+    <script src=" js/jquery.stellar.js"></script>
+    <script src=" js/script.js"></script>
+
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="js/jquery.mobile.customized.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script>
+    $(document).ready(function () {
+      if ($('html').hasClass('desktop')) {
+        new WOW().init();
+      }
+    });
+    </script>
+    <!--<![endif]-->
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+     <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+    </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+    <![endif]-->
+</head>
+<body class="index">
+<!--==============================header=================================-->
+<header id="header">
+    <div id="stuck_container">
+        <div class="toptb">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_12 ">
+                        <ul class="fr right-nav">
+                            <li class="vert-mid">
+                                <!--<img class="icon-iuap" src="img/icon-iuap.png">-->
+                                <a class="fontinfo" href="http://www.yyuap.com" target=_blank>IUAP平台</a>
+                            </li>
+                            <li class="vert-mid">
+                                <div id="loginTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <a class = "account_info fontinfo" href="#"><span id="nameSpan" ></span><span>&nbsp;已登录</span></a>
+                                    <div class="dropdown-menu dropdown-menu-show" >
+                                        <div class="dropdown-menu-inner">
+                                            <div class="balance-num ">
+                                                <span class="left txt1">账户余额 <strong class = "balance_able balance" data-field="balance_num"></strong> 元</span>
+                                            </div>
+                                            <div class="balance-num ">
+                                                <a class = "user_detail" href = "http://cloudmgt.yyuap.com:8080/index.html?code=udn">
+                                                    <span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>
+                                                </a>
+                                            </div>
+                                            <div class="balance-detail">
+                                                <a class="btn_b" href="price.html?command=rechargetoaccount" >立即充值</a>
+                                                <!--<em class="txt">套餐余量</em>-->
+                                                <!--<span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>-->
+                                            </div>
+                                            <!--<div class="balance-detail">-->
+                                            <!--<em class="txt">可用时长</em>-->
+                                            <!--<span class = "txt2">剩余 <b class = "balance_pday balance" data-field="balance_pday">0</b> <span >天</span></span>-->
+                                            <!--<span class="right txt2">预计 <b class = "balance_uday balance" data-field="balance_uday">0</b> <span >天</span></span>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                    <span>&nbsp;|</span>
+                                    <span><a id="logout_btn" class ="fontinfo">退出</a></span>
+                                </div>
+                                <div id="logoutTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <span><a id="login_btn" class ="fontinfo">登录</a></span>
+                                    <span >&nbsp;|</span>
+                                    <span><a id="reg_btn" class ="fontinfo" target="_blank">注册</a></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="grid_4">
+                    <a class ="logo" href="index.html">
+                        <img src="img/logo2.png" >
+                    </a>
+                </div>
+                <nav class="grid_8">
+                    <ul class="sf-menu">
+                        <li >
+                            <a href="index.html">首页</a>
+                        </li>
+                        <li ><a href="ECS.html">产品与服务</a>
+                            <ul >
+                                <li><a href="ECS.html" title="云主机">云服务器</a></li>
+                                <li><a href="OSS.html" title="云存储">云存储</a></li>
+                                <li><a href="SLB.html" title="负载均衡">负载均衡</a></li>
+                                <li><a href="RDS.html" title="云数据库">云数据库</a></li>
+                                <li><a href="CMS.html" title="云监控">云监控</a></li>
+                                <li><a href="SEC.html" title="云安全">云安全</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="EPC.html">解决方案</a>
+                            <ul >
+                                <li><a href="EPC.html" title="企业私有云">企业私有云</a></li>
+                                <li><a href="MOD.html" title="移动开发">移动开发</a></li>
+                                <li><a href="POP.html" title="压力测试">压力测试</a></li>
+                                <li><a href="FPC.html" title="财务公有云">财务公有云</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="price.html" title="价格">价格</a>
+                        </li>
+                        <li><a class="console" title="控制台">控制台</a>
+                        </li>
+                        <li class="current-selected"><a href="contact.html" title="关于我们">关于我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--=======content================================-->
+
+<section id="content">
+    <!--<div class="full-width-container block-1">-->
+        <!--<div class="camera_container container">-->
+            <!--<div id="camera_wrap">-->
+                <!--<div class="item" data-src=" img/aboutus.jpg">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="full-width-container block-2 contact" >
+        <div class="container">
+            <div class="row">
+                <div class = "grid_6">
+                    <article class="introduct">
+                        <h2>私有云</h2>
+                        </br>
+                        <p>IaaS平台必备的服务，提供一系列专业的解决方案、包括计算资源、存储资源和网络资源等企业必需的基础IT架构服务</p>
+                        </br>
+                        <a class="btn-primary" href="ECS.html" data-permalink=""><span class="icon icon-arrow-right"></span>了解详情</a>
+                        <div class="blockquote">
+                            <p>
+                                对虚拟化技术进行了深度优化和定制，同时还为虚拟化应用场景专门打造了一套分布式存储系统，包括从分布式文件系统、海量存储、轻重量级虚拟化、SDN、下一代资源隔离等技术在用友云服务中都有所体现和创新。
+                            </p>
+                        </div>
+                    </article>
+                </div>
+                <div class = "grid_6">
+                    <article class="con-img">
+                        <img src="img/home_feature_1_1x.jpg">
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="full-width-container block-3 " >
+        <div class="container">
+            <div class="row">
+                <div class = "grid_6">
+                    <article class="con-img">
+                        <img src="img/home_feature_2_1x.jpg">
+                    </article>
+                </div>
+                <div class = "grid_6">
+                    <article class="introduct">
+                        <h2>IUAP平台</h2>
+                        <p>是面向大型企业与组织的计算平台，是一体化平台，其中包括了开发平台、集成平台、动态建模平台、商业分析平台（用友BQ）、数据处理平台（用友AE）、云管理平台和运行平台等7个领域产品</p>
+                        <a class="btn-primary" href="http://www.yyuap.com" data-permalink=""><span class="icon icon-arrow-right"></span>了解详情</a>
+                        <div class="blockquote">
+                            <p>
+                                平台产品涵盖了软件应用的全生命周期和IT服务管理过程，用于全面支撑平台化企业，可以为大型企业与公共组织构建信息化平台提供核心工具与服务。
+                            </p>
+                        </div>
+                    </article>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="full-width-container block-2 contact" >
+        <div class="container">
+            <div class="row">
+                <div class = "grid_6">
+                    <article class="introduct">
+                        <h2>联系我们</h2>
+                        </br>
+                        </br>
+                        </br>
+                        <p>Tel : 010-62435239 010-62432253</p>
+                        <p><a href="mailto:lab@yonyou.com">邮箱：lab@yonyou.com</a></p>
+                        <p>地址：北京海淀区北清路68号 用友软件园 （中区8号楼C座一层）</p>
+                        <p>邮编：100094</p>
+                        <p>路线： 乘坐地铁昌平线号线—生命科学院站B口出 →沿北清路西行 →到北</p>
+                        <p>清路68号用友软件园即到</p>
+                        </br>
+                    </article>
+                </div>
+                <div class = "grid_6">
+                    <article class="con-img">
+                        <img src="img/home_feature_3_1x.jpg" >
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--=======footer=================================-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="grid_12 copyright">
+                <h5><span>联系我们</span></h5>
+                <pre>© <span id="copyright-year"></span> |  全国咨询热线</pre>
+                        <p>电话：010-62435239 010-62432253   <a href="mailto:lab@yonyou.com">&nbsp; &nbsp; 邮箱：lab@yonyou.com</a></p>
+            </div>
+        </div>
+    </div>
+  <div class="footer_bottom"><p>版权所有：用友软件股份有限公司　京备05007539号-11　京ICP证100714号　京公网网安备1101080209224</p></div>
+</footer>
+<script>
+  jQuery(function(){
+    jQuery('#camera_wrap').camera({
+      height: '34.58333333333333%',
+      // height: '380px',
+      width:'100%',
+      thumbnails: false,
+      pagination: true,
+      fx: 'simpleFade',
+      loader: 'none',
+      hover: false,
+      navigation: false,
+      playPause: false,
+      minHeight: "139px",
+    });
+    jQuery('#camera_wrap').cameraStop();
+  });
+</script>
+<script>
+  $(document).ready(function() { 
+      if ($('html').hasClass('desktop')) {
+        $.stellar({
+          horizontalScrolling: false,
+          verticalOffset: 20,
+          resposive: true,
+          hideDistantElements: true,
+        });
+      }
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('ul.sf-menu').superfish({});
+    });
+</script>
+</body>
+</html>

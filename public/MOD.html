@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>用友云</title>
+    <meta charset="utf-8">
+    <meta name = "format-detection" content = "telephone=no" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src='js/camera.js'></script>
+    <script src="js/jquery.stellar.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/index.js"></script>
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="js/jquery.mobile.customized.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <!--<![endif]-->
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="img/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+    <![endif]-->
+</head>
+<body class="index-1">
+<!--==============================header=================================-->
+<header id="header">
+    <div id="stuck_container">
+        <div class="toptb">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_12 ">
+                        <ul class="fr right-nav">
+                            <li class="vert-mid">
+                                <!--<img class="icon-iuap" src="img/icon-iuap.png">-->
+                                <a class="fontinfo" href="http://www.yyuap.com" target=_blank>IUAP平台</a>
+                            </li>
+                            <li class="vert-mid">
+                                <div id="loginTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <a class = "account_info fontinfo" href="#"><span id="nameSpan" ></span><span>&nbsp;已登录</span></a>
+                                    <div class="dropdown-menu dropdown-menu-show" >
+                                        <div class="dropdown-menu-inner">
+                                            <div class="balance-num ">
+                                                <span class="left txt1">账户余额 <strong class = "balance_able balance" data-field="balance_num"></strong> 元</span>
+                                            </div>
+                                            <div class="balance-num ">
+                                                <a class = "user_detail" href = "http://cloudmgt.yyuap.com:8080/index.html?code=udn">
+                                                    <span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>
+                                                </a>
+                                            </div>
+                                            <div class="balance-detail">
+                                                <a class="btn_b" href="price.html?command=rechargetoaccount" >立即充值</a>
+                                                <!--<em class="txt">套餐余量</em>-->
+                                                <!--<span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>-->
+                                            </div>
+                                            <!--<div class="balance-detail">-->
+                                            <!--<em class="txt">可用时长</em>-->
+                                            <!--<span class = "txt2">剩余 <b class = "balance_pday balance" data-field="balance_pday">0</b> <span >天</span></span>-->
+                                            <!--<span class="right txt2">预计 <b class = "balance_uday balance" data-field="balance_uday">0</b> <span >天</span></span>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                    <span>&nbsp;|</span>
+                                    <span><a id="logout_btn" class ="fontinfo">退出</a></span>
+                                </div>
+                                <div id="logoutTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <span><a id="login_btn" class ="fontinfo">登录</a></span>
+                                    <span >&nbsp;|</span>
+                                    <span><a id="reg_btn" class ="fontinfo" target="_blank">注册</a></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="grid_4">
+                    <a class ="logo" href="index.html">
+                        <img src="img/logo2.png" >
+                    </a>
+                </div>
+                <nav class="grid_8">
+                    <ul class="sf-menu">
+                        <li >
+                            <a href="index.html">首页</a>
+                        </li>
+                        <li ><a href="ECS.html">产品与服务</a>
+                            <ul >
+                                <li><a href="ECS.html" title="云主机">云服务器</a></li>
+                                <li><a href="OSS.html" title="云存储">云存储</a></li>
+                                <li><a href="SLB.html" title="负载均衡">负载均衡</a></li>
+                                <li><a href="RDS.html" title="云数据库">云数据库</a></li>
+                                <li><a href="CMS.html" title="云监控">云监控</a></li>
+                                <li><a href="SEC.html" title="云安全">云安全</a></li>
+                            </ul>
+                        </li>
+                        <li class="current-selected"><a href="EPC.html">解决方案</a>
+                            <ul >
+                                <li><a href="EPC.html" title="企业私有云">企业私有云</a></li>
+                                <li><a href="MOD.html" title="移动开发">移动开发</a></li>
+                                <li><a href="POP.html" title="压力测试">压力测试</a></li>
+                                <li><a href="FPC.html" title="财务公有云">财务公有云</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="price.html" title="价格">价格</a>
+                        </li>
+                        <li><a class="console" title="控制台">控制台</a>
+                        </li>
+                        <li><a href="contact.html" title="关于我们">关于我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--=======content================================-->
+
+<section id="content">
+    <div class="full-width-container block-1">
+        <div  class="banner MOD">
+            <img src="img/t4.jpg">
+        </div>
+    </div>
+    <div class="full-width-container block-2 " id="mod_nav">
+        <div class="container">
+            <div class="row">
+                <div class="grid_3 sidebar slide-sol ">
+                    <dl class="nav-list">
+                        <dt><span class="title"><i class="ico ico-1"></i>企业解决方案</span></dt>
+                        <dd item="EPC">
+                            <a href="./EPC.html" class="" hotrep="solution.header.EPC">企业私有云</a>
+                        </dd>
+                        <dd item="MOD">
+                            <a href="./MOD.html" class="" hotrep="solution.header.MOD">移动开发</a>
+                        </dd>
+                        <dd item="POP">
+                            <a href="./POP.html" class="" hotrep="product.header.POP">压力测试</a>
+                        </dd>
+                        <dd item="FPC">
+                            <a href="./FPC.html" hotrep="product.header.FPC">财务公有云</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="grid_9 slide-epc">
+                    <div class="tab-title ">
+                        <ul>
+                            <li mod="advantage" hotrep="product.cvm.tab.advantage"><a href="#advantage">概述</a></li>
+                            <li mod="price" hotrep="product.cvm.tab.price"><a href="#price">方案介绍</a></li>
+                            <li mod="wiki" hotrep="product.cvm.tab.data"><a href="#wiki">客户收益</a></li>
+                        </ul>
+                        <a href="price.html" target="_blank" class="tc-btn tc-btn-1" hotrep="product.cvm.tab.buy">立即选购</a>
+                    </div>
+                    <div class="tab-content mod-advantage" mod="advantage">
+                        <a class="anchor" id="advantage">&nbsp;</a>
+                        <h3 class="tab-content-title">
+                            概述
+                        </h3>
+                        <div class="tab-content-detail column">
+                            <p class="text"> 用友移动应用平台是一个支持HTML5、混合式和原生应用程序的移动应用平台,具有开放性、标准化和跨平台能力为企业移动应用开发提供了从开发、调试、测试、部署、运行和管控全生命周期的支持。企业移动应用平台，完全遵循W3C标准，应用效果媲美于原生体验，并且开发门槛低、难度小、周期短；具有技术领先、安全可靠的特性，是企业移动开发的首选。</p>
+                        </div>
+                    </div>
+                    <div class="tab-content mod-price" mod="price">
+                        <a class="anchor" id="price">&nbsp;</a>
+                        <h3 class="tab-content-title">
+                            方案介绍
+                        </h3>
+                        <div class="tab-content-detail column">
+                            <p class="text">企业移动开发平台：模型驱动的可视化开发（模型、模板、框架、DSL、工具），降低移动应用开发难度，使不具备移动开发背景的人员开发移动应用程序；支持云开发模式，实现一次开发在多种移动设备上运行，基于UAP基础技术平台，成熟稳定；支持Native、Hybrid、WEB等不同的应用类型开发；能够快速适配新技术，提供多种公共移动服务。</p>
+                            <img src="img/mod-1.png">
+                        </div>
+                    </div>
+                    <div class="tab-content mod-wiki" mod="wiki">
+                        <a class="anchor" id="wiki">&nbsp;</a>
+                        <h3 class="tab-content-title">
+                            客户收益
+                        </h3>
+                        <div class="tab-content-detail column">
+                            <div class="menu-list">
+                                <h6>基础设施</h6>
+                                <p class="text">为移动开发者提供量身定制、性能卓越、安全稳定的基础设施。</p>
+                                <h6>跨平台运行</h6>
+                                <p class="text"> 提供一次开发，同时构建苹果iOS、Android等应用的能力，并可通过扩展支持Windows Mobile或其他移动平台多平台运行。</p>
+                                <h6>移动应用发布</h6>
+                                <p class="text">通过私有的企业应用中心，可以快速的发布和升级企业移动应用，迅速推向市场。</p>
+                                <h6>平台生态圈</h6>
+                                <p class="text"> 拥有开发者社区、平台培训服务、开发认证服务、伙伴支持服务、移动应用商店、移动应用认证服务等，实现与伙伴的共赢发展。</p>
+                                <h6>保障信息安全</h6>
+                                <p class="text">多层的安全信息传输保障，防止数据和信息在传输过程中被窃取；多种本地数据和代码的加密防破解机制，保障用户本地数据安全。</p>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--=======footer=================================-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="grid_12 copyright">
+                <h5><span>联系我们</span></h5>
+                <pre>© <span id="copyright-year"></span> |  全国咨询热线</pre>
+                        <p>电话：010-62435239 010-62432253   <a href="mailto:lab@yonyou.com">&nbsp; &nbsp; 邮箱：lab@yonyou.com</a></p>
+            </div>
+        </div>
+    </div>
+  <div class="footer_bottom"><p>版权所有：用友软件股份有限公司　京备05007539号-11　京ICP证100714号　京公网网安备1101080209224</p></div>
+</footer>
+<script>
+  jQuery(function(){
+    jQuery('#camera_wrap').camera({
+      height: '34.58333333333333%',
+      // height: '380px',
+      width:'100%',
+      thumbnails: false,
+      pagination: false,
+      fx: 'simpleFade',
+      loader: 'none',
+      hover: false,
+      navigation: false,
+      playPause: false,
+      minHeight: "139px",
+    });
+    jQuery('#camera_wrap').cameraStop();
+  });
+</script>
+<script>
+  $(document).ready(function() { 
+      if ($('html').hasClass('desktop')) {
+        $.stellar({
+          horizontalScrolling: false,
+          verticalOffset: 20,
+          resposive: true,
+          hideDistantElements: true,
+        });
+      }
+    });
+</script>
+<script src=" js/product.js"></script>
+</body>
+</html>

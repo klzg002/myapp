@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>用友云</title>
+    <meta charset="utf-8">
+    <meta name = "format-detection" content = "telephone=no" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src='js/camera.js'></script>
+    <script src="js/jquery.stellar.js"></script>
+    <script src="js/script.js"></script>
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="js/jquery.mobile.customized.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <!--<![endif]-->
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="img/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+    <![endif]-->
+</head>
+<body class="index-1">
+<!--==============================header=================================-->
+<header id="header">
+    <div id="stuck_container">
+        <div class="toptb">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_12 ">
+                        <ul class="fr right-nav">
+                            <li class="vert-mid">
+                                <!--<img class="icon-iuap" src="img/icon-iuap.png">-->
+                                <a class="fontinfo" href="http://www.yyuap.com" target=_blank>IUAP平台</a>
+                            </li>
+                            <li class="vert-mid">
+                                <div id="loginTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <a class = "account_info fontinfo" href="#"><span id="nameSpan" ></span><span>&nbsp;已登录</span></a>
+                                    <div class="dropdown-menu dropdown-menu-show" >
+                                        <div class="dropdown-menu-inner">
+                                            <div class="balance-num ">
+                                                <span class="left txt1">账户余额 <strong class = "balance_able balance" data-field="balance_num"></strong> 元</span>
+                                            </div>
+                                            <div class="balance-num ">
+                                                <a class = "user_detail" href = "http://cloudmgt.yyuap.com:8080/index.html?code=udn">
+                                                    <span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>
+                                                </a>
+                                            </div>
+                                            <div class="balance-detail">
+                                                <a class="btn_b" href="price.html?command=rechargetoaccount" >立即充值</a>
+                                                <!--<em class="txt">套餐余量</em>-->
+                                                <!--<span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>-->
+                                            </div>
+                                            <!--<div class="balance-detail">-->
+                                            <!--<em class="txt">可用时长</em>-->
+                                            <!--<span class = "txt2">剩余 <b class = "balance_pday balance" data-field="balance_pday">0</b> <span >天</span></span>-->
+                                            <!--<span class="right txt2">预计 <b class = "balance_uday balance" data-field="balance_uday">0</b> <span >天</span></span>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                    <span>&nbsp;|</span>
+                                    <span><a id="logout_btn" class ="fontinfo">退出</a></span>
+                                </div>
+                                <div id="logoutTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <span><a id="login_btn" class ="fontinfo">登录</a></span>
+                                    <span >&nbsp;|</span>
+                                    <span><a id="reg_btn" class ="fontinfo" target="_blank">注册</a></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="grid_4">
+                    <a class ="logo" href="index.html">
+                        <img src="img/logo2.png" >
+                    </a>
+                </div>
+                <nav class="grid_8">
+                    <ul class="sf-menu">
+                        <li >
+                            <a href="index.html">首页</a>
+                        </li>
+                        <li class="current-selected"><a href="ECS.html">产品与服务</a>
+                            <ul >
+                                <li><a href="ECS.html" title="云主机">云服务器</a></li>
+                                <li><a href="OSS.html" title="云存储">云存储</a></li>
+                                <li><a href="SLB.html" title="负载均衡">负载均衡</a></li>
+                                <li><a href="RDS.html" title="云数据库">云数据库</a></li>
+                                <li><a href="CMS.html" title="云监控">云监控</a></li>
+                                <li><a href="SEC.html" title="云安全">云安全</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="EPC.html">解决方案</a>
+                            <ul >
+                                <li><a href="EPC.html" title="企业私有云">企业私有云</a></li>
+                                <li><a href="MOD.html" title="移动开发">移动开发</a></li>
+                                <li><a href="POP.html" title="压力测试">压力测试</a></li>
+                                <li><a href="FPC.html" title="财务公有云">财务公有云</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="price.html" title="价格">价格</a>
+                        </li>
+                        <li><a class="console" title="控制台">控制台</a>
+                        </li>
+                        <li><a href="contact.html" title="关于我们">关于我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--=======content================================-->
+
+<section id="content">
+    <div class="full-width-container block-1">
+        <div  class="banner">
+            <img src="img/product.jpg">
+        </div>
+    </div>
+    <div class="full-width-container block-2 " id="mod_nav">
+        <div class="container">
+            <div class="row">
+                <div class="grid_3 sidebar slide-pro">
+                    <dl class="nav-list">
+                        <dt><span class="title"><i class="ico ico-1"></i>计算机与网络</span></dt>
+                        <dd item="ECS">
+                            <a href="./ECS.html" class="" hotrep="product.header.ECS">云服务器</a>
+                        </dd>
+                        <dd item="OSS">
+                            <a href="./OSS.html" class="" hotrep="product.header.OSS">云存储</a>
+                        </dd>
+                        <dd item="SLB">
+                            <a href="./SLB.html" class="" hotrep="product.header.SLB">负载均衡</a>
+                        </dd>
+                        <dd item="RDS">
+                            <a href="./RDS.html" hotrep="product.header.RDS">云数据库</a>
+                        </dd>
+                        <dd item="CMS">
+                            <a href="./CMS.html" class="" hotrep="product.header.CMS">云监控</a>
+                        </dd>
+                        <dd item="SEC">
+                            <a href="./SEC.html" class="" hotrep="product.header.SEC">云安全</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="grid_9 slide-ecs">
+                    <div class="tab-title ">
+                        <ul>
+                            <li mod="advantage" hotrep="product.ecs.tab.advantage"><a href="#advantage">我们的优势</a></li>
+                            <li mod="function" hotrep="product.ecs.tab.function"><a href="#function">功能介绍</a></li>
+                            <li mod="price" hotrep="product.ecs.tab.price"><a href="#price">产品价格</a></li>
+                            <li mod="wiki" hotrep="product.ecs.tab.data"><a href="#wiki">资料</a></li>
+                        </ul>
+                        <a href="price.html" target="_blank" class="tc-btn tc-btn-1" hotrep="product.ecs.tab.buy">立即选购</a>
+                    </div>
+                    <div class="tab-content mod-advantage" mod="advantage">
+                        <a class="anchor" id="advantage">&nbsp;</a>
+                        <h3 class="tab-content-title">
+                            我们的优势
+                        </h3>
+                        <div class="tab-content-detail column-4">
+                            <div class="vertical-size ecs-size">
+                                <img class="item-icon" src="img/advantage-ecs-1.png">
+                                <h4>安全稳定</h4>
+                                <p class="text">基于成熟的kvm虚拟化技术；云盘数据可靠性不低于99.999%；自动宕机迁移、数据备份和回滚系统性能报警</p>
+                            </div>
+                            <div class="vertical-size">
+                                <img class="item-icon" src="img/advantage-ecs-2.png">
+                                <h4>便捷环保</h4>
+                                <p class="text">多线BGP骨干网络接入；覆盖全国的极速公网体验；高性价比，节约成本</p>
+                            </div>
+                            <div class="vertical-size ecs-size">
+                                <img class="item-icon" src="img/advantage-ecs-3.png">
+                                <h4>简洁高效</h4>
+                                <p class="text">自定义配置，总有一款适合您；随机IOPS 1.2万、300MB/s本地SSD盘性能；搭配云盘便可随时配置升级</p>
+                            </div>
+                            <div class="vertical-size last ecs-size">
+                                <img class="item-icon" src="img/advantage-ecs-4.png">
+                                <h4>快速方便</h4>
+                                <p class="text">防DDoS系统、安全组规则保护；虚拟网络二层及三层完全隔离；虚拟计算和存储资源底层隔离；</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content mod-function" mod="function">
+                        <a class="anchor" id="function">&nbsp;</a>
+                        <h3 class="tab-content-title">
+                            功能介绍
+                        </h3>
+                        <div class="tab-content-detail column-4">
+                            <div class="vertical-size">
+                                <span class="item-icon"><i class="icon-1"></i></span>
+                                <h4>自定义镜像</h4>
+                                <p class="text">对云服务器实例上运行环境的拷贝，包含系统盘中的OS及已安装软件，用来进行业务环境的快速部署或扩容。</p>
+                            </div>
+                            <div class="vertical-size">
+                                <span class="item-icon"><i class="icon-2"></i></span>
+                                <h4>配置升级</h4>
+                                <p class="text">可根据业务的发展，对云服务器的公网带宽、CPU、内存，硬盘配置进行升级。</p>
+                            </div>
+
+                            <div class="vertical-size">
+                                <span class="item-icon"><i class="icon-3"></i></span>
+                                <h4>快照备份与恢复</h4>
+                                <p class="text">云服务器发生系统崩溃或希望变更OS类型时，进行操作系统重装。</p>
+                            </div>
+
+                            <div class="vertical-size">
+                                <span class="item-icon"><i class="icon-4"></i></span>
+                                <h4>完全管理权限</h4>
+                                <p class="text">使用ssh密钥方式登录，安全度远高于常规用户口令，杜绝暴力破解威胁。</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="tab-content mod-price" mod="price">
+                        <a class="anchor" id="price">&nbsp;</a>
+                        <h3 class="tab-content-title">
+                            产品价格
+                        </h3>
+                        <div class="tab-content-detail column-4">
+                            <div class="slide-text">
+                                以下为推荐的云服务器配置及对应的价格表，您也可以自行调整配置<a target="_blank" href="price.html" class="link">详见这里</a>
+                            </div>
+
+                            <div class="price-content">
+                                <table>
+                                    <colgroup>
+                                        <col class="col1">
+                                        <col class="col2">
+                                        <col class="col3">
+                                        <col class="col4">
+                                        <col class="col5">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>CPU</th>
+                                            <th>内存</th>
+                                            <th>硬盘</th>
+                                            <th>单价（月）</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span>1核</span>
+                                            </td>
+                                            <td>
+                                                <span>2G</span>
+                                            </td>
+                                            <td>
+                                                <span>50GB（有数据冗余）</span>
+                                            </td>
+                                            <td>
+                                                <span>100元</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>2核</span>
+                                            </td>
+                                            <td>
+                                                <span>4G</span>
+                                            </td>
+                                            <td>
+                                                <span>100G（有数据冗余）</span>
+                                            </td>
+                                            <td>
+                                                <span>230元</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>4核</span>
+                                            </td>
+                                            <td>
+                                                <span>8G</span>
+                                            </td>
+                                            <td>
+                                                <span>100G（有数据冗余）</span>
+                                            </td>
+                                            <td>
+                                                <span>430元</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>8核</span>
+                                            </td>
+                                            <td>
+                                                <span>16G</span>
+                                            </td>
+                                            <td>
+                                                <span>100G（有数据冗余）</span>
+                                            </td>
+                                            <td>
+                                                <span>830元</span>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content mod-wiki" mod="wiki">
+                        <a class="anchor" id="wiki">&nbsp;</a>
+                        <h3 class="tab-content-title">
+                            资料
+                        </h3>
+                        <div class="tab-content-detail column-4">
+                            <div class="menu-list">
+                                <div class="menu-links">
+                                    <h4>使用手册</h4>
+                                    <ul>
+                                        <li>
+                                            <a href="#" target="_blank" class="textoverflow" hotrep="product.cvm.data.sc.1">快速使用CentOS服务器</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank" class="textoverflow" hotrep="product.cvm.data.sc.2">登录到CentOS云服务器</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank" class="textoverflow" hotrep="product.cvm.data.sc.3">安装软件</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank" class="textoverflow" hotrep="product.cvm.data.sc.4">环境配置</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="menu-links">
+                                    <h4>常见问题</h4>
+                                    <ul>
+                                        <li>
+                                            <a href="#" target="_blank" class="textoverflow" hotrep="product.cvm.data.wt.1">云服务器账号管理</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank" class="textoverflow" hotrep="product.cvm.data.wt.2">平台下载常见问题</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank" class="" hotrep="product.cvm.data.wt.3">Linux常用操作和命令</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--=======footer=================================-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="grid_12 copyright">
+                <h5><span>联系我们</span></h5>
+                <pre>© <span id="copyright-year"></span> |  全国咨询热线</pre>
+                        <p>电话：010-62435239 010-62432253   <a href="mailto:lab@yonyou.com">&nbsp; &nbsp; 邮箱：lab@yonyou.com</a></p>
+            </div>
+        </div>
+    </div>
+  <div class="footer_bottom"><p>版权所有：用友软件股份有限公司　京备05007539号-11　京ICP证100714号　京公网网安备1101080209224</p></div>
+</footer>
+<script>
+  jQuery(function(){
+    jQuery('#camera_wrap').camera({
+      height: '34.58333333333333%',
+      // height: '380px',
+      width:'100%',
+      thumbnails: false,
+      pagination: true,
+      fx: 'simpleFade',
+      loader: 'none',
+      hover: false,
+      navigation: false,
+      playPause: false,
+      minHeight: "139px",
+    });
+    jQuery('#camera_wrap').cameraStop();
+  });
+</script>
+<script>
+  $(document).ready(function() { 
+      if ($('html').hasClass('desktop')) {
+        $.stellar({
+          horizontalScrolling: false,
+          verticalOffset: 20,
+          resposive: true,
+          hideDistantElements: true,
+        });
+      }
+    });
+</script>
+<script src=" js/product.js"></script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>用友云</title>
+	<meta charset="utf-8">
+	<meta name = "format-detection" content = "telephone=no" />
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+	<link rel="stylesheet" href="css/grid.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/camera.css">
+	<link rel="stylesheet" href="css/animate.css">
+
+	<script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery-migrate-1.2.1.js"></script>
+	<script src='js/camera.js'></script>
+	<script src="js/jquery.stellar.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/index.js"></script>
+	<!--[if (gt IE 9)|!(IE)]><!-->
+	<script src="js/jquery.mobile.customized.min.js"></script>
+	<script src="js/wow.js"></script>
+	<script>
+		$(document).ready(function () {
+			if ($('html').hasClass('desktop')) {
+				new WOW().init();
+			}
+		});
+	</script>
+	<!--<![endif]-->
+	<!--[if lt IE 8]>
+	<div style=' clear: both; text-align:center; position: relative;'>
+		<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+			<img src="img/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+		</a>
+	</div>
+	<![endif]-->
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+	<![endif]-->
+</head>
+<body class="index">
+<!--==============================header=================================-->
+<header id="header">
+	<div id="stuck_container">
+		<div class="toptb">
+			<div class="container">
+				<div class="row">
+					<div class="grid_12 ">
+						<ul class="fr right-nav">
+							<li class="vert-mid">
+								<!--<img class="icon-iuap" src="img/icon-iuap.png">-->
+								<a class="fontinfo" href="http://www.yyuap.com" target=_blank>IUAP平台</a>
+							</li>
+							<li class="vert-mid">
+								<div id="loginTag">
+									<img class="icon-login" src="img/user_icon.png">
+									<a class = "account_info fontinfo" href="#"><span id="nameSpan" ></span><span>&nbsp;已登录</span></a>
+									<div class="dropdown-menu dropdown-menu-show" >
+										<div class="dropdown-menu-inner">
+											<div class="balance-num ">
+												<span class="left txt1">账户余额 <strong class = "balance_able balance" data-field="balance_num"></strong> 元</span>
+											</div>
+											<div class="balance-num ">
+												<a class = "user_detail " href = "http://cloudmgt.yyuap.com:8080/index.html?code=udn">
+													<span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>
+												</a>
+												<div class="txt-tip">
+													<div class="content">点击可查看详情</div>
+													<div class="arrow"></div>
+												</div>
+											</div>
+											<div class="balance-detail">
+												<a class="btn_b" href="price.html?command=rechargetoaccount" >立即充值</a>
+											</div>
+										</div>
+									</div>
+									<span>&nbsp;|</span>
+									<span><a id="logout_btn" class ="fontinfo">退出</a></span>
+								</div>
+								<div id="logoutTag">
+									<img class="icon-login" src="img/user_icon.png">
+									<span><a id="login_btn" class ="fontinfo">登录</a></span>
+									<span >&nbsp;|</span>
+									<span><a id="reg_btn" class ="fontinfo" target="_blank">注册</a></span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+		<div class="row">
+			<div class="grid_4">
+				<a class ="logo" href="index.html">
+					<img src="img/logo2.png" >
+				</a>
+			</div>
+			<nav class="grid_8">
+				<ul class="sf-menu">
+					<li class="current-selected">
+						<a href="index.html">首页</a>
+					</li>
+					<li ><a href="ECS.html">产品与服务</a>
+						<ul >
+							<li><a href="ECS.html" title="云主机">云服务器</a></li>
+							<li><a href="OSS.html" title="云存储">云存储</a></li>
+							<li><a href="SLB.html" title="负载均衡">负载均衡</a></li>
+							<li><a href="RDS.html" title="云数据库">云数据库</a></li>
+							<li><a href="CMS.html" title="云监控">云监控</a></li>
+							<li><a href="SEC.html" title="云安全">云安全</a></li>
+						</ul>
+					</li>
+					<li><a href="EPC.html">解决方案</a>
+						<ul >
+							<li><a href="EPC.html" title="企业私有云">企业私有云</a></li>
+							<li><a href="MOD.html" title="移动开发">移动开发</a></li>
+							<li><a href="POP.html" title="压力测试">压力测试</a></li>
+							<li><a href="FPC.html" title="财务公有云">财务公有云</a></li>
+						</ul>
+					</li>
+					<li><a href="price.html" title="价格">价格</a>
+					</li>
+					<li><a class="console" title="控制台">控制台</a>
+					</li>
+					<li><a href="contact.html" title="关于我们">关于我们</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	</div>
+</header>
+
+<!--=======content================================-->
+
+<section id="content">
+	<div class="full-width-container block-1">
+		<div  class="banner">
+			<img src="img/background3.jpg">
+		</div>
+	</div>
+	<div class="full-width-container block-2">
+		<div class="container">
+			<div class="row">
+				<div class="grid_12">
+					<div class="mid-top">
+						<p class="font7">产品介绍</p>
+						<p class="font-normal">我们致力于提供一个平台<br>安全、稳定的云计算基础服务</p>
+					</div>
+					<div id="tech-icon" class="bd-main clearfix">
+						<div id="tech-wrap">
+							<div id="tech-box">
+								<ul class="clearfix">
+									<li ><b class="tech-icon01"></b><b class="tri-d"></b><p>云主机</p></li>
+									<li><b class="tech-icon02"></b><b class="tri-d"></b><p>云安全</p></li>
+									<li><b class="tech-icon03"></b><b class="tri-d"></b><p>负载均衡</p></li>
+									<li><b class="tech-icon04"></b><b class="tri-d"></b><p>云监控</p></li>
+									<li ><b class="tech-icon05"></b><b class="tri-d"></b><p>云数据库</p></li>
+									<li ><b class="tech-icon06"></b><b class="tri-d"></b><p>云存储</p></li>
+								</ul>
+							</div>
+						</div>
+						<b class="icon_l"></b>
+						<b class="icon_r"></b>
+					</div>
+					<div class="clearfix tech-container">
+						<div class="tech-detail active">
+							<div class="img-area fr">
+								<img  src="img/img_tech1.jpg">
+							</div>
+							<p class="t-title active" >活动价：28.8元/月</p>
+							<p class=" mt30 font-normal active">
+								云主机是基于虚拟化技术的主机服务，即在一组集群物理机上虚拟出多个类似独立主机的部分;UAP云平台提供多种硬件配置、操作系统、常用软件环境;可自由定义CPU核数、内存大小、磁盘空间、带宽资源分配合理、节约成本。您可在1-2分钟内创建一台或多台云主机;也可通过自制镜像快速生成多台环境相同的主机，节约部署成本。
+								<div class="buy_btn">
+									<a class = "btn-primary" href="price.html">立即购买</a>
+								</div>
+							</p>
+						</div>
+						<div class="tech-detail">
+							<div class="img-area fr">
+								<img src="img/img_tech2.jpg">
+							</div>
+							<p class="t-title">活动价：免费</p>
+							<p class=" mt30 font-normal">
+								云安全服务可以提供多维度安全防护包括防DDoS攻击，漏洞扫描、入侵检测等服务。您在购买云服务后，只需开启想要的安全服务，即可免费享受相应的安全保护。用友云安全能够帮助开发商免受各种攻击行为的干扰和影响，让开发商专注于自己创新业务的发展，极大的降低了开发商在基础环境安全和业务安全上的投入和成本。
+								<div class="buy_btn">
+									<a class = "btn-primary" href="price.html">立即购买</a>
+								</div>
+							</p>
+						</div>
+						<div class="tech-detail">
+							<div class="img-area fr">
+								<img src="img/img_tech3.jpg">
+							</div>
+							<p class="t-title">活动价：0.02元/小时</p>
+							<p class=" mt30 font-normal">
+								负载均衡服务保证在多台云主机间实现应用程序流量的自动分配，将负载分担在多个节点上并行处理，从而提高业务的服务能力和可用性。同时，你还可以随时通过添加或删减主机来调整你的服务能力，而且这些操作不会影响业务的正常访问。并实时检测服务器状态，一旦检测到服务器不可用时，能迅速在剩余的服务器中进行负载分配。
+								<div class="buy_btn">
+									<a class = "btn-primary" href="price.html">立即购买</a>
+								</div>
+							</p>
+						</div>
+						<div class="tech-detail">
+							<div class="img-area fr">
+								<img src="img/img_tech4.jpg">
+							</div>
+							<p class="t-title">活动价：免费</p>
+							<p class=" mt30 font-normal">
+								云监控CMS（cloud monitor system）是一个开放性的监控平台，可实时监控您的站点和服务器，并提供多种告警方式以保证及时预警，为您的站点和服务器的正常运行保驾护航。您使用的主机、硬盘以及网络资源都有监控，您可以很方便的了解系统运行情况以及分析和定位问题。监控信息分不同的粒度，提供运营日报周报运营质量分析报告等。
+								<div class="buy_btn">
+									<a class = "btn-primary" href="price.html">立即购买</a>
+								</div>
+							</p>
+						</div>
+						<div class="tech-detail">
+							<div class="img-area fr">
+								<img src="img/img_tech5.jpg" >
+							</div>
+							<p class="t-title active" >活动价：10元/月</p>
+							<p class=" mt30 font-normal">
+								云数据库服务提供数据备份、数据扩容、数据迁移等多种功能，集中安装专用高性能存储服务器来支持海量访问，多维度确保数据访问安全，免去了繁琐的维护工作，节约硬件成本，无缝兼容MySQL。您只需根据自己的数据空间、性能要求选择相应的数据库实例，数分钟后即可直接通过IP/PORT直接访问MySQL实例，无需自行安装MySQL。
+								<div class="buy_btn">
+									<a class = "btn-primary" href="price.html">立即购买</a>
+								</div>
+							</p>
+						</div>
+						<div class="tech-detail">
+							<div class="img-area fr">
+								<img src="img/img_tech6.jpg">
+							</div>
+							<p class="t-title active" >活动价：0.72GB/月</p>
+							<p class=" mt30 font-normal" >
+								云存储是为云主机提供持久化存储空间的块设备存储空间。云存储有独立的生命周期，基于网络分布式访问，为云主机提供数据高可靠、可扩展的存储空间。云存储可以挂载到任意一台云主机上，两者拥有不同的生命周期，当该台云主机被删除时，云硬盘数据仍然存在，并可以挂载到其它的云主机上进行访问。用户可以对数据进行快照备份并存放，随时按快照点进行数据恢复。
+								<div class="buy_btn">
+									<a class = "btn-primary" href="price.html">立即购买</a>
+								</div>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  -->
+	<div class="full-width-container block-3" >
+		<div class="container">
+			<div class="row">
+				<div class="grid_12">
+					<div class="mid-top">
+						<p class="font7">解决方案</p>
+						<p class="font-normal">我们致力于全面服务<br>成熟的解决方案帮您快速应用云计算</p>
+					</div>
+				</div>
+			</div>
+			<div class="row section">
+				<ul class="clearfix">
+					<li class="grid_4">
+						<div class="photo"><img src="img/index_img-1.jpg" /></div>
+						<div class="rsp"></div>
+						<div class="text">
+							<h5>移动开发</h5>
+							<p>为移动开发者提供灵活多变的云服务</p>
+							<em></em>
+							<p>按需部署 快速部署 稳定可靠</p>
+							<a class="btn-primary" href = "MOD.html">了解详情</a>
+						</div>
+					</li>
+					<li class="grid_4">
+						<div class="photo"><img src="img/index_img-2.jpg" /></div>
+						<div class="rsp"></div>
+						<div class="text">
+							<h5>企业私有云</h5>
+							<p>以客户需求为向导</p>
+							<em></em>
+							<p>为企业提供量身定制的解 决方案</p>
+							<a class="btn-primary" href = "EPC.html">了解详情</a>
+						</div>
+					</li>
+					<li class="grid_4">
+						<div class="photo"><img src="img/index_img-3.jpg"/></div>
+						<div class="rsp"></div>
+						<div class="text">
+							<h5>压力测试</h5>
+							<p>为用户打造一站式性能优化解决方案</p>
+							<em></em>
+							<p>高性能 高可靠 跨平台</p>
+							<a class="btn-primary" href = "POP.html">了解详情</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="full-width-container block-5">
+		<div class="container">
+			<div class="row">
+				<div class="grid_12 ">
+					<div class="mid-top">
+						<p class="font7">管理控制</p>
+						<p class="font-normal">我们致力于全方位管理 简洁，方便，易用，全面</p>
+					</div>
+				</div>
+				<div class="grid_6  wow bounceInRight"   data-wow-delay="0.5s">
+					<article class="introduct">
+						<h5>通过简单清晰的操作,实现创建资源，配置网络，远程访问，系统监控等功能。</h5>
+						</br>
+						<p class = "consol_tip">● 资源可视化展示及操作</p>
+						<p class = "consol_tip">● 历史及实时监控图表</p>
+						<p class = "consol_tip">● 记录所有重要操作行为</p>
+						<p class = "consol_tip">● 实时关注您的用量</p>
+						<p class = "consol_tip">● 工单系统，第一时间解决资源相关问题</p>
+						<p class = "consol_tip">● 发票系统，解决您发票需求</p>
+					</article>
+				</div>
+				<div class="grid_6 wow bounceInLeft" data-wow-delay="0.5s">
+					<article>
+						<img src="img/MacBook_005.png" style = "width:100%">
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--=======footer=================================-->
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="grid_12 copyright">
+				<h5><span>联系我们</span></h5>
+				<pre>© <span id="copyright-year"></span> |  全国咨询热线</pre>
+				<p>电话：010-62435239 010-62432253   <a href="mailto:lab@yonyou.com">&nbsp; &nbsp; 邮箱：lab@yonyou.com</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="footer_bottom"><p>版权所有：用友软件股份有限公司　京备05007539号-11　京ICP证100714号　京公网网安备1101080209224</p></div>
+</footer>
+<script>
+	$(document).ready(function() {
+		if ($('html').hasClass('desktop')) {
+			$.stellar({
+				horizontalScrolling: false,
+				verticalOffset: 20,
+				resposive: true,
+				hideDistantElements: true,
+			});
+		}
+	});
+</script>
+</body>
+</html>

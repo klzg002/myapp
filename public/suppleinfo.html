@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>用友云</title>
+    <meta charset="utf-8">
+    <meta name = "format-detection" content = "telephone=no" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src="js/jquery.stellar.js"></script>
+    <script src="js/script.js"></script>
+    <script src ="js/info.js"></script>
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="js/jquery.mobile.customized.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('html').hasClass('desktop')) {
+                new WOW().init();
+            }
+        });
+    </script>
+    <!--<![endif]-->
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="img/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+    <![endif]-->
+</head>
+<body class="index-3">
+<!--==============================header=================================-->
+<header id="header">
+    <div id="stuck_container" class="subline">
+        <div class="toptb ">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_12 ">
+                        <ul class="fr right-nav">
+                            <li class="vert-mid">
+                                <a class="fontinfo" href="http://www.yyuap.com" target=_blank>IUAP平台</a>
+                            </li>
+                            <li class="vert-mid">
+                                <div id="loginTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <a class = "account_info fontinfo" href="#"><span id="nameSpan" ></span><span>&nbsp;已登录</span></a>
+                                    <div class="dropdown-menu dropdown-menu-show" >
+                                        <div class="dropdown-menu-inner">
+                                            <div class="balance-num ">
+                                                <span class="left txt1">账户余额 <strong class = "balance_able balance" data-field="balance_num"></strong> 元</span>
+                                            </div>
+                                            <div class="balance-num ">
+                                                <a class = "user_detail" href = "http://cloudmgt.yyuap.com:8080/index.html?code=udn">
+                                                    <span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>
+                                                </a>
+                                            </div>
+                                            <div class="balance-detail">
+                                                <a class="btn_b" href="price.html?command=rechargetoaccount" >立即充值</a>
+                                                <!--<em class="txt">套餐余量</em>-->
+                                                <!--<span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>-->
+                                            </div>
+                                            <!--<div class="balance-detail">-->
+                                            <!--<em class="txt">可用时长</em>-->
+                                            <!--<span class = "txt2">剩余 <b class = "balance_pday balance" data-field="balance_pday">0</b> <span >天</span></span>-->
+                                            <!--<span class="right txt2">预计 <b class = "balance_uday balance" data-field="balance_uday">0</b> <span >天</span></span>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                    <span>&nbsp;|</span>
+                                    <span><a id="logout_btn" class ="fontinfo">退出</a></span>
+                                </div>
+                                <div id="logoutTag">
+                                    <img class="icon-login" src="img/user_icon.png">
+                                    <span><a id="login_btn" class ="fontinfo">登录</a></span>
+                                    <span >&nbsp;|</span>
+                                    <span><a id="reg_btn" class ="fontinfo" target="_blank">注册</a></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <a class ="logo" href="index.html">
+                    <img src="img/logo2.png" >
+                </a>
+                <span class="regpage">信息完善</span>
+            </div>
+        </div>
+    </div>
+</header>
+<section id="content">
+    <div class="full-width-container block-1">
+        <div class="container">
+            <div class="row">
+                <div class="cloud-register">
+                    <div class="form-horizontal cloud-register-div">
+                        <div class="alert alert-info cloud-register-alert">
+                            请您完善信息，以便我们随时能联系到您
+                        </div>
+                        <div class="form-group">
+                            <div class="cloud-register-label"><label class="control-label username">用户名</label></div>
+                            <div class="controls">
+                                <input type="text" data-bind="value:data.account" class="req lginput lg-val">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="cloud-register-label"> <label class="control-label emaillabel">邮箱</label></div>
+                            <div class="controls">
+                                <input type="text" data-bind="value:data.email" class="email lginput">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="cloud-register-label"> <label class="control-label phonelabel">手机号码</label></div>
+                            <div class="controls">
+                                <input type="text" data-bind="value:data.phone" class="phone lginput">
+                                <span class="cloud-star">*</span>
+                                <span class="cloud-star errormsg">必填项</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="cloud-register-label"><label class="control-label copyright">公司名称</label></div>
+                            <div class="controls">
+                                <input type="text" data-bind="value:data.copyright" class="copyright lginput">
+                                <span class="cloud-star">*</span>
+                                <span class="cloud-star errormsg">必填项</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group regbtn">
+                            <div class="cloud-register-label"> <label class="control-label "></label></div>
+                            <div class="controls">
+                                <button id="registerBtn" class=" btn-primary" data-loading-text="Loading..." type="button">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-error cloud-register-alert">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
