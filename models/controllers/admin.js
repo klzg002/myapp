@@ -9,9 +9,8 @@ var UserFee = require("../db/UserFee");
 var DbOpt = require("../db/Dbopt");
 
 exports.index = function (req, res, next) {
-    var sq = {};
-    sq.date = -1 ;//默认排序查询条件
-    UserFee.find({"feestatus":true}).sort(sq).exec(function(err,feelist){
+    //默认排序查询条件
+    UserFee.find({"feestatus":true}).sort({"recordtime":-1}).exec(function(err,feelist){
         if(err){
             console.log(err)
         }else {

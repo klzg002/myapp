@@ -109,14 +109,15 @@
                                 <thead>
                                     <tr>
                                         <th>_id</th>
-                                        <th>账号</th>
-                                        <th>金额</th>
-                                        <th>类型</th>
-                                        <th>抬头</th>
-                                        <th>地址</th>
+                                        <th>账户</th>
+                                        <th>发票金额</th>
+                                        <th>发票类型</th>
+                                        <th>发票抬头</th>
                                         <th>收件人</th>
-                                        <th>电话</th>
-                                        <th>操作</th>
+                                        <th>收件人地址</th>
+                                        <th>联系电话</th>
+                                        <th>操作时间</th>
+                                        <th>审批</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -129,10 +130,11 @@
                                         <td><%- feearticle.feenum%></td>
                                         <td class="center"><%- feearticle.feetype%></td>
                                         <td class="center"><%- feearticle.feehead%></td>
-                                        <td><%- feearticle.feeaddress%></td>
                                         <td><%- feearticle.feeuser%></td>
+                                        <td><%- feearticle.feeaddress%></td>
                                         <td class="center"><%- feearticle.feephone%></td>
-                                        <td class="center"><a class="" >审批</a></td>
+                                        <td class="center"><%- feearticle.recordtime%></td>
+                                        <td class="center"><a class="approve" id="approve">审批</a></td>
                                     </tr>
                                     <%} %>
                                 </tbody>
@@ -173,8 +175,9 @@
 
         $('#article').dataTable({
             "aoColumnDefs": [
-                { "bSearchable": false, "bVisible": false, "aTargets": [ 0 ] }//bSearchable：是否可搜索；bVisible：是否可见；aTargets：哪一列
+                { "bSearchable": false, "bVisible": false, "aTargets": [ 0,8] }//bSearchable：是否可搜索；bVisible：是否可见；aTargets：哪一列
             ],
+            "aaSorting":[8,'desc'],
             "bAutoWidth": true,    //自动宽度
             "oLanguage": {
                 "sLengthMenu": "每页显示 _MENU_ 条记录",
@@ -189,7 +192,6 @@
                     "sNext": "后一页",
                     "sLast": "尾页"
                 },
-                "sProcessing": "&lt;img src=’../img/loading.gif’ /&gt",
             }
         });
     });
