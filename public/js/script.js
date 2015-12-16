@@ -269,7 +269,7 @@ $(document).ready(function(){
         });
     }
     function ssoreg(){
-        window.location.href = "http://udn.yyuap.com/member.php?mod=register";
+        window.location.href = "http://udn.yyuap.com/member.php?mod=register&redirecturi=http://cloud.yyuap.com";
     }
     function keeplogin (){
         $.ajax({
@@ -292,11 +292,9 @@ $(document).ready(function(){
             async:true,
             dataType:"text",
             success:function(data){
-                if( data != "success"){
+                if( data != "success") {
                     console.log(data);
                     ssologout();
-                }else{
-                    console.log("get account pay success");
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -308,8 +306,8 @@ $(document).ready(function(){
         var loginTarget = document.getElementById("loginTag");
         var logoutTarget = document.getElementById("logoutTag");
         if( logoutTarget.style.display === "none"){
-            window.open("http://cloudmgt.yyuap.com:8080/index.html?code=udn");
-            //window.open("http://123.103.9.193:7024//index.html?code=udn");
+            //window.open("http://cloudmgt.yyuap.com:8080/index.html?code=udn");
+            window.open("http://123.103.9.193:7024//index.html?code=udn");
         }else{
             console.log("need login");
             $('#login_btn').trigger("click",0);

@@ -3,12 +3,13 @@ exports.setRequestUrl=function(app){
       ,siteRest = require("../models/siteRest")
       ,admin = require("../models/controllers/admin");
 
+    app.get('/admin',admin.index);
   //var user = require('./Controllers/user')
   //    ,indexObj = require('./controllers/index')
   //    ,fileObj = require('./controllers/fileSystem')
   //    ,mongoObj = require('./controllers/mongoManagement')
   //    ,articleObj = require('./controllers/article');
-  app.get('/admin',admin.index);
+
 
   //app.get('/', user.login);
   //app.post('/onLogin', user.onLogin);

@@ -147,7 +147,6 @@ var siteRest = {
             }).on("end", function () {
                 var result = bufferHelper.toBuffer();
                 result = JSON.parse(result);
-                lib_com.writeObj(result);
                 var billsum = 0,useraccount;
                 if(result.listeventsresponse.event){
                     result.listeventsresponse.event.reverse().forEach(function(e,checkbillnum) {
@@ -165,7 +164,6 @@ var siteRest = {
                     account: useraccount||params.account,
                     billnum: billsum,
                 }
-                lib_com.writeObj(obj);
                 DbOpt.updateOneByID(UserBill,obj, res)
                 res.end("success");
             });
@@ -197,7 +195,6 @@ var siteRest = {
                 console.log("RESPONSE ERROR" + e.message);
             }).on("end", function () {
                 var result = bufferHelper.toBuffer().toString();
-                console.log("result :"+result)
                 result = JSON.parse(result);
                 //lib_com.writeObj(result);
                 sendresult = result.getaccountbalanceresponse;
@@ -213,13 +210,11 @@ var siteRest = {
     },
     getfeebalance:function(req,res){
         var params = url.parse(req.url,true).query;
-        lib_com.writeObj(params);
         var account = params.account;
         var query = UserBill.findOne({'account' : account});
         query.exec(function(err,userbill){
-            console.log(err);
             if(userbill && userbill._id){
-                var queryfee=UserFee.findone({'account' : account});
+                var queryfee=UserFee.find({'account' : account});
                 queryfee.exec(function(err,userfee){
                     var result = userbill.billnum;
                     if(userfee.length > 0){
@@ -243,7 +238,6 @@ var siteRest = {
     },
     postuserinfo:function(req,res){
         var params = url.parse(req.url,true).query;
-        lib_com.writeObj(params);
         var account = params.account;
         //用户ID必须唯一
         var query=UserDetail.find({'account' : account});

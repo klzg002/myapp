@@ -835,6 +835,7 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (ret, textStatus) {
                     if(ret) {
+                        writeObj(ret);
                         $('.cur-fee')[0].innerHTML = ret.data;
                         if(ret.data < 1000){
                             $("input[name$='invoice_fee']").attr("disabled",true);

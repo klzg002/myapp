@@ -1113,9 +1113,9 @@ input[type=checkbox], input[type=radio] {
     padding: 0;
     line-height: normal;
 }
-input[type=text].small {
-    width: 80px;
-}
+/*input[type=text].small {*/
+    /*width: 168px;*/
+/*}*/
 input[type=text]{
     display: inline-block;
     border: 1px solid #ccc;
