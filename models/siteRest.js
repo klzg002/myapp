@@ -49,6 +49,12 @@ var siteRest = {
                 try{
                     var result = bufferHelper.toBuffer();
                     result = JSON.parse(result);
+                    //检查是否指定为管理员
+                    if(settings.adminuser.indexOf(result.loginresponse.account) >= 0){
+                        result.loginresponse.type = 1;
+                    }else{
+                        result.loginresponse.type = 0;
+                    }
                     sendresult.loginresponse = result.loginresponse;
                     //用户是否已记录
                     var query=User.find({'userid' : result.loginresponse.userid});
@@ -252,6 +258,16 @@ var siteRest = {
     },
     postfeeinfo:function(req,res){
         DbOpt.addOne(UserFee,req, res)
+    },
+    getapprovenum : function(reeq,res){
+        UserFee.find({"feestatus": true}).count().exec(function (err, result) {
+            if (err) {
+                console.log(err)
+            } else {
+                res.send({"num":result});
+                res.end();
+            }
+        });
     }
 
 };

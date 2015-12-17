@@ -110,14 +110,7 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 /* custom hover
  ========================================================*/
 
-function writeObj(obj){
-    var description = "";
-    for(var i in obj){
-        var property=obj[i];
-        description+=i+" = "+property+"\n";
-    }
-    console.log(description);
-}
+
 //SSO
 $(document).ready(function(){
 
@@ -150,12 +143,38 @@ $(document).ready(function(){
     function afertlogin() {
         var showClass = document.getElementById("nameSpan");
         showClass.innerText = window.localStorage.username;
+        if(window.localStorage.accounttype){
+            $('#appTag')[0].style.display = "block";
+            getapprovenum();
+            $('#app_btn').attr("href","/admin/"+window.localStorage.account);
+
+        }
         if (window.localStorage.getItem("sessionkey") != null) {
             getaccountpay();
             setInterval(function () {
                 getaccountpay()
             }, 1000 * 60 * 10)
         }
+    }
+    function getapprovenum(){
+        $.ajax({
+            type: "GET",
+            url: "api?command=approvenum&response=json",
+            async: false,
+            dataType: "json",
+            success: function(e) {
+                if(e.num && e.num > 0){
+                    $('.badge')[0].style.display = "block";
+                    $('.badge')[0].innerHTML = e.num;
+                }else{
+                    $('.badge')[0].style.display = "none";
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
+
+            }
+        });
     }
     function ssoLogin() {
         var j = this;
@@ -375,5 +394,12 @@ function getQueryString(name) {
     if (r != null) return unescape(r[2]);
     return null;
 }
-
+function writeObj(obj){
+    var description = "";
+    for(var i in obj){
+        var property=obj[i];
+        description+=i+" = "+property+"\n";
+    }
+    console.log(description);
+}
 

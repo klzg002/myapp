@@ -67,7 +67,7 @@ h5 a:hover {
 #logoutTag{
   display:block;
 }
-#loginTag{
+#loginTag,#appTag{
  display:none
 }
 #header .logo {
@@ -81,6 +81,7 @@ h5 a:hover {
 #header .fr{
   float: right;
   *display: inline;
+  margin-right:13px;
 }
 #header .toptb{
   padding:0;
@@ -89,7 +90,7 @@ h5 a:hover {
 }
 #header .toptb li{
   float:left;
-  margin-right:15px;
+  /*margin-right:15px;*/
 
 }
 #header .right-nav .fontinfo{
@@ -183,8 +184,26 @@ h5 a:hover {
   height: 12px;
   vertical-align:baseline;
 }
-
-
+#header .badge {
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 10px;
+  padding: 1px 1px;
+  position: absolute;
+  right: -13px;
+  top: 0px;
+  display: inline-block;
+  min-width: 10px;
+  border-radius: 10px;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+}
+#header .bg-green {
+  background: #EE4C58 !important;
+  border: 1px solid #EE4C58 !important;
+  color: #fff;
+}
 
 @media only screen and (max-width: 767px) {
   #header {
@@ -242,32 +261,27 @@ h5 a:hover {
   top: 40px;
   /*left: -30px;*/
   background: #ffffff;
+  /*opacity: 0.9;*/
   color: #ffffff;
-  min-width: 157px;
+  min-width: 132px;
   z-index: 999;
   display: none;
   text-align: left;
   padding-left: 33px;
   padding-top: 10px;
+  padding-bottom: 10px;
+  border-left: 1px solid #e1e1e1;
+  border-right: 1px solid #e1e1e1;
+  /*box-shadow: 0px -1px 1px 0px black;*/
+  box-shadow: 1px black;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.sf-menu ul:before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: calc(50% - 3px);
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 10px solid #EE4C58;
-}
 .sf-menu ul li {
   position: relative;
-  height: 48px;
-  line-height: 48px;
+  height: 35px;
+  line-height: 35px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -908,7 +922,7 @@ p {
   position: relative;
   top: 0;
   bottom: 0;
-  height: 1800px;
+  height: 1300px;
 }
 .index-1 .block-2 .sidebar .nav-list {
   border-bottom: 1px solid #dadada;

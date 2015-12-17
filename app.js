@@ -45,6 +45,9 @@ app.get('/api?*',function(req, res) {
     case "loginout":
       siteRest.loginout(req,res);
       return;
+    case "approvenum":
+      siteRest.getapprovenum(req,res);
+      return;
     case "listEvents":
       siteRest.listEvents(req,res);
       return;

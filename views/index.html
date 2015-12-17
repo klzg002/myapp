@@ -25,6 +25,9 @@
 
     <!-- Custom Fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- dialog Css -->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -117,14 +120,14 @@
                                         <th>收件人地址</th>
                                         <th>联系电话</th>
                                         <th>操作时间</th>
-                                        <th>审批</th>
+                                        <th>审批操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <% for (var i = 0;i <feelist.length; i++) {
                                     var feearticle = feelist[i];
                                     %>
-                                    <tr class="odd gradeX">
+                                    <tr class="gradeA even">
                                         <td><%- feearticle._id%></td>
                                         <td><%- feearticle.account%></td>
                                         <td><%- feearticle.feenum%></td>
@@ -134,7 +137,7 @@
                                         <td><%- feearticle.feeaddress%></td>
                                         <td class="center"><%- feearticle.feephone%></td>
                                         <td class="center"><%- feearticle.recordtime%></td>
-                                        <td class="center"><a class="approve" id="approve">审批</a></td>
+                                        <td class="center"><a class="btn_approve btn-primary approve" data-bind="<%- feearticle._id%>">审批</a></td>
                                     </tr>
                                     <%} %>
                                 </tbody>
@@ -166,16 +169,21 @@
 <!-- DataTables JavaScript -->
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/jquery.idialog.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="js/sb-admin-2.js"></script>
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
     $(document).ready(function() {
-
         $('#article').dataTable({
             "aoColumnDefs": [
-                { "bSearchable": false, "bVisible": false, "aTargets": [ 0,8] }//bSearchable：是否可搜索；bVisible：是否可见；aTargets：哪一列
+                { "bSearchable": false, "bVisible": false, "aTargets": [ 0,8] },//bSearchable：是否可搜索；bVisible：是否可见；aTargets：哪一列
+                {
+                     "aTargets": [9],"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                          $(nTd).css({'vertical-align':'middle','text-align':'center'})
+                     }
+                }
             ],
             "aaSorting":[8,'desc'],
             "bAutoWidth": true,    //自动宽度
@@ -193,6 +201,44 @@
                     "sLast": "尾页"
                 },
             }
+        });
+
+        var approvelist = $('.approve');
+        approvelist.bind('click',function(){
+            var id = $(this).data('bind');
+            $.dialog({
+                id:'btndialog',
+                title:'审批',
+                content:'确定审批通过？',
+                width:500,
+                btn: {                      //可以任意定义按钮个数
+                    ok: {                     //按钮的key值，下次可用个btn方法从新设置
+                        val: '确定',            //按钮显示的文本
+                        type: 'red',         //样式可选参数 green, blue, red, yellow .默认白色。
+                        click: function(btn) {
+                            $.ajax({
+                                type: "POST",
+                                url: "api?command=updateapprove&response=json&_id="+id,
+                                async: true,
+                                dataType: "text",
+                                success: function (data, textStatus) {
+                                    if(data == "success"){
+                                        window.location.reload();
+                                    }else{
+                                        console.log(data);
+                                    }
+                                },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
+                                }
+                            });
+                        }
+                    },
+                    cancle: {                //第二个按钮
+                        val: '取消'
+                    }
+                }
+            });
         });
     });
 </script>
