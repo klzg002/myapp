@@ -50,7 +50,7 @@ $(document).ready(function() {
         $(this).find(".text").stop().animate({left:'0'}, {duration: 500})
     },function(){
         $(this).find(".rsp").stop().fadeTo(500,0)
-        $(this).find(".text").stop().animate({left:'370'}, {duration: "fast"})
+        $(this).find(".text").stop().animate({left:'370'}, {duration: 500})
         $(this).find(".text").animate({left:'-370'}, {duration: 0})
     });
 });

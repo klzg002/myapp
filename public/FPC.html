@@ -65,11 +65,12 @@
                                                 <span class="left txt1">账户余额 <strong class = "balance_able balance" data-field="balance_num"></strong> 元</span>
                                             </div>
                                             <div class="balance-num ">
-                                                <a class = "user_detail" href = "http://cloudmgt.yyuap.com:8080/index.html?code=udn">
-                                                    <span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>
+                                                <a class = "user_detail " href = "http://cloudmgt.yyuap.com:8080/index.html?code=udn">
+                                                    <span class="someuse right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>
+                                                    <span class="noneuse right txt2">马上建立虚机</span>
                                                 </a>
                                                 <div class="txt-tip">
-                                                    <div class="content">点击可查看详情</div>
+                                                    <div class="content">click me</div>
                                                     <div class="arrow"></div>
                                                 </div>
                                             </div>
@@ -234,32 +235,14 @@
     <div class="container">
         <div class="row">
             <div class="grid_12 copyright">
-                <h5><span>联系我们</span></h5>
-                <pre>© <span id="copyright-year"></span> |  全国咨询热线</pre>
-                        <p>电话：010-62435239 010-62432253   <a href="mailto:lab@yonyou.com">&nbsp; &nbsp; 邮箱：lab@yonyou.com</a></p>
+                <pre class="bottom">联系我们 © <span id="copyright-year"></span> |  全国咨询热线</pre>
+                <p>电话：010-62435239 010-62432253   <a href="mailto:lab@yonyou.com">&nbsp; &nbsp; 邮箱：lab@yonyou.com</a></p>
             </div>
         </div>
     </div>
-  <div class="footer_bottom"><p>版权所有：用友软件股份有限公司　京备05007539号-11　京ICP证100714号　京公网网安备1101080209224</p></div>
+    <div class="footer_bottom"><p>版权所有：用友软件股份有限公司　京备05007539号-11　京ICP证100714号　京公网网安备1101080209224</p></div>
 </footer>
-<script>
-  jQuery(function(){
-    jQuery('#camera_wrap').camera({
-      height: '34.58333333333333%',
-      // height: '380px',
-      width:'100%',
-      thumbnails: false,
-      pagination: false,
-      fx: 'simpleFade',
-      loader: 'none',
-      hover: false,
-      navigation: false,
-      playPause: false,
-      minHeight: "139px",
-    });
-    jQuery('#camera_wrap').cameraStop();
-  });
-</script>
+
 <script>
   $(document).ready(function() { 
       if ($('html').hasClass('desktop')) {

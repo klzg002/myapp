@@ -124,18 +124,11 @@ $(document).ready(function(){
     $('#logout_btn').bind('click',ssologout);
     $(".console").bind('click',chargecon );
     function handler(event,message){
-        var username;
+        var username = window.localStorage.username;
         //console.log("charge login");
-        if (window.localStorage && message && d == null)
+        if (username && username != null && message && d == null)
         {
-            username = window.localStorage.getItem("username");
-            if (username != null)
-            {
-                showloginState();
-            }else{
-                window.localStorage.clear();
-                return;
-            }
+            showloginState();
         }else {
             ssoLogin();
         }
@@ -347,7 +340,12 @@ $(document).ready(function(){
             success: function (data, textStatus) {
                 if(data.errorcode == null) {
                     $('.balance-num .balance_able')[0].innerHTML = data.accountbalance.balance;
-                    $('.balance-num .balance_uday')[0].innerHTML = data.accountbalance.dayConsume == 0 ? 0 : data.accountbalance.balance*1000/data.accountbalance.dayConsume*1000 ;
+                    if(data.accountbalance.dayConsume == 0){
+                        $('.someuse')[0].style.display ="none";
+                        $('.noneuse')[0].style.display ="block";
+                    }else{
+                        $('.balance-num .balance_uday')[0].innerHTML = data.accountbalance.balance*1000/data.accountbalance.dayConsume*1000 ;
+                    }
                     afertlogin();
                 }else{
                     console.log("blance select error");

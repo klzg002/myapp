@@ -115,11 +115,14 @@ h5 a:hover {
   top: 27px;
   z-index: 1001;
 }
+#header .noneuse{
+  display: none;
+}
 #header .dropdown-menu-inner {
   background: #fff;
   border: 1px solid #ddd;
   width: 200px;
-  padding: 20px;
+  /*padding: 20px;*/
   min-width: 160px;
   -webkit-box-shadow: 0 1px 2px 1px #e7e7e7;
   -moz-box-shadow: 0 1px 2px 1px #e7e7e7;
@@ -272,8 +275,7 @@ h5 a:hover {
   padding-bottom: 10px;
   border-left: 1px solid #e1e1e1;
   border-right: 1px solid #e1e1e1;
-  /*box-shadow: 0px -1px 1px 0px black;*/
-  box-shadow: 1px black;
+  box-shadow: 0 10px 10px black;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -599,7 +601,7 @@ p {
   border-bottom: 1px solid #e60012;
 }
 .index .block-2 #tech-icon li b:first-child {
-  transition: 2s;
+  transition: 0s;
   display: inline-block;
   width: 80px;
   height: 80px;
@@ -1193,14 +1195,6 @@ p {
   width: 18px;
   height: 18px
 }
-.index-1 .block-2  .price-content table .icon-right {
-  background-image: url(sprite/product-con150807155143.png?max_age=19830212&d=20150807155452);
-  background-position: -23px -389px
-}
-.index-1 .block-2  .price-content table .icon-wrong {
-  background-image: url(sprite/product-con150807155143.png?max_age=19830212&d=20150807155452);
-  background-position: -23px -408px
-}
 .index-1 .block-2  .slide-text:before {
   content: "\2022\20";
   color: #EE4C58;
@@ -1499,6 +1493,11 @@ p {
   padding-top: 10px;
   padding-bottom: 20px;
   font: 14px/24px 'Microsoft YaHei';
+}
+#footer .bottom{
+  display: block;
+  margin-bottom: 10px;
+  font: 16px/24px;
 }
 @media only screen and (max-width: 767px) {
   #footer .copyright .btn {
