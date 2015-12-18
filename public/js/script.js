@@ -2,6 +2,10 @@ function include(url){
     document.write('<script src="'+url+'"></script>');
     return false ;
 }
+function includecss(file){
+    document.write('<link rel="stylesheet" href="'+file+'">')
+    return false ;
+}
 
 /* cookie.JS
  ========================================================*/
@@ -45,7 +49,8 @@ $(function () {
  ========================================================*/
 include('js/jquery.mousewheel.min.js');
 include('js/jquery.simplr.smoothscroll.min.js');
-
+include('js/jquery.iDialog.js');
+includecss('css/iDialog.css');
 $(function () {
     if ($('html').hasClass('desktop')) {
         $.srSmoothscroll({
@@ -117,38 +122,55 @@ $(document).ready(function(){
     //登录相关代码
     var d = getQueryString("code");
     var s = getQueryString("state");
+    var e = getQueryString("errorinfo");
     var cloud = {};
     $('#login_btn').bind("click",handler);
     $('#login_btn').trigger("click",!0);
     $('#reg_btn').bind('click',ssoreg);
     $('#logout_btn').bind('click',ssologout);
-    $(".console").bind('click',chargecon );
+    console.log($(".console"));
+    //$(".console").bind('click',chargecon );
     function handler(event,message){
-        var username = window.localStorage.username;
-        //console.log("charge login");
-        if (username && username != null && message && d == null)
+        if(e){
+            console.log(e);
+            $.dialog({
+                title:'错误提示',
+                width:400,
+                height:130,
+                opacity:.5,
+                id:'auto-hide',
+                time:3000,
+                lock:true,
+                content:'<div style="text-align: center"><p>登录超时，请重新登录。</p><p><span id="my-time" style="color:#EE4C58">3</span> 秒后自动关闭！</p></div>',
+                show: function(){
+                    var index = 3,
+                        $time = $('#my-time').html(index),
+                        that = this;
+                    var interval = setInterval(function(){
+                        if(--index<1){
+                            clearInterval(interval);
+                            that.hide();
+                        }
+                        $time.html( index );
+                    },1000);
+                }
+            });
+            setTimeout(function(){
+                ssologout();
+            },3000)
+        }
+        if (message && d == null)
         {
-            showloginState();
+            if(!window.localStorage.username ||  window.localStorage.username == null){
+                return;
+            }else{
+                showloginState();
+            }
         }else {
             ssoLogin();
         }
     }
-    function afertlogin() {
-        var showClass = document.getElementById("nameSpan");
-        showClass.innerText = window.localStorage.username;
-        if(window.localStorage.accounttype){
-            $('#appTag')[0].style.display = "block";
-            getapprovenum();
-            $('#app_btn').attr("href","/admin/"+window.localStorage.account);
 
-        }
-        if (window.localStorage.getItem("sessionkey") != null) {
-            getaccountpay();
-            setInterval(function () {
-                getaccountpay()
-            }, 1000 * 60 * 10)
-        }
-    }
     function getapprovenum(){
         $.ajax({
             type: "GET",
@@ -170,7 +192,6 @@ $(document).ready(function(){
         });
     }
     function ssoLogin() {
-        var j = this;
         var recordurl = window.location.href.replace(/(.*)\?(.*)/,"$1");
         console.log("recordurl:"+recordurl);
         $.ajax({
@@ -190,7 +211,6 @@ $(document).ready(function(){
                 cloud.RESPONSE_TYPE = e.data.RESPONSE_TYPE;
                 cloud.CODE = e.data.CODE;
                 cloud.hostip = e.data.hostip;
-                writeObj(cloud);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
@@ -204,7 +224,6 @@ $(document).ready(function(){
         if(d == null ){
             location.href = h;
         }else{
-            console.log("sso logon");
             $.ajax({
                 type: "GET",
                 data: "command=login&loginurl=" + cloud.LOGIN_URL + "&tokenurl=" + cloud.TOKEN_URL + "&redirecturi=" + cloud.REDIRECT_URI + "&clientid=" + cloud.CLIENT_ID + "&clientsecret=" + cloud.CLIENT_SECRET +"&granttype="+cloud.GRANT_TYPE+"&langtype=" + g + "&code=" + d + "&response=json",
@@ -269,7 +288,7 @@ $(document).ready(function(){
             success:function(data){
                 window.localStorage.clear();
                 window.sessionStorage.clear();
-                if(window.location.href.match(/rechargetoaccount/)){
+                if(window.location.href.match(/rechargetoaccount|errorinfo/)){
                     window.location.href = recordurl;
                 }else{
                     window.location.reload();
@@ -314,24 +333,26 @@ $(document).ready(function(){
             }
         });
     }
-    function chargecon(){
-        var loginTarget = document.getElementById("loginTag");
-        var logoutTarget = document.getElementById("logoutTag");
-        if( logoutTarget.style.display === "none"){
-            //window.open("http://cloudmgt.yyuap.com:8080/index.html?code=udn");
-            window.open("http://123.103.9.193:7024//index.html?code=udn");
-        }else{
-            console.log("need login");
-            $('#login_btn').trigger("click",0);
+
+    function afertlogin() {
+        $("#loginTag")[0].style.display = "block";
+        $("#logoutTag")[0].style.display = "none";
+        $("#nameSpan")[0].innerHTML = window.localStorage.username;
+        if(window.localStorage.accounttype){
+            $('#appTag')[0].style.display = "block";
+            getapprovenum();
+            $('#app_btn').attr("href","/admin/"+window.localStorage.account);
+
+        }
+        if (window.localStorage.getItem("sessionkey") != null) {
+            getaccountpay();
+            setInterval(function () {
+                getaccountpay()
+            }, 1000 * 60 * 10)
         }
     }
-
     function showloginState()
     {
-        var loginTarget = document.getElementById("loginTag");
-        var logoutTarget = document.getElementById("logoutTag");
-        loginTarget.style.display = "block";
-        logoutTarget.style.display = "none";
         $.ajax({
             type: "GET",
             url: "api?command=getaccountbalance&response=json&sessionkey="+window.localStorage.sessionkey,
@@ -344,7 +365,7 @@ $(document).ready(function(){
                         $('.someuse')[0].style.display ="none";
                         $('.noneuse')[0].style.display ="block";
                     }else{
-                        $('.balance-num .balance_uday')[0].innerHTML = data.accountbalance.balance*1000/data.accountbalance.dayConsume*1000 ;
+                        $('.balance-num .balance_uday')[0].innerHTML = parseInt( data.accountbalance.balance*1000/data.accountbalance.dayConsume*1000 );
                     }
                     afertlogin();
                 }else{
@@ -385,7 +406,15 @@ $(document).ready(function(){
     });
 
 });
-
+function chargecon(){
+    if( window.localStorage.username && window.localStorage.username != null){
+        //window.open("http://cloudmgt.yyuap.com:8080/index.html?code=udn");
+        window.open("http://123.103.9.193:7024/index.html?code=udn");
+    }else{
+        console.log("need login");
+        $('#login_btn').trigger("click",0);
+    }
+}
 function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
     var r = window.location.search.substr(1).match(reg);

@@ -54,6 +54,9 @@ h5 a:hover {
   content: "";
   display: table;
 }
+#stuck_container{
+  border-bottom: 1px solid #EE4C58;
+}
 /*========================================================
 										HEADER styles
 =========================================================*/
@@ -117,6 +120,7 @@ h5 a:hover {
 }
 #header .noneuse{
   display: none;
+  color:#EE4C58;
 }
 #header .dropdown-menu-inner {
   background: #fff;
@@ -273,11 +277,8 @@ h5 a:hover {
   padding-left: 33px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-left: 1px solid #e1e1e1;
-  border-right: 1px solid #e1e1e1;
-  box-shadow: 0 10px 10px black;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+  /*border-top: 1px solid #EE4C58;*/
+  box-shadow: 0px 1px 2px 2px #e1e1e1;
   box-sizing: border-box;
 }
 .sf-menu ul li {
@@ -431,6 +432,7 @@ p {
 }
 .contact{
   background-color: rgba(243,243,243,0.7);
+  padding: 20px 0 10px;
 }
 
 .btn {
@@ -983,6 +985,7 @@ p {
   background-color: #fff;
   border-bottom: 1px solid #EE4C58;
   height: 43px;
+  margin: 20px 0;
   text-align: left;
 }
 .index-1 .block-2 .tab-title ul {

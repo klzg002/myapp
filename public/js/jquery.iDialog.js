@@ -6,9 +6,9 @@
 ~function($, window, undefined) {
     var win = $(window),
         doc = $(document),
-        ie = $.browser.msie,
-        version = parseInt($.browser.version),
-        ie6 = ie && version < 7,
+        ie = /msie/.test(navigator.userAgent.toLowerCase()),
+        //version = parseInt($.browser.version),
+        ie6 = !$.support.leadingWhitespace,
         dialog,
         dialogZindex = 1e4;
 

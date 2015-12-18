@@ -268,8 +268,8 @@ $(document).ready(function () {
                 if (isNaN(m)) {
                     m = 0;
                     this.value = m;
-                } else if (m > 5000) {
-                    m = 5000;
+                } else if (m > 1000) {
+                    m = 1000;
                     this.value = m;
                 }
                 f.onvaluedrag(m);
@@ -285,8 +285,8 @@ $(document).ready(function () {
                 if (isNaN(m)) {
                     m = 0;
                     this.value = m;
-                } else if (m > 5000) {
-                    m = 5000;
+                } else if (m > 1000) {
+                    m = 1000;
                     this.value = m;
                 }
                 f.onvaluedrag(m);
@@ -313,7 +313,7 @@ $(document).ready(function () {
         },
         onvaluedrag: function (value) {
             var max = this.bar.offsetWidth - this.btn.offsetWidth;
-            var to = value / 5000 * max;
+            var to = value / 1000 * max;
             this.step.style.width = Math.max(0, to) + 'px';
             this.btn.style.left = to + 'px';
 
@@ -680,14 +680,6 @@ $(document).ready(function () {
             con.style.display = i == cursel ? "block" : "none";
         }
     }
-    writeObj = function (obj){
-        var description = "";
-        for(var i in obj){
-            var property=obj[i];
-            description+=i+" = "+property+"\n";
-        }
-        console.log(description);
-    }
 
     //充值购买页面
     Date.prototype.format = function(format) {
@@ -718,88 +710,12 @@ $(document).ready(function () {
         userid  : window.localStorage.userid,
         sessionkey  :   window.localStorage.sessionkey,
     };
-    var d = getQueryString("code");
-    var s = getQueryString("state");
-    var cloud = {};
-    $('#payBox').css({
-        "left": $(window).width() / 2 - 715 / 2 + 'px',
-        "top": $(window).height() / 2 - 616 / 2 + 'px'
-    });
-
-    //报年包月支付
-    $('#buy_btn').on('click', function () {
-        if ($('#logoutTag')[0].style.display === "none") {
-            $("body").append("<div id='mask'></div>");
-            $("#mask").addClass("mask").fadeIn("slow");
-            $("#payBox").fadeIn("slow");
-            $('.cashier-header .fr-wrap .text')[0].innerText = userdata.username;
-            $('.book-names-wrap .system')[0].innerText = $('.s1-images .image-item.selected').find('a')[0].innerText;
-            $('.book-names-wrap .volume')[0].innerText = $('#s1-title').val() + "GB";
-            $('.book-names-wrap .system-num')[0].innerText = $(".s1-sum_instance .res_price .number")[0].innerText.match(/(\d+)/)[0] + "台";
-            $('.book-names-wrap .system-cpu')[0].innerText = $(".s1-cpu-memory .cpu-item.selected").find('a')[0].innerText;
-            $('.book-names-wrap .system-mem')[0].innerText = $(".s1-memory .memory-item.selected").find('a')[0].innerText;
-            if ($('.Menubox .hover')[0].innerText == '按月付费') {
-                $('.book-names-wrap .pay-time')[0].innerText = $('#con_menu_1 .input').val() + "月";
-            } else {
-                $('.book-names-wrap .pay-time')[0].innerText = $('#con_menu_2 .input').val() + "年";
-            }
-            $('.content-wrap-pay .price-wrap .price-num')[0].innerText = $('.s1-total .number')[0].innerText;
-
-            var userid = (userdata.uid+"").length < 4 ? ("00000"+userdata.uid):userdata.uid;
-
-            var d = new Date();
-            var paras = {
-                clientid :userdata.clientid,
-                service : 'cashier',
-                orderId : d.format('yyyyMMddhhmiss')+Math.floor(Math.random()*10),
-                satrttime : parseInt(d.getTime()/1000,10),
-                endtime : parseInt(d.getTime()/1000+900,10),
-                payAmount : ($('.s1-total .number')[0].innerText)*100,
-                originalAmount:($('.s1-total .number')[0].innerText)*100,
-                returnUrl :"",
-                notifyUrl:"",
-            };
-            writeObj(paras);
-            function writeObj(obj){
-                var description = "";
-                for(var i in obj){
-                    var property=obj[i];
-                    description+=i+" = "+property+"\n";
-                }
-                console.log(description);
-            }
-            var sub_url = "customerId="+paras.clientid+"&service="+paras.service+"&orderCreateTime="+paras.satrttime+"&orderExpireTime="+paras.endtime+"&payAmount="+paras.payAmount+"&originalAmount="+paras.originalAmount+"&returnUrl="+paras.returnUrl+"&notifyUrl="+paras.notifyUrl
-            var url = "pay.html?"+sub_url;
-
-            $('#cashier-iframe').attr("src",url);
-            $('#cashier-iframe').css({
-                'border-bottom-width' : '1px',
-                'border-bottom-color':  "rgb(214, 214, 214)",
-                'border-bottom-style': "solid",
-                'height': "432px",
-            });
-            $('#cashier-iframe').load(function(){
-                var sub_iframe =$(window.frames["cashier-iframe"].document);
-                var iframe_channel_pay =  sub_iframe.find("div.channel-pay")[0];
-                iframe_channel_pay.setAttribute ("data-payamount",paras.payAmount);
-                iframe_channel_pay.setAttribute ("data-customerid",paras.clientid);
-                iframe_channel_pay.setAttribute ("data-order",sub_url);
-            });
-
-        } else  {
-            ssoLoginRef();
-        }
-    });
 
     $(".dialog-close").on('click', function () {
         $("#payBox").fadeOut("fast");
         $("#mask").css({display: 'none'});
     });
     //充值页面
-    //$('#rechargeBox').css({
-    //    "left": $(window).width() / 2 - 715 / 2 + 'px',
-    //    "top": $(window).height() / 2 - 616 / 2 + 'px'
-    //});
     center($('#rechargeBox'));
     function center(obj) {
 
@@ -842,8 +758,7 @@ $(document).ready(function () {
         $("#mask").css({display: 'none'});
     });
     $('#pay_btn').on('click', function () {
-        if ($('#logoutTag')[0].style.display === "none") {
-
+        if ( userdata.username &&  userdata.username != null) {
             $("body").append("<div id='mask'></div>");
             $("#mask").addClass("mask").fadeIn("slow");
             $("#rechargeBox").fadeIn("slow");
@@ -890,56 +805,6 @@ $(document).ready(function () {
                 }
             });
 
-            //$('.price-cnt .input').bind('keypress', function () {
-            //    number(true);
-            //}).bind('keyup ', function () {
-            //    filterInput();
-            //    var m = parseInt($(this).val());
-            //    if (isNaN(m)) {
-            //        m = 0;
-            //        $(this).val(m);
-            //    }
-            //}).bind('change', function () {
-            //    loadframe();
-            //}).bind('beforepaste  propertychange', function () {
-            //    filterPaste();
-            //}).bind('paste', function () {
-            //    return false;
-            //});
-            //
-            //function loadframe() {
-            //    var userid = (userdata.userid+"").length < 4 ? ("0000"+userdata.userid):userdata.userid;
-            //    var d = new Date();
-            //    var paras = {
-            //        clientid :userdata.clientid,
-            //        service : 'cashier',
-            //        orderId : d.format('yyyyMMddhhmiss')+Math.floor(Math.random()*10)+userid,
-            //        satrttime : parseInt(d.getTime()/1000,10),
-            //        endtime : parseInt(d.getTime()/1000+900,10),
-            //        payAmount : ($('.price-cnt .input').val())*100,
-            //        originalAmount:($('.price-cnt .input').val())*100,
-            //        returnUrl :"",
-            //        notifyUrl:"",
-            //    };
-            //    var sub_url = "customerId=" + paras.clientid + "&service=" + paras.service + "&orderCreateTime=" + paras.satrttime + "&orderExpireTime=" + paras.endtime + "&payAmount=" + paras.payAmount + "&originalAmount=" + paras.originalAmount + "&returnUrl=" + paras.returnUrl + "&notifyUrl=" + paras.notifyUrl
-            //    var url = "pay.html?" + sub_url;
-            //
-            //    $('#re-cashier-iframe').attr("src", url);
-            //    $('#re-cashier-iframe').css({
-            //        'border-bottom-width': '1px',
-            //        'border-bottom-color': "rgb(214, 214, 214)",
-            //        'border-bottom-style': "solid",
-            //        'height': "432px",
-            //    });
-            //    $('#re-cashier-iframe').load(function () {
-            //        var sub_iframe = $(window.frames["re-cashier-iframe"].document);
-            //        var iframe_channel_pay = sub_iframe.find("div.channel-pay")[0];
-            //        iframe_channel_pay.setAttribute("data-payamount", paras.payAmount);
-            //        iframe_channel_pay.setAttribute("data-customerid", paras.clientid);
-            //        iframe_channel_pay.setAttribute("data-order", sub_url);
-            //    });
-            //}
-            //loadframe();
         } else {
             console.log("need login");
             ssoLoginRef();
@@ -954,7 +819,7 @@ $(document).ready(function () {
     }
 
     function ssoLoginRef() {
-        var j = this;
+        var cloud = {};
         var recordurl = window.location.href.replace(/(.*)\?(.*)/,"$1");
         $.ajax({
             type: "GET",
@@ -979,8 +844,6 @@ $(document).ready(function () {
                 console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
             }
         });
-
-        var g = (window.localStorage.lang == "zh") ? "zh_cn" : "en-us";
         var state = Math.round(Math.random(0) * 1000) + 1;
         var h = cloud.LOGIN_URL + "?client_id=" + cloud.CLIENT_ID + "&redirect_uri=" + cloud.REDIRECT_URI + "&response_type=code&state=" + state;
         location.href = h;
@@ -1068,6 +931,4 @@ $(document).ready(function () {
         }
 
     });
-
-
 });

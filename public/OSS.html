@@ -75,14 +75,7 @@
                                             </div>
                                             <div class="balance-detail">
                                                 <a class="btn_b" href="price.html?command=rechargetoaccount" >立即充值</a>
-                                                <!--<em class="txt">套餐余量</em>-->
-                                                <!--<span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>-->
                                             </div>
-                                            <!--<div class="balance-detail">-->
-                                            <!--<em class="txt">可用时长</em>-->
-                                            <!--<span class = "txt2">剩余 <b class = "balance_pday balance" data-field="balance_pday">0</b> <span >天</span></span>-->
-                                            <!--<span class="right txt2">预计 <b class = "balance_uday balance" data-field="balance_uday">0</b> <span >天</span></span>-->
-                                            <!--</div>-->
                                         </div>
                                     </div>
                                     <span>&nbsp;|</span>
@@ -139,7 +132,7 @@
                         </li>
                         <li><a href="price.html" title="价格">价格</a>
                         </li>
-                        <li><a class="console" title="控制台">控制台</a>
+                        <li><a class="console" onclick=chargecon() title="控制台">控制台</a>
                         </li>
                         <li><a href="contact.html" title="关于我们">关于我们</a></li>
                     </ul>
@@ -157,6 +150,7 @@
             <img src="img/product.jpg">
         </div>
     </div>
+
     <div class="full-width-container block-2 " id="mod_nav">
         <div class="container">
             <div class="row">
@@ -167,7 +161,7 @@
                             <a href="./ECS.html" class="" hotrep="product.ECS.cvm">云主机</a>
                         </dd>
                         <dd item="OSS">
-                            <a href="./OSS.html" class="" hotrep="product.OSS.cvm">云存储</a>
+                            <a href="./OSS.html#advantage" class="" hotrep="product.OSS.cvm">云存储</a>
                         </dd>
                         <dd item="SLB">
                             <a href="./SLB.html" class="" hotrep="product.header.SLB">负载均衡</a>
@@ -184,6 +178,7 @@
                     </dl>
                 </div>
                 <div class="grid_9 slide-oss">
+                    <a class="anchor" id="advantage" style="visibility:hidden"></a>
                     <div class="tab-title ">
                         <ul>
                             <li mod="advantage" hotrep="product.cvm.tab.advantage"><a href="#advantage">我们的优势</a></li>

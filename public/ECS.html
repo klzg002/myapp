@@ -65,23 +65,17 @@
                                             </div>
                                             <div class="balance-num ">
                                                 <a class = "user_detail" href = "http://cloudmgt.yyuap.com:8080/index.html?code=udn">
-                                                    <span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>
+                                                    <span class="someuse right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>
+                                                    <span class="noneuse right txt2">马上建立虚机</span>
                                                 </a>
                                                 <div class="txt-tip">
-                                                    <div class="content">点击可查看详情</div>
+                                                    <div class="content">click me</div>
                                                     <div class="arrow"></div>
                                                 </div>
                                             </div>
                                             <div class="balance-detail">
                                                 <a class="btn_b" href="price.html?command=rechargetoaccount" >立即充值</a>
-                                                <!--<em class="txt">套餐余量</em>-->
-                                                <!--<span class="right txt2">预计可用 <strong class = "balance_uday balance" data-field="balance_uday"></strong> 天</span>-->
                                             </div>
-                                            <!--<div class="balance-detail">-->
-                                            <!--<em class="txt">可用时长</em>-->
-                                            <!--<span class = "txt2">剩余 <b class = "balance_pday balance" data-field="balance_pday">0</b> <span >天</span></span>-->
-                                            <!--<span class="right txt2">预计 <b class = "balance_uday balance" data-field="balance_uday">0</b> <span >天</span></span>-->
-                                            <!--</div>-->
                                         </div>
                                     </div>
                                     <span>&nbsp;|</span>
@@ -138,7 +132,7 @@
                         </li>
                         <li><a href="price.html" title="价格">价格</a>
                         </li>
-                        <li><a class="console" title="控制台">控制台</a>
+                        <li><a class="console" onclick=chargecon() title="控制台">控制台</a>
                         </li>
                         <li><a href="contact.html" title="关于我们">关于我们</a></li>
                     </ul>
@@ -166,19 +160,19 @@
                             <a href="./ECS.html" class="" hotrep="product.header.ECS">云服务器</a>
                         </dd>
                         <dd item="OSS">
-                            <a href="./OSS.html" class="" hotrep="product.header.OSS">云存储</a>
+                            <a href="./OSS.html#advantage" class="" hotrep="product.header.OSS">云存储</a>
                         </dd>
                         <dd item="SLB">
-                            <a href="./SLB.html" class="" hotrep="product.header.SLB">负载均衡</a>
+                            <a href="./SLB.html#advantage" class="" hotrep="product.header.SLB">负载均衡</a>
                         </dd>
                         <dd item="RDS">
-                            <a href="./RDS.html" hotrep="product.header.RDS">云数据库</a>
+                            <a href="./RDS.html#advantage" hotrep="product.header.RDS">云数据库</a>
                         </dd>
                         <dd item="CMS">
-                            <a href="./CMS.html" class="" hotrep="product.header.CMS">云监控</a>
+                            <a href="./CMS.html#advantage" class="" hotrep="product.header.CMS">云监控</a>
                         </dd>
                         <dd item="SEC">
-                            <a href="./SEC.html" class="" hotrep="product.header.SEC">云安全</a>
+                            <a href="./SEC.html#advantage" class="" hotrep="product.header.SEC">云安全</a>
                         </dd>
                     </dl>
                 </div>
@@ -335,7 +329,6 @@
                                                 <span>830元</span>
                                             </td>
                                         </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -381,6 +374,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -399,24 +393,6 @@
     </div>
     <div class="footer_bottom"><p>版权所有：用友软件股份有限公司　京备05007539号-11　京ICP证100714号　京公网网安备1101080209224</p></div>
 </footer>
-<script>
-  jQuery(function(){
-    jQuery('#camera_wrap').camera({
-      height: '34.58333333333333%',
-      // height: '380px',
-      width:'100%',
-      thumbnails: false,
-      pagination: true,
-      fx: 'simpleFade',
-      loader: 'none',
-      hover: false,
-      navigation: false,
-      playPause: false,
-      minHeight: "139px",
-    });
-    jQuery('#camera_wrap').cameraStop();
-  });
-</script>
 <script>
   $(document).ready(function() { 
       if ($('html').hasClass('desktop')) {
