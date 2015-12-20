@@ -100,7 +100,7 @@ window.ucloud = window.ucloud || {};
             this.bind();
             ucloud.util.hash.onHashChange();
             calModPosition();
-            resetAnchorMargin();
+            //resetAnchorMargin();
             initVersionList();
         }
     });
@@ -173,7 +173,7 @@ window.ucloud = window.ucloud || {};
 
     function resetAnchorMargin() {
         $('.anchor').css({
-            top: '-48px'
+            top: '-81px'
         });
     }
 

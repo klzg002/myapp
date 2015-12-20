@@ -898,6 +898,7 @@ p {
   }
 }
 .index-1 .block-1 {
+  position: relative;
   padding: 0 0 20px;
   text-align: center;
 }
@@ -926,7 +927,10 @@ p {
   position: relative;
   top: 0;
   bottom: 0;
-  height: 1300px;
+  height: 1350px;
+}
+.index-1 .block-2 .sidebar.CMS,.index-1 .block-2 .sidebar.SEC{
+  height: 1000px;
 }
 .index-1 .block-2 .sidebar .nav-list {
   border-bottom: 1px solid #dadada;
@@ -984,8 +988,8 @@ p {
 .index-1 .block-2 .tab-title {
   background-color: #fff;
   border-bottom: 1px solid #EE4C58;
-  height: 43px;
-  margin: 20px 0;
+  height: 40px;
+  margin: 0 0 15px;
   text-align: left;
 }
 .index-1 .block-2 .tab-title ul {
@@ -995,14 +999,14 @@ p {
 }
 .index-1 .block-2 .tab-title ul li {
   display: inline-block;
-  vertical-align: top
+  vertical-align: top;
+  margin: 0 20px;
 }
 .index-1 .block-2 .tab-title ul li a {
   font-size: 16px;
   color: #666;
-  padding: 0 10px;
-  height: 42px;
-  line-height: 42px;
+  height: 40px;
+  line-height: 40px;
   display: inline-block
 }
 .index-1 .block-2 .tab-title ul li.current a {
@@ -1044,9 +1048,9 @@ p {
 .index .block-2  .tab-content {
   margin: 30px 0 40px 0
 }
-.index-1 .block-2 .tab-content .anchor {
-  position: relative;
-  top: -40px
+.index-1 .block-1  .anchor {
+  position: absolute;
+  top: 348px
 }
 .index-1 .block-2 .tab-content .tab-content-title {
   border-left: 2px solid #EE4C58;
