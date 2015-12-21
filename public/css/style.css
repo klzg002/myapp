@@ -539,7 +539,7 @@ p {
   }
 }
 .index .block-1 .banner{
-   background-color: #f8f8f8;
+   background-color: #F8F8F8;
 }
 .index .block-1 .banner img{
   height: 500px;
@@ -898,6 +898,7 @@ p {
   }
 }
 .index-1 .block-1 {
+  overflow:hidden;
   position: relative;
   padding: 0 0 20px;
   text-align: center;
@@ -930,7 +931,7 @@ p {
   height: 1350px;
 }
 .index-1 .block-2 .sidebar.CMS,.index-1 .block-2 .sidebar.SEC{
-  height: 1000px;
+  height: 1200px;
 }
 .index-1 .block-2 .sidebar .nav-list {
   border-bottom: 1px solid #dadada;
@@ -989,7 +990,7 @@ p {
   background-color: #fff;
   border-bottom: 1px solid #EE4C58;
   height: 40px;
-  margin: 0 0 15px;
+  margin: 0 0 20px;
   text-align: left;
 }
 .index-1 .block-2 .tab-title ul {

@@ -54,7 +54,7 @@ includecss('css/iDialog.css');
 $(function () {
     if ($('html').hasClass('desktop')) {
         $.srSmoothscroll({
-            step:150,
+            step:120,
             speed:800
         });
     }
@@ -128,8 +128,6 @@ $(document).ready(function(){
     $('#login_btn').trigger("click",!0);
     $('#reg_btn').bind('click',ssoreg);
     $('#logout_btn').bind('click',ssologout);
-    console.log($(".console"));
-    //$(".console").bind('click',chargecon );
     function handler(event,message){
         if(e){
             console.log(e);
@@ -193,6 +191,7 @@ $(document).ready(function(){
     }
     function ssoLogin() {
         var recordurl = window.location.href.replace(/(.*)\?(.*)/,"$1");
+        recordurl = recordurl.replace(/(.*)\#(.*)/,"$1");
         console.log("recordurl:"+recordurl);
         $.ajax({
             type: "GET",
@@ -338,7 +337,7 @@ $(document).ready(function(){
         $("#loginTag")[0].style.display = "block";
         $("#logoutTag")[0].style.display = "none";
         $("#nameSpan")[0].innerHTML = window.localStorage.username;
-        if(window.localStorage.accounttype){
+        if(window.localStorage.accounttype && window.localStorage.accounttype != 0 ){
             $('#appTag')[0].style.display = "block";
             getapprovenum();
             $('#app_btn').attr("href","/admin/"+window.localStorage.account);
