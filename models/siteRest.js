@@ -71,8 +71,8 @@ var siteRest = {
                     });
                     function checkdetail(){
                         console.log("check UserDetail");
-                        var query= UserDetail.find({'userid' : result.loginresponse.userid});
-                        query.exec(function(err,user,checkdetail){
+                        var query= UserDetail.find({'account' : result.loginresponse.account});
+                        query.exec(function(err,user){
                             if(user.length <= 0){
                                 sendresult.loginresponse.userdetail = 1;
                             }else{
@@ -259,7 +259,7 @@ var siteRest = {
     postfeeinfo:function(req,res){
         DbOpt.addOne(UserFee,req, res)
     },
-    getapprovenum : function(reeq,res){
+    getapprovenum : function(req,res){
         UserFee.find({"feestatus": true}).count().exec(function (err, result) {
             if (err) {
                 console.log(err)
@@ -268,7 +268,26 @@ var siteRest = {
                 res.end();
             }
         });
+    },
+    getuserinfo : function(req,res){
+        var params = url.parse(req.url,true).query;
+        var account = params.account;
+        var query = UserDetail.findOne({'account' : account});
+        var result = {};
+        query.exec(function(err,userdetaill){
+            if(userdetaill && userdetaill._id){
+                result = userdetaill;
+                res.send({"ret":0,"info":result});
+                res.end();
+            }else{
+                res.send({"ret": -1,"info":result});
+                res.end();
+            }
+        });
+    },
+    moduserinfo : function(req,res){
+        var params = url.parse(req.url,true).query;
+        DbOpt.updateOneByID(UserDetail,params, res);
     }
-
 };
 module.exports = siteRest;

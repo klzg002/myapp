@@ -51,6 +51,9 @@ app.get('/api?*',function(req, res) {
     case "listEvents":
       siteRest.listEvents(req,res);
       return;
+    case "getuserinfo":
+      siteRest.getuserinfo(req,res);
+      return;
     default :
       console.log("error command");
       return;
@@ -64,6 +67,9 @@ app.post('/api?*',function(req, res) {
       return;
     case "postfeeinfo":
       siteRest.postfeeinfo(req,res);
+      return;
+    case "moduserinfo":
+      siteRest.moduserinfo(req,res);
       return;
     default :
       console.log("error command");

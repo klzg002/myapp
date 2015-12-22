@@ -408,7 +408,7 @@ $(document).ready(function(){
 function chargecon(){
     if( window.localStorage.username && window.localStorage.username != null){
         //window.open("http://cloudmgt.yyuap.com:8080/index.html?code=udn");
-        window.open("http://123.103.9.193:7024/index.html?code=udn");
+        window.location.href="http://123.103.9.193:7024/index.html?code=udn";
     }else{
         console.log("need login");
         $('#login_btn').trigger("click",0);

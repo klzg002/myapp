@@ -30,7 +30,7 @@ var DbOpt = {
     },
     updateOneByID : function(obj,info,res){
         lib_com.writeObj(info);
-        var conditions = {userid : info.userid};
+        var conditions = {account : info.account};
         var update     = {$set :info};
         var options    = {"upsert" : true};
         obj.update(conditions, update, options, function(err,result){
