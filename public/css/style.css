@@ -539,10 +539,10 @@ p {
   }
 }
 .index .block-1 .banner{
-   background-color: #F8F8F8;
+   background-color: #f3f1f1;
 }
 .index .block-1 .banner img{
-  height: 500px;
+  height: 429px;
 }
 
 .index  .mid-top {
@@ -1438,7 +1438,7 @@ p {
   display: none;
 }
 .index-4  .block-1 .banner{
-  background: #262358;
+  background: #0d0d13;
 }
 /*========================================================
 										FOOTER styles

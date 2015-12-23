@@ -8,6 +8,7 @@ var UserSchema = Schema({
     userid:{type : String},
     username: {type : String},
     account: {type : String},
+    type:{type:Number},
     time     : {type : Date, default: Date.now},
 });
 //# 生成表模型，可作为类使用

@@ -49,12 +49,6 @@ var siteRest = {
                 try{
                     var result = bufferHelper.toBuffer();
                     result = JSON.parse(result);
-                    //检查是否指定为管理员
-                    if(settings.adminuser.indexOf(result.loginresponse.account) >= 0){
-                        result.loginresponse.type = 1;
-                    }else{
-                        result.loginresponse.type = 0;
-                    }
                     sendresult.loginresponse = result.loginresponse;
                     //用户是否已记录
                     var query=User.find({'userid' : result.loginresponse.userid});
@@ -62,8 +56,9 @@ var siteRest = {
                         if(user.length <= 0){
                             var obj = {
                                 userid:result.loginresponse.userid,
-                                username: result.loginresponse.username.replace(/\@.*/,''),
+                                username: result.loginresponse.username,
                                 account: result.loginresponse.account,
+                                type:result.loginresponse.type,
                             }
                             DbOpt.addOne(User,obj, res,1)
                         }

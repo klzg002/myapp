@@ -20,6 +20,7 @@ include('js/modal.js');
 /* DEVICE.JS
  ========================================================*/
 include('js/device.min.js');
+include('js/md5.js');
 
 /* Stick up menu
  ========================================================*/
@@ -238,7 +239,7 @@ $(document).ready(function(){
                         window.localStorage.login = true;
                         window.localStorage.account = data.account;
                         window.localStorage.accounttype = data.type;
-                        window.localStorage.username = data.username.replace(/\@.*/,'');;
+                        window.localStorage.username = data.username;
                         window.localStorage.userid = data.userid;
                         window.localStorage.domainid = data.domainid;
                         window.localStorage.zoneid = data.zoneid;
@@ -308,10 +309,15 @@ $(document).ready(function(){
             async:true,
             dataType:"json",
             success:function(data){
-                console.log("OK");
+                $('.balance-num .balance_able')[0].innerHTML = 0;
+                $('.balance-num .balance_uday')[0].innerHTML = 0;
+                $('.someuse')[0].style.display ="block";
+                $('.noneuse')[0].style.display ="none";
+                afertlogin();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
+                ssologout();
             }
         });
     }
@@ -340,7 +346,7 @@ $(document).ready(function(){
         if(window.localStorage.accounttype && window.localStorage.accounttype != 0 ){
             $('#appTag')[0].style.display = "block";
             getapprovenum();
-            $('#app_btn').attr("href","/admin/"+window.localStorage.account);
+            $('#app_btn').attr("href","/admin/"+hex_md5(window.localStorage.account)+"/index");
 
         }
         if (window.localStorage.getItem("sessionkey") != null) {
@@ -350,33 +356,37 @@ $(document).ready(function(){
             }, 1000 * 60 * 10)
         }
     }
-    function showloginState()
-    {
-        $.ajax({
-            type: "GET",
-            url: "api?command=getaccountbalance&response=json&sessionkey="+window.localStorage.sessionkey,
-            async: true,
-            dataType: "json",
-            success: function (data, textStatus) {
-                if(data.errorcode == null) {
-                    $('.balance-num .balance_able')[0].innerHTML = data.accountbalance.balance;
-                    if(data.accountbalance.dayConsume == 0){
-                        $('.someuse')[0].style.display ="none";
-                        $('.noneuse')[0].style.display ="block";
+    function showloginState(){
+        if(window.localStorage.accounttype == 1){
+            keeplogin();
+        }else{
+            $.ajax({
+                type: "GET",
+                url: "api?command=getaccountbalance&response=json&sessionkey="+window.localStorage.sessionkey,
+                async: true,
+                dataType: "json",
+                success: function (data, textStatus) {
+                    if(data.errorcode == null) {
+                        $('.balance-num .balance_able')[0].innerHTML = data.accountbalance.balance;
+                        if(data.accountbalance.dayConsume == 0){
+                            $('.someuse')[0].style.display ="none";
+                            $('.noneuse')[0].style.display ="block";
+                        }else{
+                            $('.balance-num .balance_uday')[0].innerHTML = parseInt( data.accountbalance.balance*1000/data.accountbalance.dayConsume*1000 );
+                        }
+                        afertlogin();
                     }else{
-                        $('.balance-num .balance_uday')[0].innerHTML = parseInt( data.accountbalance.balance*1000/data.accountbalance.dayConsume*1000 );
+                        console.log("blance select error");
+                        ssologout();
                     }
-                    afertlogin();
-                }else{
-                    console.log("blance select error");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
                     ssologout();
                 }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
-                ssologout();
-            }
-        });
+            });
+        }
+
     }
     var button_toggle = true;
     $(".account_info").hover(function () {
