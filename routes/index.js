@@ -3,8 +3,8 @@ exports.setRequestUrl=function(app){
       ,siteRest = require("../models/siteRest")
       ,admin = require("../models/controllers/admin");
 
-    app.get('/admin/:account/index',admin.index);
-    app.get('/admin/:account/userList',admin.userList);
+    app.get('/admin/:sessionkey/index',admin.index);
+    app.get('/admin/:sessionkey/userUsage',admin.userList);
     app.post('/admin/api',admin.approve);
   //var user = require('./Controllers/user')
   //    ,indexObj = require('./controllers/index')

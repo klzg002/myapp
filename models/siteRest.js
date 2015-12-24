@@ -112,14 +112,23 @@ var siteRest = {
                 bufferHelper.concat(chunk);
             }).on('error',function(e){
                 console.log("RESPONSE ERROR"+e.message);
+                res.end("error");
             }).on("end", function () {
                 var result = bufferHelper.toBuffer();
-                res.send(sendresult);
-                res.end();
+                result = JSON.parse(result);
+                if( result.listzonesresponse.errorcode && result.listzonesresponse.errorcode == 401){
+                    console.log("RSA error");
+                    res.end("error");
+                }else{
+                    console.log("RSA success");
+                    res.send("success");
+                    res.end();
+                }
             });
         });
         httpreq.on('error', function(err){
             console.log('REQUEST ERROR: ' + err);
+            res.end("error");
         });
         httpreq.end();
 
@@ -283,6 +292,81 @@ var siteRest = {
     moduserinfo : function(req,res){
         var params = url.parse(req.url,true).query;
         DbOpt.updateOneByID(UserDetail,params, res);
+    },
+    serverloginrsa : function(sessionkey,res,callback){
+        var date = (new Date()).getTime();
+        var path = "/api?command=listZones&networktype=Advanced&page=1&pagesize=1&response=json&sessionkey="+sessionkey+ "&_=" + date;
+        console.log("get session:"+settings.mgt_session);
+        var options = {
+            hostname: settings.mgt_hostname,
+            port: settings.mgt_port,
+            path: path,
+            method: 'GET',
+            headers: {
+                "Cookie" : settings.mgt_session,
+            },
+        };
+        var httpreq = http.request(options,function(httpres){
+            httpres.setEncoding('utf8');
+            var bufferHelper = new BufferHelper();
+            httpres.on('data',function(chunk){
+                bufferHelper.concat(chunk);
+            }).on('error',function(e){
+                console.log("RESPONSE ERROR"+e.message);
+                res.redirect("/");
+            }).on("end", function () {
+                var result = bufferHelper.toBuffer();
+                result = JSON.parse(result);
+                if( result.listzonesresponse.errorcode && result.listzonesresponse.errorcode == 401){
+                    res.redirect("/");
+                    res.end();
+                    callback(0);
+                }else{
+                    callback(1);
+                }
+            });
+        });
+        httpreq.on('error', function(err){
+            console.log('REQUEST ERROR: ' + err);
+            res.redirect("/");
+        });
+        httpreq.end();
+    },
+    serverkeeplogin:function(sessionkey){
+        var date = (new Date()).getTime();
+        var path = "/api?command=listZones&networktype=Advanced&page=1&pagesize=1&response=json&sessionkey="+sessionkey+ "&_=" + date;
+        console.log("get session:"+settings.mgt_session);
+        var options = {
+            hostname: settings.mgt_hostname,
+            port: settings.mgt_port,
+            path: path,
+            method: 'GET',
+            headers: {
+                "Cookie" : settings.mgt_session,
+            },
+        };
+        var httpreq = http.request(options,function(httpres){
+            httpres.setEncoding('utf8');
+            var bufferHelper = new BufferHelper();
+            httpres.on('data',function(chunk){
+                bufferHelper.concat(chunk);
+            }).on('error',function(e){
+                console.log("RESPONSE ERROR"+e.message);
+            }).on("end", function () {
+                var result = bufferHelper.toBuffer();
+                result = JSON.parse(result);
+                if( result.listzonesresponse.errorcode && result.listzonesresponse.errorcode == 401){
+                    console.log("login error");
+                }else{
+                    console.log("login success");
+                }
+            });
+        });
+        httpreq.on('error', function(err){
+            console.log('REQUEST ERROR: ' + err);
+            res.redirect("/");
+        });
+        httpreq.end();
     }
 };
 module.exports = siteRest;

@@ -20,7 +20,7 @@ include('js/modal.js');
 /* DEVICE.JS
  ========================================================*/
 include('js/device.min.js');
-include('js/md5.js');
+include('js/des.js');
 
 /* Stick up menu
  ========================================================*/
@@ -307,13 +307,18 @@ $(document).ready(function(){
             url:"/api?command=keepalive&session="+window.localStorage.sessionkey,
             type:"get",
             async:true,
-            dataType:"json",
+            dataType:"text",
             success:function(data){
-                $('.balance-num .balance_able')[0].innerHTML = 0;
-                $('.balance-num .balance_uday')[0].innerHTML = 0;
-                $('.someuse')[0].style.display ="block";
-                $('.noneuse')[0].style.display ="none";
-                afertlogin();
+                if(data == "success"){
+                    $('.balance-num .balance_able')[0].innerHTML = 0;
+                    $('.balance-num .balance_uday')[0].innerHTML = 0;
+                    $('.someuse')[0].style.display ="block";
+                    $('.noneuse')[0].style.display ="none";
+                    afertlogin();
+                }else{
+                    ssologout();
+                }
+
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
@@ -346,7 +351,7 @@ $(document).ready(function(){
         if(window.localStorage.accounttype && window.localStorage.accounttype != 0 ){
             $('#appTag')[0].style.display = "block";
             getapprovenum();
-            $('#app_btn').attr("href","/admin/"+hex_md5(window.localStorage.account)+"/index");
+            $('#app_btn').attr("href","/admin/"+window.localStorage.sessionkey+"/index");
 
         }
         if (window.localStorage.getItem("sessionkey") != null) {

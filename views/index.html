@@ -51,7 +51,7 @@
                 <!--<span class="icon-bar"></span>-->
                 <!--<span class="icon-bar"></span>-->
             <!--</button>-->
-            <a class="navbar-brand" href="../index.html">UAPCLOUD 1.0</a>
+            <a class="navbar-brand" href="../../index.html">UAPCLOUD 1.0</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -67,7 +67,7 @@
                     <!--<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>-->
                     <!--</li>-->
                     <!--<li class="divider"></li>-->
-                    <li><a href="../index.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="../../index.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -87,7 +87,7 @@
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 用户信息<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="userList">用户列表</a>
+                                <a class="userusage" href="./userUsage">用户用量</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -184,6 +184,8 @@
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
     $(document).ready(function() {
+
+//        $('.userusage').attr("href","./")
         $('#article').dataTable({
             "aoColumnDefs": [
                 { "bSearchable": false, "bVisible": false, "aTargets": [ 0,8] },//bSearchable：是否可搜索；bVisible：是否可见；aTargets：哪一列
