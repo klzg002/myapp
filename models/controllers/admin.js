@@ -47,34 +47,22 @@ exports.approve = function (req, res, next) {
 
 exports.userList = function (req, res, next) {
 
-    chargeUser(req.params.sessionkey,res,function(){
-        var feelist = [];
-        res.render('index.html', {"feelist": feelist});
+    chargeUser(req.params.sessionkey,res,function(sessionkey){
+        var userlist = siteRest.getuserList(sessionkey) || [];
+        res.render('userusage.html', {"userlist": userlist});
     });
 
-    //var args = url.parse(req.url,true).query;
-    //var _id = args._id;
-    ////默认排序查询条件
-    //UserFee.findByIdAndUpdate(_id,{$set:{feestatus:false}},function(err,userfee){
-    //    if(err){
-    //        res.end(err.toString());
-    //    }else {
-    //        if(userfee){
-    //            res.end('success');
-    //        }else{
-    //            res.end('update num'+userfee+'error num please check');
-    //        }
-    //    }
-    //});
 };
 
 var chargeUser = function(sessionkey,res,callback){
     siteRest.serverloginrsa(sessionkey,res,function(ret){
         if(ret){
-            setInterval(function(){
-                siteRest.serverkeeplogin(sessionkey);
-            },1000*60*10);
-            callback();
+            if(settings.keepalive == null){
+                settings.keepalive = setInterval(function(){
+                    siteRest.serverkeeplogin(sessionkey);
+                },1000*60*10);
+            }
+            callback(sessionkey);
         }
     });
 }

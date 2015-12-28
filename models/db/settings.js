@@ -36,6 +36,7 @@ module.exports = {
 	mgt_path: "/api",
 	mgt_session:"",
 
+
 //手工指定管理员
-	adminuser:["cuibq@yonyou.com","2004-liqing@163.com"],
+	keepalive: "",
 };

@@ -79,7 +79,6 @@
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
-
                     <li>
                         <a href="./index"><i class="fa fa-dashboard fa-fw"></i>审批</a>
                     </li>
@@ -119,33 +118,35 @@
                             <table class="table table-striped table-bordered table-hover" id="article">
                                 <thead>
                                 <tr>
-                                    <th>_id</th>
                                     <th>账户</th>
-                                    <th>发票金额</th>
-                                    <th>发票类型</th>
-                                    <th>发票抬头</th>
-                                    <th>收件人</th>
-                                    <th>收件人地址</th>
-                                    <th>联系电话</th>
-                                    <th>操作时间</th>
-                                    <th>审批操作</th>
+                                    <th>手机号</th>
+                                    <th>公司名称</th>
+                                    <th>运行虚拟机/台</th>
+                                    <th>停止虚拟机/台</th>
+                                    <th>运行CPU/核</th>
+                                    <th>运行内存/G</th>
+                                    <th>CPU总/核</th>
+                                    <th>内存总/G</th>
+                                    <th>硬盘总/G</th>
+                                    <th>计费/元</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% for (var i = 0;i <feelist.length; i++) {
-                                var feearticle = feelist[i];
+                                <% for (var i = 0;i <userlist.length; i++) {
+                                var user = userlist[i];
                                 %>
                                 <tr class="gradeA even">
-                                    <td><%- feearticle._id%></td>
-                                    <td><%- feearticle.account%></td>
-                                    <td><%- feearticle.feenum%></td>
-                                    <td class="center"><%- feearticle.feetype%></td>
-                                    <td class="center"><%- feearticle.feehead%></td>
-                                    <td><%- feearticle.feeuser%></td>
-                                    <td><%- feearticle.feeaddress%></td>
-                                    <td class="center"><%- feearticle.feephone%></td>
-                                    <td class="center"><%- feearticle.recordtime%></td>
-                                    <td class="center"><a class="btn_approve btn-primary approve" data-bind="<%- feearticle._id%>">审批</a></td>
+                                    <td><%- user.name%></td>
+                                    <td><%- user.phone%></td>
+                                    <td><%- user.copyright%></td>
+                                    <td class="center"><%- user.vmrunning%></td>
+                                    <td class="center"><%- user.vmstopped%></td>
+                                    <td><%- user.runningvmscputotal%></td>
+                                    <td><%- user.runningvmsmemorytotal%></td>
+                                    <td class="center"><%- user.cputotal%></td>
+                                    <td class="center"><%- user.memorytotal%></td>
+                                    <td class="center"><%- user.primarystoragetotal%></td>
+                                    <td class="center"><%- user.billing%></td>
                                 </tr>
                                 <%} %>
                                 </tbody>
