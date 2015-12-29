@@ -16,8 +16,10 @@ BufferHelper.prototype.concat = function (buffer) {
 };
 
 BufferHelper.prototype._concat = function (buffer) {
-    this.buffers.push(buffer);
-    this.size = (this.size + buffer.length)*2;
+    var bufstr  = new Buffer(buffer);
+    //this.buffers.push(buffer);
+    this.buffers.push(bufstr);
+    this.size = this.size + buffer.length;
     this._status = "changed";
     return this;
 };
@@ -51,8 +53,8 @@ BufferHelper.prototype.toBuffer = function () {
     return this._status === "computed" ? this.buffer : this._toBuffer();
 };
 
-BufferHelper.prototype.toString = function () {
-    return Buffer.prototype.toString.apply(this.toBuffer(), arguments);
-};
+//BufferHelper.prototype.toString = function () {
+//    return Buffer.prototype.toString.apply(this.toBuffer(), arguments);
+//};
 
 module.exports = BufferHelper;

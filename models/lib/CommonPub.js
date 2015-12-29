@@ -22,13 +22,22 @@ exports.httprequest = function(options,callback){
         httpres.setEncoding('utf8');
         var bufferHelper = new BufferHelper();
         httpres.on('data',function(chunk){
+            console.log(typeof chunk)
             bufferHelper.concat(chunk);
         }).on('error',function(e){
             console.log("RESPONSE ERROR"+e.message);
             httpreq.end();
         }).on("end", function () {
             try{
-                var result = JSON.parse(bufferHelper.toBuffer());
+                var subresult= bufferHelper.toBuffer().toString();
+                try{
+                    var result = JSON.parse(subresult);
+                }catch(e){
+                    console.log("~~~~~~~"+e);
+                }
+                //var result = eval('('+subresult2+')');
+                //var result = JSON.parse(bufferHelper.toBuffer().toString());
+                httpreq.end();
                 callback(result);
             }catch (e) {
                 httpreq.end();

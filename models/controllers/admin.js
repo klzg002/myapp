@@ -57,7 +57,7 @@ exports.userList = function (req, res, next) {
 var chargeUser = function(sessionkey,res,callback){
     siteRest.serverloginrsa(sessionkey,res,function(ret){
         if(ret){
-            if(settings.keepalive == null){
+            if(!settings.keepalive){
                 settings.keepalive = setInterval(function(){
                     siteRest.serverkeeplogin(sessionkey);
                 },1000*60*10);
