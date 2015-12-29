@@ -133,12 +133,15 @@
                                 </thead>
                                 <tbody>
                                 <% for (var i = 0;i <userlist.length; i++) {
-                                var user = userlist[i];
+                                       for (var j = 0;j <users.length; j++) {
+                                            var user = userlist[i];
+                                            var userinfo = users[j];
+                                            if(user.name == userinfo.account){
                                 %>
                                 <tr class="gradeA even">
                                     <td><%- user.name%></td>
-                                    <td><%- user.phone%></td>
-                                    <td><%- user.copyright%></td>
+                                    <td><%- userinfo.phone%></td>
+                                    <td><%- userinfo.copyright%></td>
                                     <td class="center"><%- user.vmrunning%></td>
                                     <td class="center"><%- user.vmstopped%></td>
                                     <td><%- user.runningvmscputotal%></td>
@@ -148,6 +151,8 @@
                                     <td class="center"><%- user.primarystoragetotal%></td>
                                     <td class="center"><%- user.billing%></td>
                                 </tr>
+                                <%} %>
+                                <%} %>
                                 <%} %>
                                 </tbody>
                             </table>
@@ -189,7 +194,7 @@
 //        $('.userusage').attr("href","./")
         $('#article').dataTable({
             "aoColumnDefs": [
-                { "bSearchable": false, "bVisible": false, "aTargets": [ 0,8] },//bSearchable：是否可搜索；bVisible：是否可见；aTargets：哪一列
+//                { "bSearchable": false, "bVisible": false, "aTargets": [ 0,8] },//bSearchable：是否可搜索；bVisible：是否可见；aTargets：哪一列
                 {
                     "aTargets": [9],"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                     $(nTd).css({'vertical-align':'middle','text-align':'center'})
@@ -214,43 +219,6 @@
             }
         });
 
-        var approvelist = $('.approve');
-        approvelist.bind('click',function(){
-            var id = $(this).data('bind');
-            $.dialog({
-                id:'btndialog',
-                title:'审批',
-                content:'确定审批通过？',
-                width:500,
-                btn: {                      //可以任意定义按钮个数
-                    ok: {                     //按钮的key值，下次可用个btn方法从新设置
-                        val: '确定',            //按钮显示的文本
-                        type: 'red',         //样式可选参数 green, blue, red, yellow .默认白色。
-                        click: function(btn) {
-                            $.ajax({
-                                type: "POST",
-                                url: "api?command=updateapprove&response=json&_id="+id,
-                                async: true,
-                                dataType: "text",
-                                success: function (data, textStatus) {
-                                    if(data == "success"){
-                                        window.location.reload();
-                                    }else{
-                                        console.log(data);
-                                    }
-                                },
-                                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                    console.log("error occur :\n错误代码 " + XMLHttpRequest.status + "\n处理代码 " + XMLHttpRequest.readyState + "\n错误内容 " + textStatus);
-                                }
-                            });
-                        }
-                    },
-                    cancle: {                //第二个按钮
-                        val: '取消'
-                    }
-                }
-            });
-        });
     });
 </script>
 

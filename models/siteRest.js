@@ -367,109 +367,97 @@ var siteRest = {
         });
         httpreq.end();
     },
-    getuserList:function(sessionkey) {
+    getuserList:function(sessionkey,callback) {
         var priceInfos = {}, runningVmsUsageByAcc = {}, totalUsagesByAcc = {};
         var accountCapacities = new Array;
-        UserDetail.find({}, function (err, userlist) {
-            if(err){
-                return accountCapacities;
+
+        var options = {
+            hostname: settings.mgt_hostname,
+            port: settings.mgt_port,
+            path: "/api?command=listresourceprices&listall=true&response=json&sessionkey=" + sessionkey,
+            method: 'GET',
+            headers: {
+                "Cookie": settings.mgt_session,
+            },
+        };
+
+        lib_com.httprequest(options, function (json) {
+            var prices = json.listresourcepricesresponse.resourceprice || [];
+            for (var i in prices) {
+                priceInfos[prices[i].resourcename] = prices[i];
             }
             var options = {
                 hostname: settings.mgt_hostname,
                 port: settings.mgt_port,
-                path: "/api?command=listresourceprices&listall=true&response=json&sessionkey=" + sessionkey,
+                path: "/api?command=listRunningVmsUsage&listall=true&response=json&sessionkey=" + sessionkey,
                 method: 'GET',
                 headers: {
                     "Cookie": settings.mgt_session,
                 },
             };
-
             lib_com.httprequest(options, function (json) {
-                var prices = json.listresourcepricesresponse.resourceprice || [];
-                for (var i in prices) {
-                    priceInfos[prices[i].resourcename] = prices[i];
+                var runningVmsUsages = json.listrunningvmsusageresponse.runningvmsusage || [];
+                for (var i in runningVmsUsages) {
+                    if (!runningVmsUsageByAcc[runningVmsUsages[i].accountid]) {
+                        runningVmsUsageByAcc[runningVmsUsages[i].accountid] = runningVmsUsages[i];
+                    }
                 }
                 var options = {
                     hostname: settings.mgt_hostname,
                     port: settings.mgt_port,
-                    path: "/api?command=listRunningVmsUsage&listall=true&response=json&sessionkey=" + sessionkey,
+                    path: "/api?command=listtotalusage&listall=true&response=json&sessionkey=" + sessionkey,
                     method: 'GET',
                     headers: {
                         "Cookie": settings.mgt_session,
                     },
                 };
                 lib_com.httprequest(options, function (json) {
-                    var runningVmsUsages = json.listrunningvmsusageresponse.runningvmsusage || [];
-                    for (var i in runningVmsUsages) {
-                        if (!runningVmsUsageByAcc[runningVmsUsages[i].accountid]) {
-                            runningVmsUsageByAcc[runningVmsUsages[i].accountid] = runningVmsUsages[i];
+                    var totalUsages = json.listtotalusageresponse.allusage || [];
+
+                    for (var i in totalUsages) {
+                        if (!totalUsagesByAcc[totalUsages[i].accountid]) {
+                            totalUsagesByAcc[totalUsages[i].accountid] = {};
+                        }
+                        if (totalUsages[i].type == "cpu") {
+                            totalUsagesByAcc[totalUsages[i].accountid]["cpu"] = totalUsages[i].allusage;
+                        } else if (totalUsages[i].type == "memory") {
+                            totalUsagesByAcc[totalUsages[i].accountid]["memory"] = totalUsages[i].allusage;
+                        } else if (totalUsages[i].type == "disk") {
+                            totalUsagesByAcc[totalUsages[i].accountid]["disk"] = totalUsages[i].allusage;
                         }
                     }
                     var options = {
                         hostname: settings.mgt_hostname,
                         port: settings.mgt_port,
-                        path: "/api?command=listtotalusage&listall=true&response=json&sessionkey=" + sessionkey,
+                        path: "/api?command=listAccounts&listall=true&page=1&pagesize=60&response=json&sessionkey=" + sessionkey,
                         method: 'GET',
                         headers: {
                             "Cookie": settings.mgt_session,
                         },
                     };
                     lib_com.httprequest(options, function (json) {
-                        var totalUsages = json.listtotalusageresponse.allusage || [];
+                        var allAccount = json.listaccountsresponse.account || [];
+                        allAccount.forEach(function (account) {
+                            account.cputotal = account.cputotal.toFixed(2);
+                            account.memorytotal = (account.memorytotal / 1024).toFixed(2);
+                            account.runningvmsmemorytotal = (runningVmsUsageByAcc[account.id].memory / 1024).toFixed(2);
+                            account.runningvmscputotal = runningVmsUsageByAcc[account.id].cpunumber;
+                            if (!account.vmrunning)
+                                account.vmrunning = 0;
+                            if (!account.vmstopped)
+                                account.vmstopped = 0;
 
-                        for (var i in totalUsages) {
-                            if (!totalUsagesByAcc[totalUsages[i].accountid]) {
-                                totalUsagesByAcc[totalUsages[i].accountid] = {};
-                            }
-                            if (totalUsages[i].type == "cpu") {
-                                totalUsagesByAcc[totalUsages[i].accountid]["cpu"] = totalUsages[i].allusage;
-                            } else if (totalUsages[i].type == "memory") {
-                                totalUsagesByAcc[totalUsages[i].accountid]["memory"] = totalUsages[i].allusage;
-                            } else if (totalUsages[i].type == "disk") {
-                                totalUsagesByAcc[totalUsages[i].accountid]["disk"] = totalUsages[i].allusage;
-                            }
-                        }
-                        var options = {
-                            hostname: settings.mgt_hostname,
-                            port: settings.mgt_port,
-                            path: "/api?command=listAccounts&listall=true&page=1&pagesize=60&response=json&sessionkey=" + sessionkey,
-                            method: 'GET',
-                            headers: {
-                                "Cookie": settings.mgt_session,
-                            },
-                        };
-                        lib_com.httprequest(options, function (json) {
-                            var allAccount = json.listaccountsresponse.account || [];
-                            allAccount.forEach(function (account) {
-                                userlist.forEach(function(u){
-                                    if(account.name == u._doc.account){
-                                        var flag = 1;
-                                        account.phone = u._doc.phone;
-                                        account.copyright = u._doc.copyright;
-                                    }
-                                });
-                                if($flag){
-                                    account.cputotal = account.cputotal.toFixed(2);
-                                    account.memorytotal = (account.memorytotal / 1024).toFixed(2);
-                                    account.runningvmsmemorytotal = (runningVmsUsageByAcc[account.id].memory / 1024).toFixed(2);
-                                    account.runningvmscputotal = runningVmsUsageByAcc[account.id].cpunumber;
-                                    if (!account.vmrunning)
-                                        account.vmrunning = 0;
-                                    if (!account.vmstopped)
-                                        account.vmstopped = 0;
+                            account.cpuUsed = (parseInt(totalUsagesByAcc[account.id].cpu) / (60 * 60)).toFixed(3);
+                            account.memoryUsed = (parseInt(totalUsagesByAcc[account.id].memory) / (1024 * 60 * 60)).toFixed(3);
+                            account.diskUsed = (parseInt(totalUsagesByAcc[account.id].disk) / (1024 * 1024 * 1024 * 60 * 60)).toFixed(3);
 
-                                    account.cpuUsed = (parseInt(totalUsagesByAcc[account.id].cpu) / (60 * 60)).toFixed(3);
-                                    account.memoryUsed = (parseInt(totalUsagesByAcc[account.id].memory) / (1024 * 60 * 60)).toFixed(3);
-                                    account.diskUsed = (parseInt(totalUsagesByAcc[account.id].disk) / (1024 * 1024 * 1024 * 60 * 60)).toFixed(3);
+                            account.billing = (account.cpuUsed * priceInfos["cpu"].price + account.memoryUsed * priceInfos["memory"].price + account.diskUsed * priceInfos["disk"].price).toFixed(3);
 
-                                    account.billing = (account.cpuUsed * priceInfos["cpu"].price + account.memoryUsed * priceInfos["memory"].price + account.diskUsed * priceInfos["disk"].price).toFixed(3);
-
-                                    accountCapacities.push(account);
-                                    return accountCapacities;
-                                }
-                            });
+                            accountCapacities.push(account);
                         });
+                        callback(accountCapacities);
                     });
+
                 });
             });
         });

@@ -22,7 +22,6 @@ exports.httprequest = function(options,callback){
         httpres.setEncoding('utf8');
         var bufferHelper = new BufferHelper();
         httpres.on('data',function(chunk){
-            console.log(typeof chunk)
             bufferHelper.concat(chunk);
         }).on('error',function(e){
             console.log("RESPONSE ERROR"+e.message);

@@ -9,6 +9,8 @@ var settings = require("../db/settings");
 var siteRest = require("../siteRest");
 //用户账单实体类
 var UserFee = require("../db/UserFee");
+//用户详情实体类
+var UserDetail = require("../db/UserDetail");
 //用户实体类
 var User = require("../db/User");
 ////数据库操作对象
@@ -48,8 +50,13 @@ exports.approve = function (req, res, next) {
 exports.userList = function (req, res, next) {
 
     chargeUser(req.params.sessionkey,res,function(sessionkey){
-        var userlist = siteRest.getuserList(sessionkey) || [];
-        res.render('userusage.html', {"userlist": userlist});
+        siteRest.getuserList(sessionkey,function(userlist){
+            UserDetail.find({}).exec(function (err, users) {
+                res.render('userusage.html', {"userlist": userlist,"users":users});
+            });
+        });
+
+
     });
 
 };
