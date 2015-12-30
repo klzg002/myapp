@@ -10,6 +10,7 @@ $(document).ready(function(){
         account: window.localStorage.account,
         userid: window.localStorage.userid,
     };
+    var redirecturi = getQueryString("redirecturi");
     var Info = {
         el: $('html'),
         errorcode: {
@@ -89,7 +90,11 @@ $(document).ready(function(){
             success:function(data){
                 console.log(data);
                 if(data == "success"){
-                    window.location.href = "index.html";
+                    if(redirecturi){
+                        window.location.href = redirecturi;
+                    }else{
+                        window.location.href = "index.html";
+                    }
                 }else{
                     status_flag = 3;
                     showdialog(status_flag,data);
@@ -121,6 +126,12 @@ $(document).ready(function(){
     function filterInput() {
         event.srcElement.value = event.srcElement.value.replace(/[^0-9]/g, "");
 
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
     }
 });
 

@@ -17,6 +17,9 @@ var UserBill = require("../models/db/UserBill");
 var UserFee = require("../models/db/UserFee");
 //数据库操作对象
 var DbOpt = require("../models/db/Dbopt");
+//http://blog.fens.me/nodejs-async/
+//异步流程控制Async
+var async = require('async');
 //时间格式化
 //var moment = require('moment');
 //mongoose.connect('mongodb://'+settings.USERNAME+':'+settings.PASSWORD+'@'+settings.HOST+':'+settings.PORT+'/'+settings.DB+'');
@@ -205,9 +208,7 @@ var siteRest = {
             }).on("end", function () {
                 var result = bufferHelper.toBuffer().toString();
                 result = JSON.parse(result);
-                //lib_com.writeObj(result);
                 sendresult = result.getaccountbalanceresponse;
-                //lib_com.writeObj(sendresult);
                 res.send(sendresult);
                 res.end();
             });
@@ -437,25 +438,39 @@ var siteRest = {
                     };
                     lib_com.httprequest(options, function (json) {
                         var allAccount = json.listaccountsresponse.account || [];
-                        allAccount.forEach(function (account) {
-                            account.cputotal = account.cputotal.toFixed(2);
-                            account.memorytotal = (account.memorytotal / 1024).toFixed(2);
-                            account.runningvmsmemorytotal = (runningVmsUsageByAcc[account.id].memory / 1024).toFixed(2);
-                            account.runningvmscputotal = runningVmsUsageByAcc[account.id].cpunumber;
-                            if (!account.vmrunning)
-                                account.vmrunning = 0;
-                            if (!account.vmstopped)
-                                account.vmstopped = 0;
+                        async.mapSeries(allAccount,function(account,callback){
+                            var options = {
+                                hostname: settings.mgt_hostname,
+                                port: settings.mgt_port,
+                                path: "/api?command=getaccountbalance&response=json&sessionkey=" + sessionkey+"&id="+account.id,
+                                method: 'GET',
+                                headers: {
+                                    "Cookie": settings.mgt_session,
+                                },
+                            };
+                            lib_com.httprequest(options, function (json) {
+                                account.cputotal = account.cputotal.toFixed(2);
+                                account.memorytotal = (account.memorytotal / 1024).toFixed(2);
+                                account.runningvmsmemorytotal = (runningVmsUsageByAcc[account.id].memory / 1024).toFixed(2);
+                                account.runningvmscputotal = runningVmsUsageByAcc[account.id].cpunumber;
+                                if (!account.vmrunning)
+                                    account.vmrunning = 0;
+                                if (!account.vmstopped)
+                                    account.vmstopped = 0;
 
-                            account.cpuUsed = (parseInt(totalUsagesByAcc[account.id].cpu) / (60 * 60)).toFixed(3);
-                            account.memoryUsed = (parseInt(totalUsagesByAcc[account.id].memory) / (1024 * 60 * 60)).toFixed(3);
-                            account.diskUsed = (parseInt(totalUsagesByAcc[account.id].disk) / (1024 * 1024 * 1024 * 60 * 60)).toFixed(3);
-
-                            account.billing = (account.cpuUsed * priceInfos["cpu"].price + account.memoryUsed * priceInfos["memory"].price + account.diskUsed * priceInfos["disk"].price).toFixed(3);
-
-                            accountCapacities.push(account);
+                                account.cpuUsed = (parseInt(totalUsagesByAcc[account.id].cpu) / (60 * 60)).toFixed(3);
+                                account.memoryUsed = (parseInt(totalUsagesByAcc[account.id].memory) / (1024 * 60 * 60)).toFixed(3);
+                                account.diskUsed = (parseInt(totalUsagesByAcc[account.id].disk) / (1024 * 1024 * 1024 * 60 * 60)).toFixed(3);
+                                account.billing = (account.cpuUsed * priceInfos["cpu"].price + account.memoryUsed * priceInfos["memory"].price + account.diskUsed * priceInfos["disk"].price).toFixed(3);
+                                callback(null,account);
+                            });
+                        },function(err,accountCapacities){
+                            callback(accountCapacities);
                         });
-                        callback(accountCapacities);
+                        //allAccount.forEach(function (account) {
+                        //
+                        //});
+
                     });
 
                 });

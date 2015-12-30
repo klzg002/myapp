@@ -14,6 +14,7 @@ var DbOpt = {
             var params = url.parse(req.url,true).query;
             lib_com.writeObj(params);
             var newObj = new obj(params);
+
             newObj.save(function(err){
                 if(err){
                     res.end(err.toString());

@@ -770,7 +770,12 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (data, textStatus) {
                     if(data) {
-                        $('.price-cnt .price-bla')[0].innerHTML = data.accountbalance.balance;
+                        if(window.localStorage.accounttype){
+                            $('.price-cnt .price-bla')[0].innerHTML = 0;
+                        }else{
+                            $('.price-cnt .price-bla')[0].innerHTML = data.accountbalance.balance;
+                        }
+
                     }else{
                         console.log("blance select error");
                         $('.price-cnt .price-bla')[0].innerHTML = 0;

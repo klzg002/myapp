@@ -101,7 +101,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">发票申请审批</h3>
+                <h3 class="page-header">用户用量</h3>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -110,7 +110,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        发票申请详情
+                        用户使用详情
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
@@ -129,19 +129,25 @@
                                     <th>内存总/G</th>
                                     <th>硬盘总/G</th>
                                     <th>计费/元</th>
+                                    <th>余额/元</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <% for (var i = 0;i <userlist.length; i++) {
+                                    var user = userlist[i];
+                                    var phone="",copyright="";
                                        for (var j = 0;j <users.length; j++) {
-                                            var user = userlist[i];
                                             var userinfo = users[j];
                                             if(user.name == userinfo.account){
+                                                phone = userinfo.phone;
+                                                copyright = userinfo.copyright;
+                                            }
+                                       }
                                 %>
                                 <tr class="gradeA even">
                                     <td><%- user.name%></td>
-                                    <td><%- userinfo.phone%></td>
-                                    <td><%- userinfo.copyright%></td>
+                                    <td><%- phone%></td>
+                                    <td><%- copyright%></td>
                                     <td class="center"><%- user.vmrunning%></td>
                                     <td class="center"><%- user.vmstopped%></td>
                                     <td><%- user.runningvmscputotal%></td>
@@ -150,9 +156,12 @@
                                     <td class="center"><%- user.memorytotal%></td>
                                     <td class="center"><%- user.primarystoragetotal%></td>
                                     <td class="center"><%- user.billing%></td>
+                                    <% if(user.accountdetails){%>
+                                    <td class="center"><%- user.accountdetails["account.balance"]%></td>
+                                    <%}else{ %>
+                                    <td class="center">0</td>
+                                    <%} %>
                                 </tr>
-                                <%} %>
-                                <%} %>
                                 <%} %>
                                 </tbody>
                             </table>
@@ -183,7 +192,7 @@
 <!-- DataTables JavaScript -->
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/dataTables.bootstrap.min.js"></script>
-<script src="../js/jquery.idialog.js"></script>
+<script src="../js/jquery.iDialog.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="../js/sb-admin-2.js"></script>

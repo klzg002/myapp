@@ -20,7 +20,6 @@ include('js/modal.js');
 /* DEVICE.JS
  ========================================================*/
 include('js/device.min.js');
-include('js/des.js');
 
 /* Stick up menu
  ========================================================*/
@@ -131,29 +130,31 @@ $(document).ready(function(){
     $('#logout_btn').bind('click',ssologout);
     function handler(event,message){
         if(e){
-            console.log(e);
-            $.dialog({
-                title:'错误提示',
-                width:400,
-                height:130,
-                opacity:.5,
-                id:'auto-hide',
-                time:3000,
-                lock:true,
-                content:'<div style="text-align: center"><p>登录超时，请重新登录。</p><p><span id="my-time" style="color:#EE4C58">3</span> 秒后自动关闭！</p></div>',
-                show: function(){
-                    var index = 3,
-                        $time = $('#my-time').html(index),
-                        that = this;
-                    var interval = setInterval(function(){
-                        if(--index<1){
-                            clearInterval(interval);
-                            that.hide();
-                        }
-                        $time.html( index );
-                    },1000);
-                }
-            });
+            if(e=="timeout") {
+                console.log(e);
+                $.dialog({
+                    title: '错误提示',
+                    width: 400,
+                    height: 130,
+                    opacity: .5,
+                    id: 'auto-hide',
+                    time: 3000,
+                    lock: true,
+                    content: '<div style="text-align: center"><p>登录超时，请重新登录。</p><p><span id="my-time" style="color:#EE4C58">3</span> 秒后自动关闭！</p></div>',
+                    show: function () {
+                        var index = 3,
+                            $time = $('#my-time').html(index),
+                            that = this;
+                        var interval = setInterval(function () {
+                            if (--index < 1) {
+                                clearInterval(interval);
+                                that.hide();
+                            }
+                            $time.html(index);
+                        }, 1000);
+                    }
+                });
+            }
             setTimeout(function(){
                 ssologout();
             },3000)
@@ -169,7 +170,6 @@ $(document).ready(function(){
             ssoLogin();
         }
     }
-
     function getapprovenum(){
         $.ajax({
             type: "GET",
@@ -246,6 +246,7 @@ $(document).ready(function(){
                         window.localStorage.timezone = data.timezone;
                         window.localStorage.registered = data.registered;
                         window.localStorage.phone = data.phone;
+                        window.localStorage.userdetail = data.userdetail;
                         window.localStorage.hconfig = data.hconfig || "";
                         window.localStorage.sessionkey = encodeURIComponent(data.sessionkey);
                         if(data.userdetail){
@@ -422,8 +423,13 @@ $(document).ready(function(){
 });
 function chargecon(){
     if( window.localStorage.username && window.localStorage.username != null){
+        if(window.localStorage.userdetail && window.localStorage.userdetail == 1){
+            window.location.href = "suppleinfo.html?redirecturi=http://123.103.9.193:7024/index.html?code=udn";
+        }else{
+            window.location.href="http://123.103.9.193:7024/index.html?code=udn";
+        }
         //window.open("http://cloudmgt.yyuap.com:8080/index.html?code=udn");
-        window.location.href="http://123.103.9.193:7024/index.html?code=udn";
+
     }else{
         console.log("need login");
         $('#login_btn').trigger("click",0);
